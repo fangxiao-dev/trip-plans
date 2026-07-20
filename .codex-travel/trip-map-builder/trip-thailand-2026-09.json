@@ -1,0 +1,107 @@
+{
+  "tripName": "泰国曼谷—芭提雅—沙美岛",
+  "assumedYear": 2026,
+  "yearNeedsConfirmation": true,
+  "source": "用户行程截图",
+  "lastUpdated": "2026-07-20",
+  "accommodations": {
+    "bangkok_first": {
+      "name": "沙吞安静联排别墅",
+      "area": "Sathorn / Saint Louis BTS 一带",
+      "status": "用户已确认",
+      "fit": "生活感街区，适合 BTS Silom 线、河船老城、Chatuchak/Ari 和 Lumphini/Siam 轻量分日"
+    },
+    "pattaya": {
+      "name": "Best Beach Villa",
+      "area": "Central Pattaya 北侧 Soi 5",
+      "status": "用户已确认",
+      "fit": "步行约5分钟到 Pattaya Beach、约12分钟到 Terminal 21；真理寺比老虎园更顺路",
+      "routeAdjustments": [
+        "9/28 只安排酒店周边海滩、Central Marina/Terminal 21",
+        "9/29 以真理寺为唯一门票型主景点；午后顺路在 Terminal 21 休息用餐、傍晚到 Wong Amat Beach 看海；老虎园仅作为替换，不与南北两端硬串",
+        "9/30 提前确认酒店上门接送或指定集合点，再去班佩码头"
+      ],
+      "verificationSource": "https://www.hotels.com/ho443908/best-beach-villa-pattaya-and-vicinity-thailand/"
+    },
+    "samed": {
+      "name": "Larissa Samed Resort",
+      "area": "Sai Kaew Beach 东侧",
+      "status": "用户已确认",
+      "fit": "安静私属小海滩 + 步行到 Sai Kaew Beach、主街和餐厅",
+      "routeAdjustments": [
+        "10/1 以酒店私属海滩和 Sai Kaew Beach 为主",
+        "10/2 只租一天摩托做南部环岛与 Ao Prao 日落",
+        "10/3 出海前确认 Na Dan 主码头集合；恶劣天气留在酒店周边",
+        "9/30 和 10/4 提前确认酒店入口、码头接送和行李搬运"
+      ],
+      "verificationSources": [
+        "https://www.booking.com/hotel/th/larissa-resort.html",
+        "https://www.tripadvisor.com/Hotel_Review-g641720-d7987048-Reviews-Larissa_Samed_Resort-Ko_Samet_Rayong_Province.html"
+      ]
+    },
+    "bangkok_return": {
+      "name": "True Siam Rangnam Hotel",
+      "area": "帕突南 / Rangnam，靠 Ratchaprarop Airport Rail Link",
+      "status": "用户已确认",
+      "fit": "10/4 从沙美岛回曼谷后直接入住，10/5 去素万那普机场有缓冲",
+      "verificationSource": "https://www.truesiambangkokhotel.com/rangnam"
+    }
+  },
+  "confirmedSegments": [
+    {
+      "date": "2026-09-24",
+      "from": "武汉",
+      "to": "曼谷",
+      "arrival": "18:00",
+      "transport": "飞机，经素万那普机场"
+    },
+    {
+      "date": "2026-09-28",
+      "from": "曼谷",
+      "to": "芭提雅",
+      "duration": "约2小时",
+      "transport": "大巴"
+    },
+    {
+      "date": "2026-09-30",
+      "from": "芭提雅",
+      "to": "沙美岛",
+      "duration": "截图口径约5小时，待核验",
+      "price": "截图口径约200泰铢，待核验",
+      "transport": "陆路至班佩码头 + 船"
+    },
+    {
+      "date": "2026-10-04",
+      "from": "沙美岛",
+      "to": "曼谷",
+      "duration": "截图口径约6小时，待核验",
+      "transport": "船至班佩码头 + 陆路"
+    },
+    {
+      "date": "2026-10-05",
+      "from": "曼谷",
+      "to": "武汉",
+      "departure": "12:35",
+      "transport": "飞机，经素万那普机场"
+    }
+  ],
+  "destinationDecisions": {
+    "deleted": ["象岛"],
+    "replacement": "沙美岛",
+    "pattaya": "Best Beach Villa 周边抵达日；完整日以真理寺为主，Terminal 21 和 Wong Amat Beach 作为顺路松弛收尾，老虎园仅作替换项；不安排格兰岛",
+    "samed": "海滩慢休闲 + 环岛日落 + 天气触发型出海"
+  },
+  "researchStatus": {
+    "xiaohongshu": "已完成初轮检索与正文提取",
+    "representativeNotes": 7,
+    "weatherSignal": "9月负面实测与10月初正面实测并存，浮潜日期不固定",
+    "report": "research-thailand-sep-oct-xiaohongshu.md"
+  },
+  "pendingVerification": [
+    "年份是否为2026",
+    "曼谷和芭提雅住宿位置、入住人数和房间数；Larissa 房型与餐饮供应仍需确认",
+    "9/30 芭提雅至班佩的上车点、是否直达及是否含船票/接送",
+    "10/4 班佩至曼谷返程班次",
+    "上岛费、船票、跳岛价格和出发日海况"
+  ]
+}

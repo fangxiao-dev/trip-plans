@@ -1,0 +1,109 @@
+{
+  "updated_at": "2026-07-20T20:12:45.912Z",
+  "items": [
+    {
+      "id": "koh_samet_larissa_private_beach",
+      "name": "Larissa Samed Resort",
+      "platform": "Booking.com 中国站",
+      "source_url": "https://www.booking.cn/hotel/th/larissa-resort.zh-cn.html?checkin=2026-09-30&checkout=2026-10-04&group_adults=2&group_children=0&no_rooms=1&selected_currency=CNY",
+      "candidates": [
+        {
+          "path": "outputs/assets/booking/koh_samet_larissa_private_beach-candidate-01.jpg",
+          "source_image_url": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/49822370.jpg?k=1bc0179471edb7f38757ad732fd6e1ec2558c114de20f3ddec861b4a272ace90&o=",
+          "alt": "沙美岛沙美岛拉里萨度假村的花园里一间带长椅的小房子"
+        },
+        {
+          "path": "outputs/assets/booking/koh_samet_larissa_private_beach-candidate-02.jpg",
+          "source_image_url": "https://cf.bstatic.com/xdata/images/hotel/max500/49823576.jpg?k=8c9c9cc0de98d5bb607c4123b3671da97eaee2d4f0b925996cbc3b9fee6d62d0&o=",
+          "alt": "沙美岛沙美岛拉里萨度假村的一座茅草屋顶的房子"
+        },
+        {
+          "path": "outputs/assets/booking/koh_samet_larissa_private_beach-candidate-03.jpg",
+          "source_image_url": "https://cf.bstatic.com/xdata/images/hotel/max500/49823514.jpg?k=c9dec76718d7a0affa4b3338d9ea6861107d36a36a9748db597018edb3e83674&o=",
+          "alt": "沙美岛沙美岛拉里萨度假村的花园中央的小屋"
+        },
+        {
+          "path": "outputs/assets/booking/koh_samet_larissa_private_beach-candidate-04.jpg",
+          "source_image_url": "https://cf.bstatic.com/xdata/images/hotel/max300/50062954.jpg?k=612696ea82acf26fc7ebc03924f3b964eea3dd2ae7b93c4e32fc8ddfa5d6f553&o=",
+          "alt": "沙美岛沙美岛拉里萨度假村的建筑物侧面挂着一块小型度假村的招牌。"
+        },
+        {
+          "path": "outputs/assets/booking/koh_samet_larissa_private_beach-candidate-05.jpg",
+          "source_image_url": "https://cf.bstatic.com/xdata/images/hotel/max300/44328242.jpg?k=1b89c244905fefa0751137650c962fa9d3f5e9113b9a094cc1d5487a6b652dea&o=",
+          "alt": "沙美岛沙美岛拉里萨度假村的一间卧室，里面有一张床；一个露台，里面有一张桌子。"
+        },
+        {
+          "path": "outputs/assets/booking/koh_samet_larissa_private_beach-candidate-06.jpg",
+          "source_image_url": "https://cf.bstatic.com/xdata/images/hotel/max300/50079440.jpg?k=3685d8907532319cc4b10cd04fc1e7ba5a26431935b9ee37fddef5406cd1364b&o=",
+          "alt": "沙美岛沙美岛拉里萨度假村的度假村内设有长椅和带床的房间。"
+        },
+        {
+          "path": "outputs/assets/booking/koh_samet_larissa_private_beach-candidate-07.jpg",
+          "source_image_url": "https://cf.bstatic.com/xdata/images/hotel/max300/50062141.jpg?k=401de1a4f9bcb116bfabc10389b94a40cbe3f8f40fb5f333da70fa7837e4810d&o=",
+          "alt": "沙美岛沙美岛拉里萨度假村的一间茅草屋顶的小房子"
+        },
+        {
+          "path": "outputs/assets/booking/koh_samet_larissa_private_beach-candidate-08.jpg",
+          "source_image_url": "https://cf.bstatic.com/xdata/images/hotel/max300/50062995.jpg?k=2ec650ec47b05a2e6d550662da631f6d22873ab80a0440823342b5e6d0b5348c&o=",
+          "alt": "沙美岛沙美岛拉里萨度假村的一间茅草屋顶的小屋，院子里有一条长凳。"
+        },
+        {
+          "path": "outputs/assets/booking/koh_samet_larissa_private_beach-candidate-09.jpg",
+          "source_image_url": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/49823576.jpg?k=8c9c9cc0de98d5bb607c4123b3671da97eaee2d4f0b925996cbc3b9fee6d62d0&o=",
+          "alt": "沙美岛沙美岛拉里萨度假村的一座茅草屋顶的房子"
+        },
+        {
+          "path": "outputs/assets/booking/koh_samet_larissa_private_beach-candidate-10.jpg",
+          "source_image_url": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/49823514.jpg?k=c9dec76718d7a0affa4b3338d9ea6861107d36a36a9748db597018edb3e83674&o=",
+          "alt": "沙美岛沙美岛拉里萨度假村的花园中央的小屋"
+        },
+        {
+          "path": "outputs/assets/booking/koh_samet_larissa_private_beach-candidate-11.jpg",
+          "source_image_url": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/50062954.jpg?k=612696ea82acf26fc7ebc03924f3b964eea3dd2ae7b93c4e32fc8ddfa5d6f553&o=",
+          "alt": "沙美岛沙美岛拉里萨度假村的建筑物侧面挂着一块小型度假村的招牌。"
+        },
+        {
+          "path": "outputs/assets/booking/koh_samet_larissa_private_beach-candidate-12.jpg",
+          "source_image_url": "https://cf.bstatic.com/xdata/images/hotel/max300/50079477.jpg?k=b5113dd7de469047da3153fe91141b054f948f6e0abc15a8913ce672e404e03a&o=",
+          "alt": "沙美岛拉里萨度假村外面的花园"
+        },
+        {
+          "path": "outputs/assets/booking/koh_samet_larissa_private_beach-candidate-13.jpg",
+          "source_image_url": "https://cf.bstatic.com/xdata/images/hotel/max300/50079454.jpg?k=81529c27abfab35f75d91b228223f33414a4d5bb85b9d443b9c93baf1084e7bb&o=",
+          "alt": "沙美岛拉里萨度假村外面的花园"
+        },
+        {
+          "path": "outputs/assets/booking/koh_samet_larissa_private_beach-candidate-14.jpg",
+          "source_image_url": "https://cf.bstatic.com/xdata/images/hotel/max300/49822331.jpg?k=04c195a807d6c7fe34f4d69c6aa7c4c1127fba7d20ce0c7a979dfd1211989272&o=",
+          "alt": "沙美岛拉里萨度假村外面的花园"
+        },
+        {
+          "path": "outputs/assets/booking/koh_samet_larissa_private_beach-candidate-15.jpg",
+          "source_image_url": "https://cf.bstatic.com/xdata/images/hotel/max300/50079488.jpg?k=dcecb46f8053c3a80dfd5896a0de256ec2999f47a13e9cf78b93cfa1241d0b24&o=",
+          "alt": "沙美岛拉里萨度假村外面的花园"
+        },
+        {
+          "path": "outputs/assets/booking/koh_samet_larissa_private_beach-candidate-16.jpg",
+          "source_image_url": "https://cf.bstatic.com/xdata/images/hotel/max300/49823582.jpg?k=948c1106cf891335aaed87a04b8c9de52a369e139873e7d479fec4dd117c1f0f&o=",
+          "alt": "沙美岛拉里萨度假村的阳台或露台"
+        },
+        {
+          "path": "outputs/assets/booking/koh_samet_larissa_private_beach-candidate-17.jpg",
+          "source_image_url": "https://cf.bstatic.com/xdata/images/hotel/max300/50062925.jpg?k=bbdde205a626a639cd436945de60fdfd45a86d4b9e5c9f5d441831f774824f7c&o=",
+          "alt": "沙美岛拉里萨度假村外面的花园"
+        },
+        {
+          "path": "outputs/assets/booking/koh_samet_larissa_private_beach-candidate-18.jpg",
+          "source_image_url": "https://cf.bstatic.com/xdata/images/hotel/max300/49824585.jpg?k=0373ff000dcb38aa9650ecdfcca863fbe2b3078c765e5ad1c8afc1819346bec5&o=",
+          "alt": "沙美岛拉里萨度假村外面的花园"
+        },
+        {
+          "path": "outputs/assets/booking/koh_samet_larissa_private_beach-candidate-19.jpg",
+          "source_image_url": "https://cf.bstatic.com/xdata/images/hotel/max300/49823942.jpg?k=609ab3bb7bb2f06d5f1d24f7680ff8b88e0bf742c38136b784e3cc22dfec78ac&o=",
+          "alt": "度假酒店周边自然景观"
+        }
+      ],
+      "error": null
+    }
+  ]
+}

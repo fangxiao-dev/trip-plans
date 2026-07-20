@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "skills": {
+    "travel-planner": {
+      "source": "ailabs-393/ai-labs-claude-skills",
+      "sourceType": "github",
+      "skillPath": "packages/skills/travel-planner/SKILL.md",
+      "computedHash": "8113d0f20375354d347894c745b8dc9ecbe4c585f1680e5af77a71c81ce80d07"
+    },
+    "trip-map-builder": {
+      "source": "hiyeshu/trip-map-builder",
+      "sourceType": "github",
+      "skillPath": "SKILL.md",
+      "computedHash": "033e88ce28466b207cbec629e6755a46494bff59daf33a0f527f0f828d954dec"
+    }
+  }
+}

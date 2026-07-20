@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="原型：泰国蜜月看板的曼谷住宿布局对比">
+  <title>曼谷住宿布局原型 · 泰国蜜月</title>
+  <style>
+    :root { --ink:#143c35; --ink-soft:#55756d; --paper:#f4eddf; --card:#fffaf0; --line:rgba(20,60,53,.18); --coral:#d96146; --lagoon:#65a39c; --sand:#ebdfc9; --radius:26px; --shadow:0 18px 48px rgba(20,60,53,.12); }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; min-width:320px; color:var(--ink); background:repeating-linear-gradient(0deg,rgba(20,60,53,.022) 0 1px,transparent 1px 5px),var(--paper); font:16px/1.65 "Avenir Next","Source Han Sans SC","Microsoft YaHei",sans-serif; }
+    button,a { font:inherit; -webkit-tap-highlight-color:transparent; }
+    button { cursor:pointer; }
+    a { color:inherit; }
+    h1,h2,h3,h4 { margin:0; font-family:"Iowan Old Style","Noto Serif SC","Songti SC",STSong,serif; }
+    .page { width:min(1280px,calc(100% - 40px)); margin:0 auto; padding:42px 0 122px; }
+    .prototype-note { display:flex; align-items:center; gap:10px; margin:0 0 23px; color:var(--ink-soft); font-size:13px; }
+    .prototype-note::before { content:"原型"; padding:3px 8px; border-radius:99px; color:var(--card); background:var(--coral); font-size:10px; font-weight:800; letter-spacing:.08em; }
+    .intro { display:flex; justify-content:space-between; gap:20px; align-items:end; padding-bottom:22px; border-bottom:1px solid var(--line); }
+    .intro p { margin:0 0 7px; color:var(--coral); font-size:11px; font-weight:800; letter-spacing:.15em; }
+    .intro h1 { font-size:clamp(38px,5vw,64px); line-height:1; letter-spacing:-.06em; }
+    .intro-copy { max-width:385px; margin:0; color:var(--ink-soft); font-size:13px; }
+    .variant { margin-top:28px; }
+    .stay-card { overflow:hidden; border:1px solid var(--line); border-radius:var(--radius); background:rgba(255,250,240,.92); box-shadow:var(--shadow); }
+    .stay-card:focus-within { outline:3px solid rgba(217,97,70,.42); outline-offset:4px; }
+    .gallery { position:relative; overflow:hidden; min-height:330px; background:var(--sand); }
+    .gallery-main { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition:transform .32s ease,opacity .28s ease; }
+    .gallery:hover .gallery-main, .gallery:focus-within .gallery-main { transform:scale(1.035); }
+    .gallery-nav { position:absolute; z-index:2; inset:auto 14px 14px; display:flex; justify-content:space-between; pointer-events:none; }
+    .gallery-nav button { width:42px; height:42px; border:1px solid rgba(255,250,240,.8); border-radius:50%; color:var(--card); background:rgba(20,60,53,.76); box-shadow:0 5px 12px rgba(0,0,0,.15); pointer-events:auto; transition:transform .18s ease,background .18s ease; }
+    .gallery-nav button:hover,.gallery-nav button:focus-visible { outline:0; background:var(--coral); transform:scale(1.06); }
+    .gallery-count { position:absolute; top:14px; right:14px; z-index:2; padding:5px 9px; border-radius:99px; color:var(--card); background:rgba(20,60,53,.72); font-size:11px; font-weight:800; }
+    .stay-copy { padding:31px; }
+    .stay-kicker { margin:0 0 7px; color:var(--coral); font-size:11px; font-weight:800; letter-spacing:.12em; }
+    .stay-name { font-size:clamp(30px,3.3vw,45px); line-height:1.08; letter-spacing:-.045em; }
+    .stay-area { margin:11px 0 0; color:var(--ink-soft); font-size:13px; }
+    .stay-reason { margin:21px 0 0; padding-top:17px; border-top:1px solid var(--line); color:var(--ink-soft); font-size:14px; }
+    .stay-reason b { color:var(--ink); }
+    .stay-facts { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; margin-top:25px; background:var(--line); border:1px solid var(--line); }
+    .fact { min-width:0; padding:15px 16px; background:var(--card); }
+    .fact small { display:block; color:var(--ink-soft); font-size:10px; font-weight:800; letter-spacing:.08em; }
+    .fact strong { display:block; margin-top:5px; color:var(--coral); font:800 28px/1 Georgia,"Songti SC",serif; }
+    .fact span { display:block; margin-top:6px; color:var(--ink-soft); font-size:11px; line-height:1.45; }
+    .action-row { display:flex; justify-content:space-between; gap:16px; align-items:center; margin-top:16px; }
+    .action-row p { margin:0; color:var(--ink-soft); font-size:12px; }
+    .open-link { flex:0 0 auto; display:inline-flex; align-items:center; gap:9px; min-height:44px; padding:10px 14px; border-radius:12px; color:var(--card); background:var(--ink); font-size:12px; font-weight:800; text-decoration:none; transition:transform .18s ease,background .18s ease; }
+    .open-link:hover,.open-link:focus-visible { outline:0; background:var(--coral); transform:translateY(-2px); }
+    .option-head { display:flex; justify-content:space-between; gap:15px; align-items:center; margin:30px 0 13px; }
+    .option-head h3 { font-size:26px; line-height:1; }
+    .option-tabs { display:flex; flex-wrap:wrap; gap:8px; }
+    .option-tab { min-height:40px; padding:8px 12px; border:1px solid var(--line); border-radius:99px; color:var(--ink-soft); background:rgba(255,250,240,.75); font-size:12px; font-weight:800; transition:background .18s ease,color .18s ease,transform .18s ease; }
+    .option-tab:hover,.option-tab:focus-visible { outline:0; color:var(--ink); border-color:var(--coral); transform:translateY(-1px); }
+    .option-tab[aria-pressed="true"] { color:var(--card); border-color:var(--ink); background:var(--ink); }
+    .compact-plan { display:grid; grid-template-columns:minmax(0,1fr) 280px; gap:18px; margin-top:28px; }
+    .plan-list,.plan-note { padding:22px; border:1px solid var(--line); border-radius:22px; background:rgba(255,250,240,.63); }
+    .section-label { margin:0 0 6px; color:var(--coral); font-size:10px; font-weight:800; letter-spacing:.13em; }
+    .plan-list h3,.plan-note h3 { font-size:27px; line-height:1.15; }
+    .day { display:grid; grid-template-columns:32px 1fr; gap:11px; padding:14px 0; border-top:1px solid var(--line); }
+    .day:first-of-type { margin-top:12px; }
+    .day-num { display:grid; width:30px; height:30px; place-items:center; border-radius:50%; color:var(--card); background:var(--ink); font:800 11px Georgia,serif; }
+    .day h4 { margin:0; font-family:inherit; font-size:14px; }
+    .day p { margin:2px 0 0; color:var(--ink-soft); font-size:12px; }
+    .plan-note p:last-child { margin:12px 0 0; color:var(--ink-soft); font-size:13px; }
+    /* A: 最贴近用户标注的左右住宿档案 */
+    .variant-a .stay-card { display:grid; grid-template-columns:minmax(330px,.85fr) minmax(0,1.15fr); }
+    .variant-a .gallery { min-height:100%; }
+    /* B: 图片先行的旅居编辑页 */
+    .variant-b .stay-card { display:grid; grid-template-columns:1.15fr .85fr; }
+    .variant-b .gallery { min-height:460px; }
+    .variant-b .stay-copy { display:flex; min-height:460px; flex-direction:column; justify-content:space-between; }
+    .variant-b .stay-facts { grid-template-columns:1fr; margin-top:18px; }
+    .variant-b .fact { display:grid; grid-template-columns:82px 1fr; column-gap:12px; align-items:center; padding:12px 0; border-bottom:1px solid var(--line); }
+    .variant-b .fact:last-child { border:0; }
+    .variant-b .fact small { grid-column:1; }
+    .variant-b .fact strong { grid-column:2; grid-row:1 / span 2; margin:0; font-size:25px; }
+    .variant-b .fact span { grid-column:1; margin-top:1px; }
+    .variant-b .option-head { margin-top:20px; }
+    .variant-b .compact-plan { grid-template-columns:1fr; }
+    .variant-b .plan-note { display:none; }
+    /* C: 住宿选择像旅行夹页；首选与备选在一个横向组合中 */
+    .variant-c .stay-card { display:grid; grid-template-columns:300px minmax(0,1fr); }
+    .variant-c .gallery { min-height:310px; }
+    .variant-c .stay-copy { padding:25px 28px; }
+    .variant-c .stay-name { font-size:36px; }
+    .variant-c .stay-reason { margin-top:14px; padding-top:14px; }
+    .variant-c .stay-facts { margin-top:17px; }
+    .variant-c .fact { padding:11px 13px; }
+    .variant-c .fact strong { font-size:24px; }
+    .variant-c .option-head { padding:18px 20px; margin:20px 0 0; border:1px solid var(--line); border-bottom:0; border-radius:22px 22px 0 0; background:var(--sand); }
+    .variant-c .option-tabs { padding:15px 20px 20px; border:1px solid var(--line); border-top:0; border-radius:0 0 22px 22px; background:rgba(255,250,240,.72); }
+    .variant-c .compact-plan { grid-template-columns:1fr; }
+    .variant-c .plan-note { display:none; }
+    .variant-c .plan-list { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+    .variant-c .plan-list > .section-label,.variant-c .plan-list > h3 { grid-column:1/-1; }
+    .variant-c .day { display:block; padding:13px; border:1px solid var(--line); border-radius:16px; }
+    .variant-c .day-num { margin-bottom:8px; }
+    .switcher { position:fixed; z-index:20; bottom:18px; left:50%; display:flex; align-items:center; gap:8px; padding:8px; border:1px solid rgba(255,250,240,.4); border-radius:99px; color:var(--card); background:rgba(20,60,53,.94); box-shadow:0 12px 28px rgba(20,60,53,.25); transform:translateX(-50%); backdrop-filter:blur(12px); }
+    .switcher button { width:42px; height:42px; border:0; border-radius:50%; color:var(--card); background:transparent; font-size:19px; }
+    .switcher button:hover,.switcher button:focus-visible { outline:2px solid var(--coral); background:rgba(255,255,255,.11); }
+    .switcher-label { min-width:188px; text-align:center; font-size:12px; font-weight:800; }
+    @media (max-width:800px) { .page { width:min(100% - 24px,1280px); padding-top:27px; } .intro { align-items:flex-start; flex-direction:column; } .variant-a .stay-card,.variant-b .stay-card,.variant-c .stay-card { grid-template-columns:1fr; } .gallery,.variant-b .gallery,.variant-c .gallery { min-height:260px; } .variant-b .stay-copy { min-height:auto; } .compact-plan { grid-template-columns:1fr; } .plan-note { display:none; } .variant-c .plan-list { grid-template-columns:1fr; } .variant-c .plan-list > .section-label,.variant-c .plan-list > h3 { grid-column:auto; } .switcher-label { min-width:154px; } }
+    @media (max-width:520px) { .stay-copy { padding:23px; } .stay-facts { grid-template-columns:1fr; } .fact { padding:13px; } .action-row { align-items:stretch; flex-direction:column; } .open-link { justify-content:space-between; } .option-head { align-items:flex-start; flex-direction:column; } .option-tabs { flex-wrap:nowrap; width:100%; overflow-x:auto; padding-bottom:3px; } .option-tab { flex:0 0 auto; } .variant-b .fact { grid-template-columns:80px 1fr; } }
+    @media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } *,*::before,*::after { transition:none!important; animation:none!important; } }
+  </style>
+</head>
+<body>
+  <!-- 原型问题：同一份曼谷前4晚真实数据，提供3种结构差异明显的布局，通过 ?variant=a/b/c 切换。 -->
+  <main class="page">
+    <p class="prototype-note">一次性布局原型 · 只比较呈现方式，不改变住宿决定</p>
+    <header class="intro"><div><p>第一站 / 09.24 — 09.28</p><h1>曼谷，留一点生活感</h1></div><p class="intro-copy" id="variant-copy"></p></header>
+    <section class="variant" id="variant-root" aria-live="polite"></section>
+  </main>
+  <nav class="switcher" aria-label="切换布局原型"><button type="button" id="previous" aria-label="查看上一个布局">←</button><span class="switcher-label" id="switcher-label"></span><button type="button" id="next" aria-label="查看下一个布局">→</button></nav>
+  <script>
+    const listings = {
+      primary: { key:'primary', kicker:'首选住宿 / Saint Louis 一带', name:'沙吞安静联排别墅', area:'Sathon / Saint Louis · 整套一卧室 · 私享阳台、完整厨房与洗衣机', reason:'木质生活感最强，不走中央商务区高层奢华路线；去 Saint Louis BTS 只需数分钟，老城河岸、周末市场与 Siam 都有余地。', price:'¥1,520', rating:'5.0', reviews:'18条评价 · 整套出租', cancel:'09.23', cancelInfo:'当前页面显示此前可免费取消', link:'https://www.airbnb.com/rooms/897336029727337609?adults=2&check_in=2026-09-24&check_out=2026-09-28', images:['assets/airbnb/bkk1-sathon-quiet-01.jpg','assets/airbnb/bkk1-sathon-quiet-02.jpg'] },
+      silom: { key:'silom', kicker:'备选 / Silom · Sala Daeng', name:'是隆公寓 · 20308374', area:'整套出租 · 约40平方米', reason:'三条曼谷路线的折中较好、生活配套密集；但最新评价仍要特别复核街噪和浴室异味。', price:'¥1,697', rating:'4.74', reviews:'487条评价', cancel:'复核', cancelInfo:'预订前确认最新政策与评价', link:'https://www.airbnb.com/rooms/20308374?adults=2&check_in=2026-09-24&check_out=2026-09-28', images:['assets/airbnb/bkk1-silom-20308374-01.jpg','assets/airbnb/bkk1-silom-20308374-02.jpg'] },
+      sathon: { key:'sathon', kicker:'备选 / Sathon · Chong Nonsi', name:'沙吞一卧室公寓', area:'整套公寓 · 11楼，最多2人', reason:'价格在上限内，空间刚好；代价是到 Chong Nonsi 较远、房屋新旧与清洁要再看近期评价。', price:'¥1,559', rating:'4.79', reviews:'34条评价', cancel:'复核', cancelInfo:'当前显示可取消，预订前复核', link:'https://www.airbnb.com/rooms/1268923602732185529?adults=2&check_in=2026-09-24&check_out=2026-09-28', images:['assets/airbnb/bkk1-sathon-126892-01.jpg','assets/airbnb/bkk1-sathon-126892-02.jpg'] },
+      saint: { key:'saint', kicker:'备选 / Bang Rak · Saint Louis', name:'Saint Louis 两卧室', area:'整套两卧室 · 房东标注距轻轨约240米', reason:'轨道交通信息最明确，评分高、空间宽松；但两个人住两卧室略有富余，装修氛围要以实图为准。', price:'¥1,605', rating:'4.97', reviews:'115条评价', cancel:'复核', cancelInfo:'预订前确认最终政策', link:'https://www.airbnb.com/rooms/1131211637115874966?adults=2&check_in=2026-09-24&check_out=2026-09-28', images:['assets/airbnb/bkk1-saint-louis-01.jpg','assets/airbnb/bkk1-saint-louis-02.jpg'] },
+      cozy: { key:'cozy', kicker:'备选 / Silom · Chong Nonsi', name:'是隆舒适一卧', area:'整套公寓 · 厨房、洗衣机与电梯', reason:'价格最低，交通时间证据完整；整体偏实用型，不如首选有生活感。', price:'¥1,306', rating:'4.76', reviews:'161条评价', cancel:'09.19', cancelInfo:'当前显示可免费取消至此日', link:'https://www.airbnb.com/rooms/39885927?adults=2&check_in=2026-09-24&check_out=2026-09-28', images:['assets/airbnb/bkk1-silom-39885927-01.jpg','assets/airbnb/bkk1-silom-39885927-02.jpg'] }
+    };
+    const days = [['24','抵达晚：只做第一顿饭','18:00抵达后进城、安顿、就近吃饭；不跨城赶夜景。'],['25','顺路的寺庙与河边晚餐','大皇宫＋卧佛寺为主，郑王庙只在体力和排队合适时顺路经过。'],['26','周末市场＋Ari 咖啡街区','Chatuchak 逛到觉得够了就离开，晚上不再为了打卡横穿城市。']];
+    const variants = { a:{ title:'A · 双栏住处档案', copy:'最接近你标注的阅读方式：左图可切换，右边先看住处理由，再看价格与操作。' }, b:{ title:'B · 照片主导旅居页', copy:'更像旅行杂志：第一眼先感受房子，再往右读轻量信息；住宿是页面主角。' }, c:{ title:'C · 旅行夹页清单', copy:'住宿信息更紧凑，备选像夹在行程中的标签；适合想快速比对、少滚动的页面。' } };
+    const state = { variant:new URLSearchParams(location.search).get('variant') || 'a', active:'primary', image:0 };
+    if (!variants[state.variant]) state.variant='a';
+    const root=document.getElementById('variant-root');
+    const label=document.getElementById('switcher-label');
+    const copy=document.getElementById('variant-copy');
+    function selected(){ return listings[state.active]; }
+    function render(){ const item=selected(); const image=item.images[state.image % item.images.length]; root.className='variant variant-'+state.variant; copy.textContent=variants[state.variant].copy; label.textContent=variants[state.variant].title;
+      root.innerHTML=`<article class="stay-card"><div class="gallery" tabindex="0" aria-label="${item.name} 图片，左右按钮可切换"><img class="gallery-main" src="${image}" alt="${item.name} 房源图片"><span class="gallery-count">${state.image % item.images.length + 1} / ${item.images.length}</span><div class="gallery-nav"><button type="button" data-image="previous" aria-label="上一张图片">←</button><button type="button" data-image="next" aria-label="下一张图片">→</button></div></div><div class="stay-copy"><div><p class="stay-kicker">${item.kicker}</p><h2 class="stay-name">${item.name}</h2><p class="stay-area">${item.area}</p><p class="stay-reason"><b>为什么留它：</b>${item.reason}</p></div><div><div class="stay-facts"><div class="fact"><small>4晚总价</small><strong>${item.price}</strong><span>2位成人 · 人民币快照</span></div><div class="fact"><small>房源评分</small><strong>${item.rating}</strong><span>${item.reviews}</span></div><div class="fact"><small>取消提示</small><strong>${item.cancel}</strong><span>${item.cancelInfo}</span></div></div><div class="action-row"><p>价格、库存和取消条件仍需预订前复核</p><a class="open-link" href="${item.link}" target="_blank" rel="noreferrer">打开 Airbnb <span>↗</span></a></div></div></div></article><section aria-label="备选住宿"><div class="option-head"><h3>备选住宿</h3></div><div class="option-tabs" role="group" aria-label="选择备选房源">${Object.values(listings).map(x=>`<button type="button" class="option-tab" data-listing="${x.key}" aria-pressed="${x.key===state.active}">${x.key==='primary'?'首选 · ':''}${x.name}</button>`).join('')}</div></section><section class="compact-plan"><div class="plan-list"><p class="section-label">这段怎么玩</p><h3>把代表性留住，不把行程塞满</h3>${days.map(d=>`<article class="day"><span class="day-num">${d[0]}</span><div><h4>${d[1]}</h4><p>${d[2]}</p></div></article>`).join('')}</div><aside class="plan-note"><p class="section-label">住得舒服的关键</p><h3>温馨，比炫耀更重要</h3><p>轻轨是入口，不强行全程轨道交通；能散步、能休息、能轻松回到房间，就是这段的标准。</p></aside></section>`;
+      root.querySelectorAll('[data-listing]').forEach(btn=>btn.addEventListener('click',()=>{ state.active=btn.dataset.listing; state.image=0; render(); })); root.querySelectorAll('[data-image]').forEach(btn=>btn.addEventListener('click',()=>{ state.image=(state.image+(btn.dataset.image==='next'?1:-1)+selected().images.length)%selected().images.length; render(); })); }
+    function setVariant(step){ const keys=Object.keys(variants); state.variant=keys[(keys.indexOf(state.variant)+step+keys.length)%keys.length]; const u=new URL(location.href); u.searchParams.set('variant',state.variant); history.replaceState({},'',u); render(); }
+    document.getElementById('previous').addEventListener('click',()=>setVariant(-1)); document.getElementById('next').addEventListener('click',()=>setVariant(1)); document.addEventListener('keydown',e=>{ if(['INPUT','TEXTAREA'].includes(document.activeElement.tagName)||document.activeElement.isContentEditable) return; if(e.key==='ArrowLeft')setVariant(-1); if(e.key==='ArrowRight')setVariant(1); }); render();
+  </script>
+</body>
+</html>

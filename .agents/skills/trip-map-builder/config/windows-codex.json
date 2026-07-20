@@ -1,0 +1,8 @@
+{
+  "projectDataDirectory": ".codex-travel/trip-map-builder",
+  "chromeProfileDirectory": ".codex-travel/trip-map-builder/chrome-profile",
+  "openCliDirectory": ".codex-travel/trip-map-builder/tools",
+  "browserExtensionDirectory": ".codex-travel/trip-map-builder/opencli-extension",
+  "remoteDebuggingPort": 9223,
+  "startupUrl": "https://www.xiaohongshu.com/explore"
+}

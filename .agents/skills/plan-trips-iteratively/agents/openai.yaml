@@ -1,0 +1,4 @@
+interface:
+  display_name: "渐进式旅行规划"
+  short_description: "先定路线再查真实住宿，并渐进维护数据、决策记录与旅行看板"
+  default_prompt: "使用 $plan-trips-iteratively 按渐进方式规划这次旅行，并维护真实住宿候选与中文看板。"

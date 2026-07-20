@@ -1,0 +1,9 @@
+# Local browser profiles and generated runtime state
+.codex-travel/**/chrome-profile/
+outputs/assets/booking/.chrome-profile/
+
+# Installed dependencies; restore with npm/yarn from the checked-in manifests
+.codex-travel/**/node_modules/
+
+# Local visual QA screenshots
+outputs/*-check.png

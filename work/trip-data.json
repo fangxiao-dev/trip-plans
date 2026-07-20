@@ -1,0 +1,2535 @@
+{
+  "schema_version": "1.0",
+  "updated_at": "2026-07-20T22:00:00+02:00",
+  "trip": {
+    "title": "泰国蜜月旅行",
+    "travelers": 2,
+    "start_date": "2026-09-24",
+    "end_date": "2026-10-05",
+    "nights": 11,
+    "status": "iterating"
+  },
+  "source_artifacts": [
+    {
+      "id": "source_itinerary_screenshot",
+      "type": "image",
+      "path": "work/source-itinerary.png",
+      "role": "primary_source_for_transport_dates_places_durations_and_listed_prices"
+    }
+  ],
+  "transport_segments": [
+    {
+      "id": "transport_1",
+      "from": "武汉",
+      "to": "曼谷",
+      "date": "2026-09-24",
+      "departure_time": "11:30",
+      "arrival_time": "18:00",
+      "duration_minutes": 460,
+      "mode": "飞机",
+      "transfer": true,
+      "listed_price_cny_per_person": 2600,
+      "source": "source_itinerary_screenshot",
+      "status": "confirmed_from_screenshot_and_airport_from_user",
+      "airport": "素万那普机场",
+      "airport_iata": "BKK",
+      "airport_source": "user_confirmation_2026-07-18"
+    },
+    {
+      "id": "transport_2",
+      "from": "曼谷",
+      "to": "芭提雅",
+      "date": "2026-09-28",
+      "departure_time": null,
+      "arrival_time": null,
+      "duration_minutes": 120,
+      "mode": "大巴",
+      "transfer": false,
+      "listed_price_cny_per_person": 40,
+      "source": "source_itinerary_screenshot",
+      "status": "current_middle_city_primary_round3_refundability_short_transfer",
+      "note": "用户要求可退款或较晚取消、尽量短距离连接市区与海滩；Altera与Best Western退出，Bayview仅保留参考，Best Beach Villa暂作用户偏好基线"
+    },
+    {
+      "id": "transport_3",
+      "from": "中间小城市（当前仍以芭提雅为首选）",
+      "to": "沙美岛（经班佩码头）",
+      "date": "2026-09-30",
+      "departure_time": null,
+      "arrival_time": null,
+      "duration_minutes": null,
+      "mode": "陆路+渡船",
+      "transfer": false,
+      "listed_price_cny_per_person": null,
+      "source_screenshot_listed_price_cny_per_person": 200,
+      "source_screenshot_duration_minutes": 300,
+      "source": "source_itinerary_screenshot",
+      "status": "provisional_route_from_user_direction_pending_schedule_check",
+      "note": "沙美岛已升为最终海岛首选；原截图中的芭提雅→象岛5小时/200元仅保留为历史草案，不套用于新路线"
+    },
+    {
+      "id": "transport_4",
+      "from": "沙美岛（经班佩码头）",
+      "to": "曼谷",
+      "date": "2026-10-04",
+      "departure_time": null,
+      "arrival_time": null,
+      "duration_minutes": null,
+      "mode": "陆路+渡船",
+      "transfer": false,
+      "listed_price_cny_per_person": null,
+      "source_screenshot_listed_price_cny_per_person": 200,
+      "source_screenshot_duration_minutes": 360,
+      "source": "source_itinerary_screenshot",
+      "status": "provisional_route_from_user_direction_pending_schedule_check",
+      "note": "沙美岛→曼谷→次日素万那普返程；具体班次与返程前一晚落脚区待后续核验"
+    },
+    {
+      "id": "transport_5",
+      "from": "曼谷",
+      "to": "武汉",
+      "date": "2026-10-05",
+      "departure_time": "12:35",
+      "arrival_time": "19:40",
+      "duration_minutes": 360,
+      "mode": "飞机",
+      "transfer": true,
+      "listed_price_cny_per_person": 0,
+      "source": "source_itinerary_screenshot",
+      "status": "confirmed_from_screenshot_and_airport_from_user",
+      "airport": "素万那普机场",
+      "airport_iata": "BKK",
+      "airport_status": "confirmed_by_user_2026-07-18"
+    }
+  ],
+  "stay_segments": [
+    {
+      "id": "stay_bangkok_1",
+      "destination": "曼谷",
+      "check_in": "2026-09-24",
+      "check_out": "2026-09-28",
+      "nights": 4,
+      "role": "city_exploration_base",
+      "priority": "location_and_rail_access",
+      "status": "selected_working_candidate_user_confirmed",
+      "selected_candidate_id": "bkk1_airbnb_sathon_quiet_townhouse",
+      "note": "用户已选沙吞安静联排别墅作为曼谷前4晚工作首选；后续只需出发前复核库存、房型与取消条款。路线适配为Saint Louis→Saphan Taksin/河船老城、Chatuchak+Ari、Lumphini/Siam三条轻量日线，不再为景点搬住宿。"
+    },
+    {
+      "id": "stay_pattaya",
+      "destination": "芭提雅",
+      "check_in": "2026-09-28",
+      "check_out": "2026-09-30",
+      "nights": 2,
+      "role": "city_or_beach_transition",
+      "priority": "city_center_convenience_and_nightlife",
+      "status": "selected_working_candidate_user_confirmed",
+      "selected_candidate_id": "pattaya_best_beach_villa",
+      "note": "用户已选Best Beach Villa作为芭提雅两晚工作首选；后续只需出发前复核库存、房型与取消条款。酒店在Central Pattaya北侧、步行到海滩和Terminal 21；抵达日安排酒店周边，完整日优先真理寺，老虎园仅在明确想去时替换，不与南北两端硬串。"
+    },
+    {
+      "id": "stay_koh_samet",
+      "destination": "沙美岛",
+      "check_in": "2026-09-30",
+      "check_out": "2026-10-04",
+      "nights": 4,
+      "role": "honeymoon_resort_anchor",
+      "priority": "direct_beach_chill_nature_photo_low_exertion",
+      "status": "selected_working_hotel_confirmed",
+      "selected_candidate_id": "koh_samet_larissa_private_beach",
+      "note": "用户已同意Larissa Samed Resort作为工作首选；后续只需在出发前重新核验库存、房型与取消条款。位置适配为Sai Kaew Beach东侧：酒店私属小海滩负责安静看海，Sai Kaew主街负责餐饮补给，环岛只安排一天。"
+    },
+    {
+      "id": "stay_koh_chang",
+      "destination": "象岛",
+      "check_in": "2026-09-30",
+      "check_out": "2026-10-04",
+      "nights": 4,
+      "role": "honeymoon_resort_anchor",
+      "priority": "chill_resort_nature_photo_low_exertion",
+      "status": "candidate_destination_not_primary",
+      "note": "象岛降为最终海岛候选；保留原始研究与候选酒店，不再作为当前交通终点"
+    },
+    {
+      "id": "stay_bangkok_2",
+      "destination": "曼谷",
+      "check_in": "2026-10-04",
+      "check_out": "2026-10-05",
+      "nights": 1,
+      "role": "pre_flight_buffer",
+      "priority": "airport_rail_link_access_to_bkk",
+      "status": "selected_working_candidate_user_confirmed",
+      "selected_candidate_id": "bkk2_true_siam_rangnam",
+      "note": "用户已选True Siam Rangnam Hotel作为返程前一晚工作首选；后续只需出发前复核库存、房型与取消条款。10/4从沙美岛回曼谷后直接入住，不再回Sathorn；10/5使用Ratchaprarop Airport Rail Link前往BKK。",
+      "blocker": null
+    }
+  ],
+  "preferences_and_decisions": [
+    {
+      "id": "decision_budget_logic",
+      "topic": "住宿预算分配",
+      "decision": "分段花钱",
+      "meaning": "曼谷优先位置与交通，芭提雅和象岛可为海景、沙滩与度假体验增加预算",
+      "status": "confirmed"
+    },
+    {
+      "id": "preference_bangkok_property_type",
+      "topic": "曼谷住宿类型",
+      "preference": "优先 Airbnb",
+      "status": "confirmed"
+    },
+    {
+      "id": "preference_bangkok_entire_place_rating_floor",
+      "topic": "曼谷 Airbnb 硬筛选",
+      "preference": "只接受整套房源，不接受独立房间、合住房间或酒店单房；房源总评分不得低于4.7",
+      "status": "confirmed",
+      "source": "user_confirmation_2026-07-19"
+    },
+    {
+      "id": "preference_bangkok_warm_transit_neighborhood",
+      "topic": "曼谷住宿氛围与位置取舍",
+      "preference": "优先温馨、有生活感的整套住处，不追求中央商务区高层奢华感；可离市中心略远，但步行约10分钟内应能接入BTS或MRT等公共交通",
+      "status": "confirmed",
+      "source": "user_confirmation_2026-07-19"
+    },
+    {
+      "id": "planning_scope_missing_times",
+      "topic": "移动日空白时间",
+      "decision": "截图空白表示尚未确定，属于后续规划范围",
+      "status": "confirmed"
+    },
+    {
+      "id": "decision_airports",
+      "topic": "曼谷往返机场",
+      "decision": "来回均为素万那普机场（BKK）",
+      "status": "confirmed",
+      "source": "user_confirmation_2026-07-18"
+    },
+    {
+      "id": "decision_pattaya_role",
+      "topic": "芭提雅两晚的角色",
+      "decision": "住市中心，侧重便利与夜景",
+      "route_status": "current_middle_city_primary",
+      "alternative_note": "若想把中间段做得更安静、更贴近班佩上岛，可改为罗勇市；但罗勇夜生活与餐饮选择明显少于芭提雅，暂不替换。",
+      "status": "confirmed",
+      "source": "user_confirmation_2026-07-18"
+    },
+    {
+      "id": "decision_pattaya_transition_budget_band",
+      "topic": "芭提雅两晚过渡价格带",
+      "decision": "日均约300—400元，最低不低于250元",
+      "meaning": "芭提雅只住两晚，优先把预算留给沙美岛；当前住宿总价目标约500—800元，低于500元的总价不再作为合格候选",
+      "status": "confirmed",
+      "source": "user_confirmation_2026-07-20"
+    },
+    {
+      "id": "decision_planning_priority_major_stays",
+      "topic": "住宿决策顺序",
+      "decision": "先决策曼谷前4晚与沙美岛4晚，再回到中间城市2晚",
+      "meaning": "优先处理占8晚、对城市效率与蜜月主体体验影响最大的两段",
+      "status": "confirmed",
+      "source": "user_confirmation_2026-07-18"
+    },
+    {
+      "id": "decision_bangkok_route",
+      "topic": "曼谷前4晚路线",
+      "decision": "B1_plus_light",
+      "meaning": "只保留顺路且代表性最强的寺庙：大皇宫与卧佛寺为核心，郑王庙仅在顺路且体力合适时过河看外观与拍照；其余两天为Chatuchak+Ari、Lumphini/Siam+按摩与蜜月晚餐，不做寺庙打卡式旅游。",
+      "status": "confirmed",
+      "source": "user_annotation_2026-07-19"
+    },
+    {
+      "id": "decision_koh_samet_route",
+      "topic": "沙美岛4晚路线",
+      "decision": "K2_chill_photo_flexible",
+      "meaning": "以酒店、自然海景和拍照为主；保留一个完整酒店日、一个轻量自然半日，第三个整天视天气与身体状态选择半日观景船或继续酒店/Spa。浮潜不是目标，可完全不安排。",
+      "comfort_constraint": "low_stamina_and_possible_menstruation",
+      "status": "confirmed",
+      "source": "user_annotation_2026-07-19"
+    },
+    {
+      "id": "preference_final_island_actual_beach_priority",
+      "topic": "最终海岛住宿与海边的关系",
+      "preference": "此次海岛段明确想去海边；优先酒店本身可直接步行到沙滩或位于海滩带，河畔、远离海滩的自然酒店只作为低价备选",
+      "status": "confirmed",
+      "source": "user_confirmation_2026-07-20"
+    },
+    {
+      "id": "decision_route_structure_only",
+      "topic": "全程目的地确定度",
+      "decision": "当前只确认曼谷4晚、一个中间小城市2晚、一个最终海岛4晚，以及返程前曼谷1晚；不去清迈",
+      "meaning": "当前按芭提雅作为中间城市主选、沙美岛作为最终海岛主选继续推进；象岛降为候选，旧截图交通只保留为历史参考，班次与接驳仍需核验",
+      "status": "confirmed",
+      "source": "user_confirmation_2026-07-20"
+    }
+  ],
+  "accommodation_candidates": [
+    {
+      "id": "bkk1_airbnb_silom_apartment",
+      "stay_segment_id": "stay_bangkok_1",
+      "name": "可爱的家庭标准双人床是隆地铁轻轨工作游泳",
+      "platform": "Airbnb",
+      "listing_id": "20308374",
+      "area": "Silom / Sala Daeng",
+      "property_type": "整套出租单元（详情页已核验）",
+      "rating": 4.74,
+      "review_count": 487,
+      "room_summary": "约40㎡，1间卧室、3张床、1间卫生间；带厨房、办公区、共用屋顶泳池和健身房",
+      "image_assets": [
+        "outputs/assets/airbnb/bkk1-silom-20308374-01.jpg",
+        "outputs/assets/airbnb/bkk1-silom-20308374-02.jpg"
+      ],
+      "price": {
+        "currency": "CNY",
+        "displayed_total": 1697,
+        "board_display": {
+          "currency": "CNY",
+          "displayed_total": 1697,
+          "conversion_basis": "Airbnb人民币页面直接报价"
+        },
+        "historical_quote": {
+          "currency": "EUR",
+          "displayed_total": 219,
+          "board_converted_total": 1752,
+          "conversion_rate": 8
+        },
+        "nights": 4,
+        "adults": 2,
+        "tax_fee_status": "price_breakdown_not_opened",
+        "cancellation": "free_cancellation_shown"
+      },
+      "fit": "Sala Daeng轻轨站步行约5分钟，适合作为老城河岸、Chatuchak/Ari与Siam三条路线的折中基地；安静巷内且生活配套密集",
+      "tradeoff": "总评分只略高于4.7门槛，清洁分项约4.7；共享泳池，睡眠布局偏实用而非蜜月设计型，页面未报告烟雾和一氧化碳报警器",
+      "verification_status": "exact_dates_guests_entire_unit_and_detail_page_verified",
+      "shortlist_status": "active_user_liked_value_anchor",
+      "verified_at": "2026-07-19T23:30:00+02:00",
+      "url": "https://www.airbnb.com/rooms/20308374?adults=2&children=0&infants=0&pets=0&wishlist_item_id=11006603118396&check_in=2026-09-24&check_out=2026-09-28&source_impression_id=p3_1784570598_P3G5JkTEI8s96AdN&previous_page_section_name=1000",
+      "backup_display_status": "shown_as_backup_with_recent_review_caution"
+    },
+    {
+      "id": "bkk1_airbnb_silom_lumpini_serviced",
+      "stay_segment_id": "stay_bangkok_1",
+      "name": "小型服务式公寓，位于Dusit Silom/Lumpini公园",
+      "platform": "Airbnb",
+      "listing_id": "7341294",
+      "area": "Silom / Lumphini",
+      "property_type": "房间 / 服务式公寓房源",
+      "rating": 4.72,
+      "review_count": 222,
+      "room_summary": "2张床、1间卫生间；住客摘要提及夜市与位置",
+      "price": {
+        "currency": "EUR",
+        "displayed_total": 176,
+        "original_total": 192,
+        "board_display": {
+          "currency": "CNY",
+          "displayed_total": 1408,
+          "original_total": 1536,
+          "conversion_rate": 8,
+          "conversion_basis": "1 EUR = 8 CNY_user_requested_fixed_rate"
+        },
+        "nights": 4,
+        "adults": 2,
+        "tax_fee_status": "price_breakdown_not_opened",
+        "cancellation": "free_cancellation_shown"
+      },
+      "fit": "位置标签最接近既定 Silom/Lumphini 方向",
+      "tradeoff": "搜索结果标注为房间，私密性与公共空间边界必须复核",
+      "verification_status": "exact_dates_and_guests_verified_on_search_results",
+      "shortlist_status": "inactive_property_type_filter",
+      "inactive_reason": "用户明确只要整套房源；该房源标注为房间",
+      "verified_at": "2026-07-18T23:40:00+02:00",
+      "url": "https://www.airbnb.com/rooms/7341294?adults=2&check_in=2026-09-24&check_out=2026-09-28"
+    },
+    {
+      "id": "bkk1_airbnb_cbd_center",
+      "stay_segment_id": "stay_bangkok_1",
+      "name": "位于曼谷中央商务区的中心",
+      "platform": "Airbnb",
+      "listing_id": "1106047816595574829",
+      "area": "Bang Rak / central business district search result",
+      "property_type": "房源",
+      "rating": 4.94,
+      "review_count": 98,
+      "room_summary": "1间卧室、2张床、1间卫生间",
+      "price": {
+        "currency": "EUR",
+        "displayed_total": 175,
+        "board_display": {
+          "currency": "CNY",
+          "displayed_total": 1400,
+          "conversion_rate": 8,
+          "conversion_basis": "1 EUR = 8 CNY_user_requested_fixed_rate"
+        },
+        "nights": 4,
+        "adults": 2,
+        "tax_fee_status": "price_breakdown_not_opened",
+        "cancellation": "free_cancellation_shown"
+      },
+      "fit": "评分更高，适合作为位置与品质的平衡样本",
+      "tradeoff": "搜索卡片未给出最近车站，微观位置需要打开房源地图复核",
+      "verification_status": "exact_dates_and_guests_verified_on_search_results",
+      "shortlist_status": "inactive_entire_unit_not_confirmed",
+      "inactive_reason": "搜索卡片仅标注为房源，未能确认整套；按新硬条件保守淘汰",
+      "verified_at": "2026-07-18T23:40:00+02:00",
+      "url": "https://www.airbnb.com/rooms/1106047816595574829?adults=2&check_in=2026-09-24&check_out=2026-09-28"
+    },
+    {
+      "id": "bkk1_airbnb_balcony_bts_50m",
+      "stay_segment_id": "stay_bangkok_1",
+      "name": "阳台角落干净CBD50米BTS",
+      "platform": "Airbnb",
+      "listing_id": "1197475561210574784",
+      "area": "Bang Rak / BTS附近",
+      "property_type": "整套公寓",
+      "rating": 4.62,
+      "review_count": 39,
+      "room_summary": "1间卧室、1张床、1间卫生间；超赞房东",
+      "price": {
+        "currency": "EUR",
+        "displayed_total": 179,
+        "board_display": {
+          "currency": "CNY",
+          "displayed_total": 1432,
+          "conversion_rate": 8,
+          "conversion_basis": "1 EUR = 8 CNY_user_requested_fixed_rate"
+        },
+        "nights": 4,
+        "adults": 2,
+        "tax_fee_status": "price_breakdown_not_opened",
+        "cancellation": "free_cancellation_shown"
+      },
+      "fit": "标题直接标注距BTS约50米，适合三条方向发散的轻量路线",
+      "tradeoff": "评分与点评量弱于主候选，必须复核噪音、楼层与实际站点",
+      "verification_status": "exact_dates_and_guests_verified_on_search_results",
+      "shortlist_status": "inactive_rating_filter",
+      "inactive_reason": "评分4.62低于用户要求的4.7",
+      "verified_at": "2026-07-19T22:45:00+02:00",
+      "url": "https://www.airbnb.com/rooms/1197475561210574784?adults=2&check_in=2026-09-24&check_out=2026-09-28"
+    },
+    {
+      "id": "bkk1_airbnb_cat_house_king",
+      "stay_segment_id": "stay_bangkok_1",
+      "name": "BTS和MRT附近的猫屋加大双人床房",
+      "platform": "Airbnb",
+      "listing_id": "962796346334973645",
+      "area": "Bang Rak / BTS与MRT附近",
+      "property_type": "独立房间",
+      "rating": 4.96,
+      "review_count": 138,
+      "room_summary": "加大双人床、1间卫生间",
+      "price": {
+        "currency": "EUR",
+        "displayed_total": 127,
+        "board_display": {
+          "currency": "CNY",
+          "displayed_total": 1016,
+          "conversion_rate": 8,
+          "conversion_basis": "1 EUR = 8 CNY_user_requested_fixed_rate"
+        },
+        "nights": 4,
+        "adults": 2,
+        "tax_fee_status": "price_breakdown_not_opened",
+        "cancellation": "free_cancellation_shown"
+      },
+      "fit": "本轮最便宜且评分高，双轨交通标签强",
+      "tradeoff": "独立房间而非整套房源，蜜月私密性与猫相关生活边界必须确认",
+      "verification_status": "exact_dates_and_guests_verified_on_search_results",
+      "shortlist_status": "inactive_property_type_filter",
+      "inactive_reason": "独立房间，不符合只要整套房源的要求",
+      "verified_at": "2026-07-19T22:45:00+02:00",
+      "url": "https://www.airbnb.com/rooms/962796346334973645?adults=2&check_in=2026-09-24&check_out=2026-09-28"
+    },
+    {
+      "id": "bkk1_airbnb_view_3min_bts",
+      "stay_segment_id": "stay_bangkok_1",
+      "name": "景观高档客房，距空中列车站约3分钟",
+      "platform": "Airbnb",
+      "listing_id": "28658325",
+      "area": "Bang Rak / BTS约3分钟",
+      "property_type": "整套公寓",
+      "rating": 4.88,
+      "review_count": 272,
+      "room_summary": "1间卧室、2张床、1间卫生间；景观房",
+      "price": {
+        "currency": "CNY",
+        "displayed_total": 2144,
+        "original_total": 2511,
+        "board_display": {
+          "currency": "CNY",
+          "displayed_total": 2144,
+          "original_total": 2511,
+          "conversion_basis": "Airbnb人民币页面直接报价"
+        },
+        "historical_quote": {
+          "currency": "EUR",
+          "displayed_total": 280,
+          "original_total": 327,
+          "board_converted_total": 2240,
+          "conversion_rate": 8
+        },
+        "nights": 4,
+        "adults": 2,
+        "tax_fee_status": "price_breakdown_not_opened",
+        "cancellation": "not_shown_in_search_result"
+      },
+      "fit": "交通、景观与成熟点评量兼顾，适合作为曼谷蜜月升级样本",
+      "tradeoff": "超过曼谷前四晚¥1,700上限",
+      "verification_status": "exact_dates_and_guests_verified_on_search_results",
+      "shortlist_status": "inactive_over_bangkok_budget",
+      "verified_at": "2026-07-19T22:45:00+02:00",
+      "url": "https://www.airbnb.com/rooms/28658325?adults=2&check_in=2026-09-24&check_out=2026-09-28"
+    },
+    {
+      "id": "bkk1_airbnb_park_view_silom",
+      "stay_segment_id": "stay_bangkok_1",
+      "name": "公园景观客房・轻轨・是隆",
+      "platform": "Airbnb",
+      "listing_id": "1422186084268983888",
+      "area": "Bang Rak / Silom",
+      "property_type": "整套房源",
+      "rating": 4.51,
+      "review_count": 37,
+      "room_summary": "1间卧室、1张床、1间卫生间；公园景观标签",
+      "price": {
+        "currency": "EUR",
+        "displayed_total": 143,
+        "board_display": {
+          "currency": "CNY",
+          "displayed_total": 1144,
+          "conversion_rate": 8,
+          "conversion_basis": "1 EUR = 8 CNY_user_requested_fixed_rate"
+        },
+        "nights": 4,
+        "adults": 2,
+        "tax_fee_status": "price_breakdown_not_opened",
+        "cancellation": "free_cancellation_shown"
+      },
+      "fit": "较低预算仍保留Silom与公园景观方向",
+      "tradeoff": "评分与点评量是整套房候选中的弱项，需重点阅读近期评价",
+      "verification_status": "exact_dates_and_guests_verified_on_search_results",
+      "shortlist_status": "inactive_rating_filter",
+      "inactive_reason": "评分4.51低于用户要求的4.7",
+      "verified_at": "2026-07-19T22:45:00+02:00",
+      "url": "https://www.airbnb.com/rooms/1422186084268983888?adults=2&check_in=2026-09-24&check_out=2026-09-28"
+    },
+    {
+      "id": "bkk1_airbnb_sathon_studio_3guests",
+      "stay_segment_id": "stay_bangkok_1",
+      "name": "沙吞中心可爱舒适单间公寓",
+      "platform": "Airbnb",
+      "listing_id": "1605431507507339210",
+      "area": "Sathon中心",
+      "property_type": "整套单间公寓",
+      "rating": 4.94,
+      "review_count": 17,
+      "room_summary": "1间卧室、2张床、1间卫生间，可住3人",
+      "price": {
+        "currency": "CNY",
+        "displayed_total": 1831,
+        "board_display": {
+          "currency": "CNY",
+          "displayed_total": 1831,
+          "conversion_basis": "Airbnb人民币页面直接报价"
+        },
+        "historical_quote": {
+          "currency": "EUR",
+          "displayed_total": 237,
+          "board_converted_total": 1896,
+          "conversion_rate": 8
+        },
+        "nights": 4,
+        "adults": 2,
+        "tax_fee_status": "price_breakdown_not_opened",
+        "cancellation": "free_cancellation_shown"
+      },
+      "fit": "高评分整套房，适合在Silom外围换取更居家的空间",
+      "tradeoff": "点评量较少且Sathon微观位置差异很大，需确认不是深入巷内",
+      "verification_status": "exact_dates_and_guests_verified_on_search_results",
+      "shortlist_status": "inactive_over_bangkok_budget",
+      "verified_at": "2026-07-19T22:45:00+02:00",
+      "url": "https://www.airbnb.com/rooms/1605431507507339210?adults=2&check_in=2026-09-24&check_out=2026-09-28"
+    },
+    {
+      "id": "bkk1_airbnb_sathon_wood_window_townhouse",
+      "stay_segment_id": "stay_bangkok_1",
+      "name": "木窗房，位于沙吞中央商务区的家庭空间-03",
+      "platform": "Airbnb",
+      "listing_id": "980163139198826785",
+      "area": "Sathon",
+      "property_type": "整套联排别墅（整套房源筛选结果）",
+      "rating": 4.97,
+      "review_count": 91,
+      "room_summary": "1间卧室、2张床、1间卫生间",
+      "price": {
+        "currency": "CNY",
+        "displayed_total": 1326,
+        "original_total": 1462,
+        "nights": 4,
+        "adults": 2,
+        "tax_fee_status": "price_breakdown_not_opened",
+        "cancellation": "free_cancellation_shown",
+        "payment": "pay_zero_today_shown"
+      },
+      "fit": "本轮价格最低且评分样本不小，整套联排别墅比普通单间更有生活感，适合把曼谷预算留给象岛",
+      "tradeoff": "房东明确提示可能听到街噪；即使近期可见评价整体正面，也不符合本轮的严格安静筛选",
+      "verification_status": "exact_dates_guests_and_entire_home_filter_verified_on_search_results",
+      "shortlist_status": "inactive_strict_noise_disclosure",
+      "verified_at": "2026-07-19T23:30:00+02:00",
+      "url": "https://www.airbnb.com/rooms/980163139198826785?adults=2&check_in=2026-09-24&check_out=2026-09-28"
+    },
+    {
+      "id": "bkk1_airbnb_saint_louis_two_bedroom",
+      "stay_segment_id": "stay_bangkok_1",
+      "name": "圣路易斯轻轨站附近两卧室一客厅",
+      "platform": "Airbnb",
+      "listing_id": "1131211637115874966",
+      "area": "Bang Rak / Saint Louis",
+      "property_type": "整套出租单元（整套房源筛选结果）",
+      "rating": 4.97,
+      "review_count": 115,
+      "room_summary": "2间卧室、3张床、1间卫生间；标题标注距Saint Louis轻轨站约240米",
+      "image_assets": [
+        "outputs/assets/airbnb/bkk1-saint-louis-01.jpg",
+        "outputs/assets/airbnb/bkk1-saint-louis-02.jpg"
+      ],
+      "price": {
+        "currency": "CNY",
+        "displayed_total": 1605,
+        "nights": 4,
+        "adults": 2,
+        "tax_fee_status": "price_breakdown_not_opened",
+        "cancellation": "free_cancellation_shown"
+      },
+      "fit": "轨道交通信息最明确，去Siam与Saphan Taksin河岸直接；两卧室在连续城市行程中更宽松",
+      "tradeoff": "两个人用两卧室略有空间浪费，去Silom地铁站需换乘或短途车，蜜月氛围取决于实际装修",
+      "verification_status": "exact_dates_guests_and_entire_home_filter_verified_on_search_results",
+      "shortlist_status": "active_transit_space_anchor",
+      "verified_at": "2026-07-19T23:30:00+02:00",
+      "url": "https://www.airbnb.com/rooms/1131211637115874966?adults=2&check_in=2026-09-24&check_out=2026-09-28"
+    },
+    {
+      "id": "bkk1_airbnb_sathon_one_bed_pool_gym",
+      "stay_segment_id": "stay_bangkok_1",
+      "name": "沙吞高层一卧室公寓，带泳池和健身房",
+      "platform": "Airbnb",
+      "listing_id": "1268923602732185529",
+      "area": "Sathon / Chong Nonsi",
+      "property_type": "整套公寓（整套房源筛选结果）",
+      "rating": 4.79,
+      "review_count": 34,
+      "room_summary": "1间卧室、1张床、1间卫生间；11楼，最多2人",
+      "image_assets": [
+        "outputs/assets/airbnb/bkk1-sathon-126892-01.jpg",
+        "outputs/assets/airbnb/bkk1-sathon-126892-02.jpg"
+      ],
+      "price": {
+        "currency": "CNY",
+        "displayed_total": 1559,
+        "nights": 4,
+        "adults": 2,
+        "tax_fee_status": "price_breakdown_not_opened",
+        "cancellation": "free_cancellation_shown",
+        "payment": "pay_zero_today_shown"
+      },
+      "fit": "人数与空间刚好匹配夫妻二人，带泳池健身房，Chong Nonsi方向兼顾Siam和河岸",
+      "tradeoff": "近期评价提到图片过时、房屋较旧，清洁与位置分项均为4.6；且房东标注到Chong Nonsi约15分钟",
+      "verification_status": "exact_dates_guests_and_entire_home_filter_verified_on_search_results",
+      "shortlist_status": "inactive_review_and_transit_filter",
+      "verified_at": "2026-07-19T23:30:00+02:00",
+      "url": "https://www.airbnb.com/rooms/1268923602732185529?adults=2&children=0&infants=0&pets=0&wishlist_item_id=11006603182889&check_in=2026-09-24&check_out=2026-09-28&source_impression_id=p3_1784570591_P3WPoTeoJtHlFD_1&previous_page_section_name=1000",
+      "backup_display_status": "shown_as_backup_with_review_and_transit_caution"
+    },
+    {
+      "id": "bkk1_airbnb_sathon_golden_residence",
+      "stay_segment_id": "stay_bangkok_1",
+      "name": "沙吞中央商务区黄金住宅",
+      "platform": "Airbnb",
+      "listing_id": "1120688398283585186",
+      "area": "Sathon中央商务区",
+      "property_type": "整套公寓（整套房源筛选结果）",
+      "rating": 4.95,
+      "review_count": 105,
+      "room_summary": "1间卧室、1张床、1间卫生间",
+      "price": {
+        "currency": "CNY",
+        "displayed_total": 1669,
+        "nights": 4,
+        "adults": 2,
+        "tax_fee_status": "price_breakdown_not_opened",
+        "cancellation": "free_cancellation_shown"
+      },
+      "fit": "一卧室整套与夫妻二人匹配，评分和评价量都稳，价格接近用户喜欢的房源",
+      "tradeoff": "标题对车站和具体街区描述较少，暂时只能作为品质平衡样本，微观位置仍需二次核验",
+      "verification_status": "exact_dates_guests_and_entire_home_filter_verified_on_search_results",
+      "shortlist_status": "inactive_style_preference_filter",
+      "inactive_reason": "用户明确不追求中央商务区黄金住宅式的高层奢华路线，优先温馨生活感",
+      "verified_at": "2026-07-19T23:30:00+02:00",
+      "url": "https://www.airbnb.com/rooms/1120688398283585186?adults=2&check_in=2026-09-24&check_out=2026-09-28"
+    },
+    {
+      "id": "bkk1_airbnb_silom_three_minute_bts_pool",
+      "stay_segment_id": "stay_bangkok_1",
+      "name": "是隆轻轨站约3分钟，带泳池",
+      "platform": "Airbnb",
+      "listing_id": "2162578",
+      "area": "Silom",
+      "property_type": "整套公寓（整套房源筛选结果）",
+      "rating": 4.9,
+      "review_count": 158,
+      "room_summary": "1间卧室、1张床、1间卫生间；标题标注轻轨约3分钟，带泳池",
+      "price": {
+        "currency": "CNY",
+        "displayed_total": 2196,
+        "nights": 4,
+        "adults": 2,
+        "tax_fee_status": "price_breakdown_not_opened",
+        "cancellation": "free_cancellation_shown",
+        "payment": "pay_zero_today_shown"
+      },
+      "fit": "位置关键词与B1+路线最贴合，成熟评价量、整套一卧室和泳池兼顾，是交通稳妥型升级候选",
+      "tradeoff": "价格高于多数新候选；需要靠更准确的站点、楼层、噪音和房间质感证明溢价",
+      "verification_status": "exact_dates_guests_and_entire_home_filter_verified_on_search_results",
+      "shortlist_status": "inactive_over_bangkok_budget",
+      "verified_at": "2026-07-19T23:30:00+02:00",
+      "url": "https://www.airbnb.com/rooms/2162578?adults=2&check_in=2026-09-24&check_out=2026-09-28"
+    },
+    {
+      "id": "bkk1_airbnb_sanam_pao_tryp",
+      "stay_segment_id": "stay_bangkok_1",
+      "name": "靠近Sanam Pao轻轨的漂亮一卧室",
+      "platform": "Airbnb",
+      "listing_id": "20869092",
+      "area": "Phaya Thai / Sanam Pao",
+      "property_type": "整套酒店式公寓（详情页已核验）",
+      "rating": 4.88,
+      "review_count": 3473,
+      "room_summary": "约40㎡，1间卧室、1张约1.8米宽双人床、1间卫生间；带厨房、洗衣机、泳池和健身房",
+      "price": {
+        "currency": "CNY",
+        "displayed_total": 1714,
+        "nights": 4,
+        "adults": 2,
+        "tax_fee_status": "price_breakdown_not_opened",
+        "cancellation": "free_cancellation_before_2026-09-19",
+        "payment": "pay_zero_today_shown"
+      },
+      "fit": "步行约7分钟到Sanam Pao轻轨站，去Ari仅1站、去Chatuchak方向直接，是周末市场和咖啡日最顺的选择；房源也明确写出到Siam与Phaya Thai的轻轨站数",
+      "tradeoff": "不在既定Silom折中基地，且近期个别评价提及夜间街噪和浴室异味；已按严格负评规则淘汰",
+      "verification_status": "exact_dates_guests_entire_unit_detail_price_and_rules_verified",
+      "shortlist_status": "inactive_over_budget_and_negative_review",
+      "verified_at": "2026-07-19T23:55:00+02:00",
+      "url": "https://www.airbnb.com/rooms/20869092?check_in=2026-09-24&check_out=2026-09-28&guests=2&adults=2"
+    },
+    {
+      "id": "bkk1_airbnb_ekkamai_luxury_condo",
+      "stay_segment_id": "stay_bangkok_1",
+      "name": "超豪华公寓，距Ekkamai轻轨站约300米",
+      "platform": "Airbnb",
+      "listing_id": "1111564075532105823",
+      "area": "Ekkamai / Sukhumvit 42",
+      "property_type": "整套产权公寓（详情页已核验）",
+      "rating": 4.97,
+      "review_count": 115,
+      "room_summary": "约35㎡，1间卧室、1间客厅、1间卫生间；高层景观、31楼泳池和健身房、洗衣机",
+      "price": {
+        "currency": "CNY",
+        "displayed_total": 1889,
+        "nights": 4,
+        "adults": 2,
+        "tax_fee_status": "price_breakdown_not_opened",
+        "cancellation": "free_cancellation_before_2026-08-25"
+      },
+      "fit": "步行约5分钟到Ekkamai轻轨站，房间硬件、屋顶泳池和通罗/伊卡迈夜生活最突出，适合把曼谷重心改为餐厅、酒吧和商圈的一晚或两晚",
+      "tradeoff": "在既定三天路线中偏东：Chatuchak与老城河岸都更远，免费取消截止也早于其他对比项，不宜作为B1+的优先基地",
+      "verification_status": "exact_dates_guests_entire_unit_detail_price_and_rules_verified",
+      "shortlist_status": "compare_only_user_supplied_east_nightlife",
+      "verified_at": "2026-07-19T23:55:00+02:00",
+      "url": "https://www.airbnb.com/rooms/1111564075532105823?check_in=2026-09-24&check_out=2026-09-28&guests=2&adults=2"
+    },
+    {
+      "id": "bkk1_airbnb_yan_nawa_infinity_pool",
+      "stay_segment_id": "stay_bangkok_1",
+      "name": "Yan Nawa豪华公寓，无边泳池和健身房",
+      "platform": "Airbnb",
+      "listing_id": "1702735475269793541",
+      "area": "Sathu Pradit / Yan Nawa / Rama III",
+      "property_type": "整套出租单元（详情页已核验）",
+      "rating": 5,
+      "review_count": 8,
+      "room_summary": "1间卧室、1张约1.5米宽双人床、1间卫生间；屋顶无边泳池、全景健身房、游戏室，每周3次清洁",
+      "price": {
+        "currency": "CNY",
+        "displayed_total": 1710,
+        "nights": 4,
+        "adults": 2,
+        "tax_fee_status": "price_breakdown_not_opened",
+        "cancellation": "free_cancellation_before_2026-09-23",
+        "payment": "pay_zero_today_shown"
+      },
+      "fit": "酒店感设施、天际线拍照和靠近河岸方向的体验很强，适合把住宿本身当作半个景点；取消条件也宽松",
+      "tradeoff": "Rama III不是轻轨步行基地，房源文案称靠近Chong Nonsi但未给步行距离；去Chatuchak/Ari、Siam与老城的日常换乘不顺，且只有8条评价、无房内洗衣机、厨房没有烹饪设备",
+      "verification_status": "exact_dates_guests_entire_unit_detail_price_and_rules_verified",
+      "shortlist_status": "compare_only_user_supplied_riverside_facilities",
+      "verified_at": "2026-07-19T23:55:00+02:00",
+      "url": "https://www.airbnb.com/rooms/1702735475269793541?check_in=2026-09-24&check_out=2026-09-28&guests=2&adults=2"
+    },
+    {
+      "id": "bkk1_airbnb_ginda_olive_room",
+      "stay_segment_id": "stay_bangkok_1",
+      "name": "GINDA STAY - Olive Room",
+      "platform": "Airbnb",
+      "listing_id": "1711989766141039517",
+      "area": "Thon Buri / Wongwian Yai",
+      "property_type": "平台标注整套民居，实际为六间主题客房之一",
+      "rating": 5,
+      "review_count": 6,
+      "room_summary": "1间卧室、1张约1.8米宽双人床、1间卫生间；浴缸、屋顶露台；花园厨房和洗衣区为共用",
+      "price": {
+        "currency": "CNY",
+        "displayed_total": 1370,
+        "nights": 4,
+        "adults": 2,
+        "tax_fee_status": "price_breakdown_not_opened",
+        "cancellation": "free_cancellation_before_2026-09-10"
+      },
+      "fit": "Wongwian Yai轻轨站约750米，去河岸、郑王庙、唐人街与大皇宫一侧更有地方感；设计和浴缸有蜜月氛围",
+      "tradeoff": "虽然平台标题写整套，房东明确说明Olive Room只是六间客房之一，且厨房、洗衣与屋顶是共用；另有主路噪音提示、无烟雾/一氧化碳报警器、房东仅经营约1个月，因此不符合用户不要单房间的真实意图",
+      "verification_status": "exact_dates_guests_detail_price_and_shared_space_verified",
+      "shortlist_status": "inactive_effective_private_room_filter",
+      "inactive_reason": "实际是六间主题客房中的一间并共享公共区域，不符合用户只住独立整套空间的要求",
+      "verified_at": "2026-07-19T23:55:00+02:00",
+      "url": "https://www.airbnb.com/rooms/1711989766141039517?check_in=2026-09-24&check_out=2026-09-28&guests=2&adults=2"
+    },
+    {
+      "id": "bkk1_airbnb_sathon_quiet_townhouse",
+      "stay_segment_id": "stay_bangkok_1",
+      "name": "沙吞安静联排别墅，靠近Saint Louis轻轨站",
+      "platform": "Airbnb",
+      "listing_id": "897336029727337609",
+      "area": "Sathon / Saint Louis",
+      "property_type": "整套联排别墅",
+      "rating": 5,
+      "review_count": 18,
+      "room_summary": "1间卧室、1张特大床、1间卫生间；私享阳台、完整厨房和洗衣机",
+      "image_assets": [
+        "outputs/assets/airbnb/bkk1-sathon-quiet-01.jpg",
+        "outputs/assets/airbnb/bkk1-sathon-quiet-02.jpg"
+      ],
+      "price": {
+        "currency": "CNY",
+        "displayed_total": 1520,
+        "nights": 4,
+        "adults": 2,
+        "tax_fee_status": "price_breakdown_not_opened",
+        "cancellation": "free_cancellation_before_2026-09-23"
+      },
+      "fit": "木质生活感最强，适合你要的温馨路线；房东写明距Saint Louis轻轨站仅数分钟，可直接接入Siam与河岸方向",
+      "tradeoff": "评价只有18条；Airbnb在预订前隐藏精确门牌，房东只给出“数分钟”而非可独立量测的米数，不能把它伪装成精确步行距离",
+      "verification_status": "exact_dates_guests_entire_home_price_rating_and_cancellation_verified",
+      "shortlist_status": "active_warm_style_anchor",
+      "verified_at": "2026-07-20T00:20:00+02:00",
+      "url": "https://www.airbnb.com/rooms/897336029727337609?adults=2&children=0&infants=0&pets=0&wishlist_item_id=11006603262001&check_in=2026-09-24&check_out=2026-09-28&source_impression_id=p3_1784570574_P3PNSu-OZvbjxEGT&previous_page_section_name=1000"
+    },
+    {
+      "id": "bkk1_airbnb_silom_cozy_condo_507",
+      "stay_segment_id": "stay_bangkok_1",
+      "name": "是隆舒适一卧室，靠近Chong Nonsi轻轨站507",
+      "platform": "Airbnb",
+      "listing_id": "39885927",
+      "area": "Silom / Chong Nonsi",
+      "property_type": "整套公寓",
+      "rating": 4.76,
+      "review_count": 161,
+      "room_summary": "约40㎡，1间卧室、3张床、1间卫生间；厨房、洗衣机与电梯",
+      "image_assets": [
+        "outputs/assets/airbnb/bkk1-silom-39885927-01.jpg",
+        "outputs/assets/airbnb/bkk1-silom-39885927-02.jpg"
+      ],
+      "price": {
+        "currency": "CNY",
+        "displayed_total": 1306,
+        "nights": 4,
+        "adults": 2,
+        "tax_fee_status": "price_breakdown_not_opened",
+        "cancellation": "free_cancellation_before_2026-09-19",
+        "payment": "pay_zero_today_shown"
+      },
+      "fit": "交通证据完整：房东标注步行约5分钟到Chong Nonsi轻轨、9分钟到Sala Daeng、10分钟到Silom地铁；价格最低且可直接服务三天路线",
+      "tradeoff": "居住质感偏实用型公寓而非联排别墅；总评分只略高于4.7门槛",
+      "verification_status": "exact_dates_guests_entire_home_price_rating_cancellation_and_host_transit_times_verified",
+      "shortlist_status": "active_transit_value_anchor",
+      "verified_at": "2026-07-20T00:20:00+02:00",
+      "url": "https://www.airbnb.com/rooms/39885927?adults=2&check_in=2026-09-24&check_out=2026-09-28"
+    },
+    {
+      "id": "pattaya_grande_centre_point",
+      "stay_segment_id": "stay_pattaya",
+      "name": "芭提雅格兰德中心大酒店",
+      "platform": "Booking.com",
+      "area": "芭提雅市中心",
+      "property_type": "酒店",
+      "rating": 9.2,
+      "review_count": 2971,
+      "location_rating": 9.5,
+      "room_summary": "海景高级双人或双床间，多种床型",
+      "price": {
+        "currency": "CNY",
+        "displayed_total": 1408,
+        "nights": 2,
+        "adults": 2,
+        "tax_fee_status": "included",
+        "cancellation": "free_cancellation_shown"
+      },
+      "fit": "位置和评分最稳，适合把两晚用于城市体验与夜景",
+      "tradeoff": "总价高于多数市中心精品酒店，酒店位于市中心北侧",
+      "verification_status": "exact_dates_guests_nights_and_total_verified",
+      "shortlist_status": "deferred_over_price_band",
+      "verified_at": "2026-07-20T17:00:00+02:00",
+      "url": "https://www.booking.cn/hotel/th/grande-centre-point-pattaya.zh-cn.html?checkin=2026-09-28&checkout=2026-09-30&group_adults=2&group_children=0&no_rooms=1&selected_currency=CNY"
+    },
+    {
+      "id": "pattaya_heritage_beachfront",
+      "stay_segment_id": "stay_pattaya",
+      "name": "The Heritage Pattaya Beachfront Resort",
+      "platform": "Booking.com",
+      "area": "南芭提雅 / 乔木提恩海滩步行约5分钟",
+      "property_type": "海滨度假村",
+      "rating": 8.4,
+      "review_count": 1170,
+      "couples_location_rating": 8.7,
+      "room_summary": "豪华双床间，55㎡，阳台、花园景与泳池景，含早",
+      "price": {
+        "currency": "CNY",
+        "displayed_total": 1010,
+        "original_total": 1652,
+        "nights": 2,
+        "adults": 2,
+        "tax_fee_status": "included",
+        "cancellation": "non_refundable",
+        "payment": "online_payment",
+        "note": "另有超大双人床、免费取消方案显示为会员价1191元，需要登录"
+      },
+      "fit": "更安静、更靠海，适合把芭提雅也做成度假段",
+      "tradeoff": "当前可公开核验的低价房型是双床且不可退款；前往市中心需要交通",
+      "verification_status": "exact_dates_guests_nights_and_public_total_verified",
+      "shortlist_status": "inactive_after_city_center_decision",
+      "inactive_reason": "user_chose_city_center_convenience_and_nightlife",
+      "verified_at": "2026-07-18T23:42:00+02:00",
+      "url": "https://www.booking.com/hotel/th/grand-heritage-beach-resort-spa.zh-cn.html?checkin=2026-09-28&checkout=2026-09-30&group_adults=2&group_children=0&no_rooms=1&selected_currency=CNY"
+    },
+    {
+      "id": "pattaya_the_base_condo",
+      "stay_segment_id": "stay_pattaya",
+      "name": "The Base condo center of pattaya rooftop swimming pool",
+      "platform": "Booking.com",
+      "area": "芭提雅市中心",
+      "property_type": "整租公寓",
+      "rating": 7.4,
+      "review_count": 335,
+      "room_summary": "30㎡一卧室公寓，1间客厅、1间浴室、厨房、大号双人床",
+      "price": {
+        "currency": "CNY",
+        "displayed_total": 403,
+        "nights": 2,
+        "adults": 2,
+        "tax_fee_status": "included",
+        "cancellation": "free_cancellation_shown"
+      },
+      "fit": "把芭提雅预算让给象岛，仍保留市中心位置与公寓空间",
+      "tradeoff": "评分明显低于两家酒店，服务稳定性需要重点看近期评论",
+      "verification_status": "exact_dates_guests_nights_and_total_verified",
+      "shortlist_status": "active_value_apartment_anchor",
+      "verified_at": "2026-07-18T23:24:00+02:00",
+      "url": "https://www.booking.com/hotel/th/high-floor-big-balcony-sea-view-the-base-condo.zh-cn.html?checkin=2026-09-28&checkout=2026-09-30&group_adults=2&group_children=0&no_rooms=1&selected_currency=CNY"
+    },
+    {
+      "id": "pattaya_amethyst_hotel",
+      "stay_segment_id": "stay_pattaya",
+      "name": "Amethyst Hotel Pattaya",
+      "platform": "Booking.com",
+      "area": "芭提雅市中心 / Soi Buakhao 15",
+      "property_type": "精品酒店",
+      "rating": 9,
+      "review_count": 1183,
+      "location_rating": 9.1,
+      "room_summary": "28㎡豪华特大号床间、阳台、城市景、隔音设备；屋顶泳池、酒吧与健身中心",
+      "price": {
+        "currency": "CNY",
+        "member_total": 1155,
+        "nights": 2,
+        "adults": 2,
+        "tax_fee_status": "included",
+        "cancellation": "free_cancellation_before_2026-09-23",
+        "payment": "no_payment_before_2026-09-21",
+        "breakfast": "optional_30_cny_displayed",
+        "note": "1155元为登录会员价；未登录公开价未在当前房型表中显示"
+      },
+      "fit": "更贴近Soi Buakhao城市夜生活，屋顶泳池与精品酒店氛围兼顾约会感",
+      "tradeoff": "海滩步行约17分钟，当前价格依赖Booking登录会员状态",
+      "verification_status": "exact_dates_guests_nights_and_member_total_verified",
+      "shortlist_status": "deferred_over_price_band",
+      "verified_at": "2026-07-20T17:00:00+02:00",
+      "url": "https://www.booking.cn/hotel/th/amethyst-pattaya-muang-pattaya1.zh-cn.html?checkin=2026-09-28&checkout=2026-09-30&group_adults=2&group_children=0&no_rooms=1&selected_currency=CNY"
+    },
+    {
+      "id": "pattaya_hilton",
+      "stay_segment_id": "stay_pattaya",
+      "name": "Hilton Pattaya",
+      "platform": "Booking.com",
+      "area": "芭提雅市中心 / Central Pattaya商场楼上",
+      "property_type": "豪华酒店",
+      "rating": 9.2,
+      "review_count": 2227,
+      "location_rating": 9.6,
+      "room_summary": "海景豪华特大号床间；空中酒吧、无边泳池并直通商场",
+      "price": {
+        "currency": "CNY",
+        "displayed_total": 2839,
+        "nights": 2,
+        "adults": 2,
+        "tax_fee_status": "included",
+        "cancellation": "not_shown_in_search_result"
+      },
+      "fit": "蜜月感、海景夜景和位置一次拉满，适合作为芭提雅升级选项",
+      "tradeoff": "本轮芭提雅候选中价格最高，只有两晚时性价比取决于是否会使用酒店设施",
+      "verification_status": "exact_dates_guests_nights_and_search_result_total_verified",
+      "shortlist_status": "deferred_over_price_band",
+      "verified_at": "2026-07-20T17:00:00+02:00",
+      "url": "https://www.booking.cn/hotel/th/hilton-pattaya.zh-cn.html?checkin=2026-09-28&checkout=2026-09-30&group_adults=2&group_children=0&no_rooms=1&selected_currency=CNY"
+    },
+    {
+      "id": "pattaya_somerset",
+      "stay_segment_id": "stay_pattaya",
+      "name": "Somerset Pattaya",
+      "platform": "Booking.com",
+      "area": "芭提雅市中心 / 距海滩约400米",
+      "property_type": "服务式公寓酒店",
+      "rating": 9,
+      "review_count": 1709,
+      "location_rating": 9.5,
+      "room_summary": "标准双床间；服务式公寓配套，位置靠近Central Pattaya",
+      "price": {
+        "currency": "CNY",
+        "displayed_total": 1270,
+        "nights": 2,
+        "adults": 2,
+        "tax_fee_status": "included",
+        "cancellation": "not_shown_in_search_result"
+      },
+      "fit": "位置、评分和居住便利的均衡选项，适合不想住传统商务酒店",
+      "tradeoff": "当前低价房型为双床；大床和可取消方案需进入房型表复核",
+      "verification_status": "exact_dates_guests_nights_and_search_result_total_verified",
+      "shortlist_status": "inactive_recent_noise_signal",
+      "inactive_reason": "详情页近期可见评价提到即使9楼仍能听到交通和酒吧声；按用户的明显噪音硬筛选移出本轮。",
+      "verified_at": "2026-07-18T23:46:00+02:00",
+      "url": "https://www.booking.com/hotel/th/somerset-pattaya.zh-cn.html?checkin=2026-09-28&checkout=2026-09-30&group_adults=2&group_children=0&no_rooms=1&selected_currency=CNY"
+    },
+    {
+      "id": "pattaya_arbour",
+      "stay_segment_id": "stay_pattaya",
+      "name": "Arbour Hotel and Residence",
+      "platform": "Booking.com",
+      "area": "芭提雅市中心 / Third Road",
+      "property_type": "设计酒店与服务式公寓",
+      "rating": 9,
+      "review_count": 3085,
+      "location_rating": 8.7,
+      "room_summary": "35㎡尊享特大床房、阳台、厨房、洗衣机、屋顶泳池与桑拿",
+      "price": {
+        "currency": "CNY",
+        "displayed_total": 841,
+        "nights": 2,
+        "adults": 2,
+        "tax_fee_status": "included",
+        "cancellation": "non_refundable",
+        "payment": "prepayment",
+        "breakfast": "optional_91_cny_displayed",
+        "note": "841元为Booking合作伙伴公开方案；不可更改，2分钟内确认"
+      },
+      "fit": "屋顶夜景、设计感和较大房间兼顾，价格低于同档高层酒店",
+      "tradeoff": "不在海滩第一排，当前公开低价不可退款且为合作伙伴房价",
+      "verification_status": "exact_dates_guests_nights_room_and_public_total_verified",
+      "shortlist_status": "active_rooftop_design_anchor",
+      "verified_at": "2026-07-18T23:46:00+02:00",
+      "url": "https://www.booking.com/hotel/th/arbour-and-residence.zh-cn.html?checkin=2026-09-28&checkout=2026-09-30&group_adults=2&group_children=0&no_rooms=1&selected_currency=CNY"
+    },
+    {
+      "id": "pattaya_arden",
+      "stay_segment_id": "stay_pattaya",
+      "name": "Arden Hotel and Residence by At Mind",
+      "platform": "Booking.com",
+      "area": "芭提雅市中心 / 距中心约0.6公里、海滩约700米",
+      "property_type": "公寓式酒店",
+      "rating": 9.2,
+      "review_count": 1976,
+      "room_summary": "豪华双人间；当前搜索结果为会员促销价",
+      "price": {
+        "currency": "CNY",
+        "displayed_total": 852,
+        "original_total": 1414,
+        "nights": 2,
+        "adults": 2,
+        "tax_fee_status": "included",
+        "cancellation": "not_shown_in_search_result",
+        "note": "852元为登录会员价"
+      },
+      "fit": "高评分、中段预算和相对安静的位置较均衡",
+      "tradeoff": "离海滩和核心夜生活街区都有一段步行；低价依赖登录状态",
+      "verification_status": "exact_dates_guests_nights_and_member_search_result_total_verified",
+      "shortlist_status": "inactive_recent_isolation_noise_signal",
+      "inactive_reason": "详情页近期可见评价明确提到隔音较差，走廊轻声交谈也会影响休息；按用户硬筛选移出本轮。",
+      "verified_at": "2026-07-18T23:46:00+02:00",
+      "url": "https://www.booking.com/hotel/th/at-mind-exclusive-pattaya.zh-cn.html?checkin=2026-09-28&checkout=2026-09-30&group_adults=2&group_children=0&no_rooms=1&selected_currency=CNY"
+    },
+    {
+      "id": "pattaya_bayview",
+      "stay_segment_id": "stay_pattaya",
+      "name": "The Bayview Hotel Pattaya",
+      "platform": "Booking.com",
+      "area": "芭提雅市中心 / 距海滩约150米",
+      "property_type": "酒店",
+      "rating": 8.4,
+      "review_count": 1766,
+      "location_rating": 9.4,
+      "room_summary": "豪华花园双床间；靠近Beach Road与Central Pattaya",
+      "price": {
+        "currency": "CNY",
+        "displayed_total": 801,
+        "original_total": 1062,
+        "nights": 2,
+        "adults": 2,
+        "tax_fee_status": "included",
+        "cancellation": "free_cancellation_shown",
+        "note": "801元为登录会员价；日均约401元，作为本轮价格上沿基准"
+      },
+      "fit": "步行去海滩、商场和夜间活动都方便，属于位置优先的老牌酒店",
+      "tradeoff": "位置仍是最省心的参考基线，但两晚过渡不必为泳池与健身房额外付溢价；当前低价为双床会员价，设计与新鲜感弱于精品酒店",
+      "verification_status": "exact_dates_guests_nights_and_member_search_result_total_verified",
+      "shortlist_status": "active_round3_reference_only",
+      "verified_at": "2026-07-20T17:57:00+02:00",
+      "url": "https://www.booking.cn/hotel/th/siam-bayview.zh-cn.html?checkin=2026-09-28&checkout=2026-09-30&group_adults=2&group_children=0&no_rooms=1&selected_currency=CNY"
+    },
+    {
+      "id": "pattaya_intimate",
+      "stay_segment_id": "stay_pattaya",
+      "name": "Intimate Hotel Pattaya",
+      "platform": "Booking.com",
+      "area": "芭提雅市中心 / 距海滩约350米",
+      "property_type": "精品酒店",
+      "rating": 8.2,
+      "review_count": 1723,
+      "room_summary": "豪华双人或双床间；靠近Second Road与市中心夜生活",
+      "price": {
+        "currency": "CNY",
+        "displayed_total": 644,
+        "original_total": 1073,
+        "nights": 2,
+        "adults": 2,
+        "tax_fee_status": "included",
+        "cancellation": "not_shown_in_search_result"
+      },
+      "fit": "预算友好且位置贴近市中心夜生活，适合作为便利用途的酒店底线",
+      "tradeoff": "评分和设计感低于Amethyst、Arbour，需重点看房间翻新与噪音评论",
+      "verification_status": "exact_dates_guests_nights_and_search_result_total_verified",
+      "shortlist_status": "inactive_recent_noise_signal",
+      "inactive_reason": "详情页近期可见评价提到晚上有酒吧噪音；按用户要求，存在明显噪音信号直接淘汰。",
+      "verified_at": "2026-07-20T17:30:00+02:00",
+      "url": "https://www.booking.cn/hotel/th/tim-boutique-pattaya.zh-cn.html?checkin=2026-09-28&checkout=2026-09-30&group_adults=2&group_children=0&no_rooms=1&selected_currency=CNY"
+    },
+    {
+      "id": "pattaya_altera_hotel",
+      "stay_segment_id": "stay_pattaya",
+      "name": "Altera Hotel and Residence by At Mind",
+      "platform": "Booking.com",
+      "area": "芭提雅市中心 / 距当地中心约0.9公里",
+      "property_type": "酒店式公寓",
+      "rating": 8.9,
+      "review_count": 1490,
+      "location_rating": 9.1,
+      "room_summary": "45㎡整租一室公寓，私人厨房、阳台、泳池；步行约10分钟到海滩",
+      "price": {
+        "currency": "CNY",
+        "displayed_total": 729,
+        "flexible_total": 979,
+        "nights": 2,
+        "adults": 2,
+        "tax_fee_status": "included",
+        "cancellation": "displayed_729_nonrefundable; displayed_979_free_cancellation_before_2026-09-25",
+        "payment": "729元方案在线付款；979元方案9月23日前零付款",
+        "breakfast": "optional_50_cny_displayed",
+        "note": "729元为年中促销不可退款价；979元为可取消价，分别对应日均365元与490元"
+      },
+      "fit": "有厨房、阳台和泳池，距离市中心与海滩都不远；比普通过渡酒店更有住下来的舒适感",
+      "tradeoff": "灵活取消价已超过用户目标上沿；729元低价不可退款，且海滩不是出门即到",
+      "verification_status": "exact_dates_guests_nights_cny_room_cancellation_location_and_visible_reviews_verified_on_booking_cn",
+      "shortlist_status": "inactive_user_removed_refundability_or_fit",
+      "inactive_reason": "用户明确移除：可退款价已高于目标上沿，低价方案不可退款；且两晚过渡不需要为泳池、健身房和厨房阳台额外付溢价。",
+      "verified_at": "2026-07-20T17:45:00+02:00",
+      "url": "https://www.booking.cn/hotel/th/at-mind-serviced-residence.zh-cn.html?checkin=2026-09-28&checkout=2026-09-30&group_adults=2&group_children=0&no_rooms=1&selected_currency=CNY"
+    },
+    {
+      "id": "pattaya_best_beach_villa",
+      "stay_segment_id": "stay_pattaya",
+      "name": "Best Beach Villa",
+      "platform": "Booking.com",
+      "area": "芭提雅市中心 / 距海滩约200米",
+      "property_type": "酒店",
+      "rating": 8.5,
+      "review_count": 1366,
+      "location_rating": 9.1,
+      "room_summary": "32㎡标准房，阳台；室外泳池、健身房、桑拿",
+      "price": {
+        "currency": "CNY",
+        "displayed_total": 524,
+        "nights": 2,
+        "adults": 2,
+        "tax_fee_status": "included",
+        "cancellation": "free_cancellation_before_2026-09-28T14:00",
+        "payment": "pay_at_property_no_prepayment",
+        "breakfast": "optional_60_cny_displayed",
+        "note": "总价524元，日均262元，处于用户设定的250元/晚下限之上"
+      },
+      "fit": "离海滩约200米，仍在市中心，价格接近下限但有泳池和阳台；适合把芭提雅当轻量过渡",
+      "tradeoff": "酒店较成熟，步行街约2.4公里；灵活取消截止到入住日当天14:00，需留意临近出发的风险",
+      "verification_status": "exact_dates_guests_nights_cny_room_cancellation_location_and_visible_reviews_verified_on_booking_cn",
+      "shortlist_status": "active_round3_user_baseline",
+      "verified_at": "2026-07-20T17:45:00+02:00",
+      "url": "https://www.booking.cn/hotel/th/best-beach-villa.zh-cn.html?checkin=2026-09-28&checkout=2026-09-30&group_adults=2&group_children=0&no_rooms=1&selected_currency=CNY",
+      "image_assets": [
+        "outputs/assets/booking/pattaya_best_beach_villa-candidate-06.jpg",
+        "outputs/assets/booking/pattaya_best_beach_villa-candidate-02.jpg",
+        "outputs/assets/booking/pattaya_best_beach_villa-candidate-05.jpg",
+        "outputs/assets/booking/pattaya_best_beach_villa-candidate-03.jpg"
+      ],
+      "image_source": "Booking.com 中国站页面实际加载的官方图库",
+      "image_categories": [
+        "酒店外景",
+        "卧床",
+        "公共休息区",
+        "卫生间"
+      ],
+      "image_category_note": null
+    },
+    {
+      "id": "pattaya_best_western_nexen",
+      "stay_segment_id": "stay_pattaya",
+      "name": "Best Western Plus Nexen Pattaya",
+      "platform": "Booking.com",
+      "area": "芭提雅市中心北侧 / 距当地中心约1.6公里",
+      "property_type": "酒店",
+      "rating": 9,
+      "review_count": 696,
+      "location_rating": 8.4,
+      "room_summary": "30㎡城市景豪华双人房；泳池、健身中心；距巴士总站约900米",
+      "price": {
+        "currency": "CNY",
+        "displayed_total": 711,
+        "nights": 2,
+        "adults": 2,
+        "tax_fee_status": "included",
+        "cancellation": "free_cancellation_before_2026-09-26",
+        "payment": "2026-09-24前零付款",
+        "breakfast": "optional_50_cny_displayed",
+        "note": "总价711元，日均356元；当前房型为可取消价"
+      },
+      "fit": "评分、清洁和安静表现很好，距巴士总站约900米；如果两晚更想休息而不是泡夜生活，它是稳妥选项",
+      "tradeoff": "距芭提雅海滩约1.9公里、距市中心约1.6公里，海滩和夜景便利明显弱于Bayview与Best Beach Villa；详情页另有已结束的2026年5—6月施工提示，不套用到9月底；页面同时提示入住前需通过银行转账付款，付款规则较复杂",
+      "verification_status": "exact_dates_guests_nights_cny_room_cancellation_location_and_visible_reviews_verified_on_booking_cn",
+      "shortlist_status": "inactive_user_removed_distance_fit",
+      "inactive_reason": "用户认为过渡两晚不应再花时间往返市区与海滩；该房源距海滩约1.9公里、距市中心约1.6公里，便利性不符合当前路线。",
+      "verified_at": "2026-07-20T17:45:00+02:00",
+      "url": "https://www.booking.cn/hotel/th/best-western-plus-nexen.zh-cn.html?checkin=2026-09-28&checkout=2026-09-30&group_adults=2&group_children=0&no_rooms=1&selected_currency=CNY"
+    },
+    {
+      "id": "pattaya_edge_central_walking_street",
+      "stay_segment_id": "stay_pattaya",
+      "name": "EDGE Central pattaya near walking street",
+      "platform": "Booking.com",
+      "area": "芭提雅市中心 / 中央海滩一带",
+      "property_type": "整租公寓（私人房东）",
+      "rating": 8,
+      "review_count": 118,
+      "location_rating": 9.1,
+      "room_summary": "约30㎡一卧一卫整租公寓，厨房；靠近海滩、LK Metro与步行街",
+      "price": {
+        "currency": "CNY",
+        "displayed_total": 685,
+        "nights": 2,
+        "adults": 2,
+        "tax_fee_status": "included",
+        "cancellation": "free_cancellation_before_2026-09-21",
+        "payment": "2026-09-19前零付款",
+        "deposit": "到店可收THB 3000可退损毁押金",
+        "note": "Booking中国站匹配日期、2位成人、1间房总价"
+      },
+      "fit": "海滩约400米、步行约8分钟；LK Metro约2分钟，步行街约10分钟，Central Festival约800米，适合不想长距离往返的两晚过渡",
+      "tradeoff": "私人公寓而非标准酒店，需要通过LINE、WhatsApp、KakaoTalk或微信联系房东；到店可能收约604元可退押金；泳池、健身房和桑拿虽包含但不是本次价值重点",
+      "verification_status": "exact_dates_guests_nights_cny_cancellation_beach_location_and_visible_reviews_verified_on_booking_cn",
+      "shortlist_status": "active_round3_refundable_city_beach",
+      "verified_at": "2026-07-20T18:20:00+02:00",
+      "url": "https://www.booking.cn/hotel/th/edge-central-pattaya-near-walking-street.zh-cn.html?checkin=2026-09-28&checkout=2026-09-30&group_adults=2&group_children=0&no_rooms=1&selected_currency=CNY",
+      "image_assets": [
+        "outputs/assets/booking/pattaya_edge_central_walking_street-candidate-01.jpg",
+        "outputs/assets/booking/pattaya_edge_central_walking_street-candidate-02.jpg",
+        "outputs/assets/booking/pattaya_edge_central_walking_street-candidate-04.jpg",
+        "outputs/assets/booking/pattaya_edge_central_walking_street-candidate-03.jpg"
+      ],
+      "image_source": "Booking.com 中国站页面实际加载的官方图库",
+      "image_categories": [
+        "酒店外景",
+        "卧床",
+        "公共休息区",
+        "卫生间"
+      ],
+      "image_category_note": null
+    },
+    {
+      "id": "pattaya_holiday_inn_express_central",
+      "stay_segment_id": "stay_pattaya",
+      "name": "Holiday Inn Express Pattaya Central by IHG",
+      "platform": "Booking.com",
+      "area": "芭提雅市中心 / 中央海滩西侧",
+      "property_type": "酒店",
+      "rating": 8,
+      "review_count": 2019,
+      "location_rating": 8.2,
+      "room_summary": "标准大号床间，含早餐；连锁酒店，服务与入住流程相对稳定",
+      "price": {
+        "currency": "CNY",
+        "displayed_total": 713,
+        "nights": 2,
+        "adults": 2,
+        "tax_fee_status": "included",
+        "cancellation": "free_cancellation_before_2026-09-27T16:00",
+        "payment": "2026-09-25前零付款，到店付款",
+        "breakfast": "included",
+        "note": "Booking中国站匹配日期、2位成人、1间房总价"
+      },
+      "fit": "位于市中心，距芭提雅海滩约650米、步行约19分钟；两晚过渡的入住与取消规则清楚，含早餐减少临时找店成本",
+      "tradeoff": "不是出门即到海滩，整体更像可靠的连锁过渡点而非温馨特色住宿；泳池与健身房不作为本次溢价理由",
+      "verification_status": "exact_dates_guests_nights_cny_cancellation_beach_location_and_visible_reviews_verified_on_booking_cn",
+      "shortlist_status": "active_round3_refundable_city_beach",
+      "verified_at": "2026-07-20T18:20:00+02:00",
+      "url": "https://www.booking.cn/hotel/th/holiday-inn-express-pattaya-central.zh-cn.html?checkin=2026-09-28&checkout=2026-09-30&group_adults=2&group_children=0&no_rooms=1&selected_currency=CNY",
+      "image_assets": [
+        "outputs/assets/booking/pattaya_holiday_inn_express_central-candidate-03.jpg",
+        "outputs/assets/booking/pattaya_holiday_inn_express_central-candidate-13.jpg",
+        "outputs/assets/booking/pattaya_holiday_inn_express_central-candidate-11.jpg",
+        "outputs/assets/booking/pattaya_holiday_inn_express_central-candidate-16.jpg"
+      ],
+      "image_source": "Booking.com 中国站页面实际加载的官方图库",
+      "image_categories": [
+        "酒店外景",
+        "卧床",
+        "公共休息区",
+        "卫生间"
+      ],
+      "image_category_note": null
+    },
+    {
+      "id": "pattaya_leela_resort_spa",
+      "stay_segment_id": "stay_pattaya",
+      "name": "The Leela Resort & Spa Pattaya",
+      "platform": "Booking.com",
+      "area": "芭提雅市中心 / 北侧生活区",
+      "property_type": "酒店（私人房东管理）",
+      "rating": 8.3,
+      "review_count": 97,
+      "location_rating": 8.6,
+      "room_summary": "42㎡豪华双人或双床间，含早餐；安静花园与泳池氛围",
+      "price": {
+        "currency": "CNY",
+        "displayed_total": 884,
+        "nonrefundable_total": 687,
+        "nights": 2,
+        "adults": 2,
+        "tax_fee_status": "included",
+        "cancellation": "free_cancellation_before_2026-09-26",
+        "payment": "2026-09-24前零付款",
+        "breakfast": "included",
+        "deposit": "到店可收THB 1000可退损毁押金",
+        "note": "884元为可退款价，日均约442元；687元为不可退款价"
+      },
+      "fit": "距市中心约0.9公里、芭提雅海滩约800米；近期可见评价反复提到安静、像家一样，适合想把过渡夜做得更松弛的人",
+      "tradeoff": "可退款价略超日均400元目标，且泳池、Spa与花园带来的溢价不是本次刚需；距离海滩仍需约10—15分钟步行或短途打车",
+      "verification_status": "exact_dates_guests_nights_cny_cancellation_beach_location_and_visible_reviews_verified_on_booking_cn",
+      "shortlist_status": "active_round3_upper_reference",
+      "verified_at": "2026-07-20T18:20:00+02:00",
+      "url": "https://www.booking.cn/hotel/th/the-leela-resort-amp-spa-pattaya.zh-cn.html?checkin=2026-09-28&checkout=2026-09-30&group_adults=2&group_children=0&no_rooms=1&selected_currency=CNY",
+      "image_assets": [
+        "outputs/assets/booking/pattaya_leela_resort_spa-candidate-01.jpg",
+        "outputs/assets/booking/pattaya_leela_resort_spa-candidate-04.jpg",
+        "outputs/assets/booking/pattaya_leela_resort_spa-candidate-02.jpg",
+        "outputs/assets/booking/pattaya_leela_resort_spa-candidate-07.jpg"
+      ],
+      "image_source": "Booking.com 中国站页面实际加载的官方图库",
+      "image_categories": [
+        "酒店外景",
+        "卧床",
+        "公共休息区",
+        "盥洗区"
+      ],
+      "image_category_note": null
+    },
+    {
+      "id": "pattaya_view_talay6_blue_ocean",
+      "stay_segment_id": "stay_pattaya",
+      "name": "View Talay6 by Blue Ocean Suite",
+      "platform": "Booking.com",
+      "area": "芭提雅市中心 / 中央海滩",
+      "property_type": "整租公寓（私人房东）",
+      "rating": 8.8,
+      "review_count": 1391,
+      "location_rating": 9.5,
+      "room_summary": "48㎡一卧整租公寓，厨房、阳台；楼下近海滩与购物中心",
+      "price": {
+        "currency": "CNY",
+        "displayed_total": 564,
+        "nights": 2,
+        "adults": 2,
+        "tax_fee_status": "included",
+        "cancellation": "non_refundable",
+        "payment": "online_payment",
+        "note": "当前可见最低房型不可退款；未将不可退款价作为当前推荐"
+      },
+      "fit": "位置、面积和评分都很强，住客称楼下就是夜市与海滩",
+      "tradeoff": "当前匹配房型明确不可退款；另外住客提到并非每天打扫、装修偏老派",
+      "verification_status": "exact_dates_guests_nights_cny_room_type_nonrefundable_policy_location_and_visible_reviews_verified_on_booking_cn",
+      "shortlist_status": "inactive_nonrefundable_price_only",
+      "inactive_reason": "用户要求可退款或较晚取消；当前可见564元房型为不可退款在线付款，暂不进入可选卡片。",
+      "verified_at": "2026-07-20T18:20:00+02:00",
+      "url": "https://www.booking.cn/hotel/th/blue-ocean-suite.zh-cn.html?checkin=2026-09-28&checkout=2026-09-30&group_adults=2&group_children=0&no_rooms=1&selected_currency=CNY"
+    },
+    {
+      "id": "koh_chang_santhiya",
+      "stay_segment_id": "stay_koh_chang",
+      "name": "Santhiya Koh Chang Resort",
+      "platform": "Booking.com",
+      "area": "象岛",
+      "property_type": "度假村",
+      "rating": 9.1,
+      "review_count": 1498,
+      "room_summary": "50㎡花园别墅、超大号双人床、含早餐",
+      "price": {
+        "currency": "CNY",
+        "displayed_total": 3546,
+        "nights": 4,
+        "adults": 2,
+        "tax_fee_status": "included",
+        "cancellation": "not_shown_in_result_card"
+      },
+      "fit": "本轮最接近蜜月主角的房型与度假氛围",
+      "tradeoff": "超过本轮象岛四晚¥2,500上限",
+      "verification_status": "exact_dates_guests_nights_and_total_verified",
+      "shortlist_status": "inactive_over_koh_chang_budget",
+      "mobility_verification": "pending_property_layout_review",
+      "verified_at": "2026-07-19T22:55:00+02:00",
+      "url": "https://www.booking.com/hotel/th/santhiya.zh-cn.html?checkin=2026-09-30&checkout=2026-10-04&group_adults=2&group_children=0&no_rooms=1&selected_currency=CNY"
+    },
+    {
+      "id": "koh_chang_gajapuri",
+      "stay_segment_id": "stay_koh_chang",
+      "name": "GajaPuri Resort Koh Chang",
+      "platform": "Booking.com",
+      "area": "象岛",
+      "property_type": "整租简易别墅",
+      "rating": 9,
+      "review_count": 1334,
+      "location_rating": 9.3,
+      "room_summary": "48㎡一卧室简易别墅、超大号双人床、含早餐、免费取消",
+      "price": {
+        "currency": "CNY",
+        "displayed_total": 2467,
+        "member_total": 2220,
+        "nights": 4,
+        "adults": 2,
+        "tax_fee_status": "included",
+        "cancellation": "free_cancellation_shown",
+        "note": "2220元为登录会员价；未登录公开价为2467元"
+      },
+      "fit": "官方资料确认位于Kai Bae Beach；低密度独立别墅、海滩与自然氛围均衡，适合作为象岛主候选",
+      "tradeoff": "公开价¥2,467贴近上限；当前普通独立别墅不自动等于海景或海滨房",
+      "verification_status": "exact_dates_guests_nights_and_public_total_verified",
+      "shortlist_status": "active_balanced_villa_anchor",
+      "mobility_verification": "pending_property_layout_review",
+      "verified_at": "2026-07-19T22:55:00+02:00",
+      "url": "https://www.booking.com/hotel/th/gajapuri-resort-spa.zh-cn.html?checkin=2026-09-30&checkout=2026-10-04&group_adults=2&group_children=0&no_rooms=1&selected_currency=CNY"
+    },
+    {
+      "id": "koh_chang_kacha",
+      "stay_segment_id": "stay_koh_chang",
+      "name": "象岛卡查度假村及水疗中心",
+      "platform": "Booking.com",
+      "area": "象岛",
+      "property_type": "度假村",
+      "rating": 8.2,
+      "review_count": 2408,
+      "room_summary": "山旁豪华大厦，多种床型，含早餐",
+      "price": {
+        "currency": "CNY",
+        "displayed_total": 1267,
+        "nights": 4,
+        "adults": 2,
+        "tax_fee_status": "included",
+        "cancellation": "not_shown_in_result_card"
+      },
+      "fit": "象岛预算锚点，能把费用留给体验、餐饮或升级一两项活动",
+      "tradeoff": "当前房型为山侧，不代表海景或临海体验；评分也低一档",
+      "verification_status": "exact_dates_guests_nights_and_total_verified",
+      "shortlist_status": "inactive_after_chill_scenic_decision",
+      "inactive_reason": "current_room_is_mountain_side_and_user_prefers_low_exertion_scenic_resort",
+      "verified_at": "2026-07-19T22:55:00+02:00",
+      "url": "https://www.booking.com/hotel/th/koh-chang-kacha-resort-spa.zh-cn.html?checkin=2026-09-30&checkout=2026-10-04&group_adults=2&group_children=0&no_rooms=1&selected_currency=CNY"
+    },
+    {
+      "id": "koh_chang_dewa",
+      "stay_segment_id": "stay_koh_chang",
+      "name": "The Dewa Koh Chang",
+      "platform": "Booking.com",
+      "area": "Klong Prao海滩带",
+      "property_type": "海滨度假村",
+      "rating": 8.7,
+      "review_count": 959,
+      "room_summary": "豪华双人或双床间、含早餐、免费取消",
+      "price": {
+        "currency": "CNY",
+        "displayed_total": 2551,
+        "nights": 4,
+        "adults": 2,
+        "tax_fee_status": "included",
+        "cancellation": "free_cancellation_shown"
+      },
+      "fit": "设计感与度假设施平衡，适合酒店日与海边拍照",
+      "tradeoff": "超过本轮象岛四晚¥2,500上限",
+      "verification_status": "exact_dates_guests_nights_and_total_verified",
+      "shortlist_status": "inactive_over_koh_chang_budget",
+      "mobility_verification": "pending_property_layout_review",
+      "verified_at": "2026-07-19T22:55:00+02:00",
+      "url": "https://www.booking.com/hotel/th/the-dewa-koh-chang.zh-cn.html?checkin=2026-09-30&checkout=2026-10-04&group_adults=2&group_children=0&no_rooms=1&selected_currency=CNY"
+    },
+    {
+      "id": "koh_chang_dinso",
+      "stay_segment_id": "stay_koh_chang",
+      "name": "Dinso Resort & Villas Ko Chang, Vignette Collection by IHG",
+      "platform": "Booking.com",
+      "area": "Klong Prao海滩带",
+      "property_type": "高端度假村",
+      "rating": 9,
+      "review_count": 389,
+      "location_rating": 9.3,
+      "room_summary": "尊贵海景特大号床间、免费取消、到店付款",
+      "price": {
+        "currency": "CNY",
+        "displayed_total": 5657,
+        "nights": 4,
+        "adults": 2,
+        "tax_fee_status": "included",
+        "cancellation": "free_cancellation_shown",
+        "payment": "pay_at_property_no_prepayment"
+      },
+      "fit": "海景房与完整度假设施直接匹配蜜月拍照升级",
+      "tradeoff": "超过本轮象岛四晚¥2,500上限",
+      "verification_status": "exact_dates_guests_nights_and_total_verified",
+      "shortlist_status": "inactive_over_koh_chang_budget",
+      "mobility_verification": "pending_property_layout_review",
+      "verified_at": "2026-07-19T22:55:00+02:00",
+      "url": "https://www.booking.com/hotel/th/emerald-cove-koh-chang.zh-cn.html?checkin=2026-09-30&checkout=2026-10-04&group_adults=2&group_children=0&no_rooms=1&selected_currency=CNY"
+    },
+    {
+      "id": "koh_chang_aana",
+      "stay_segment_id": "stay_koh_chang",
+      "name": "AANA Resort & Villas Koh Chang",
+      "platform": "Booking.com",
+      "area": "Klong Prao河景与自然带",
+      "property_type": "度假村与别墅",
+      "rating": 8.4,
+      "review_count": 1448,
+      "room_summary": "豪华双人或双床间",
+      "price": {
+        "currency": "CNY",
+        "displayed_total": 707,
+        "nights": 4,
+        "adults": 2,
+        "tax_fee_status": "included",
+        "cancellation": "non_refundable",
+        "payment": "prepayment_required",
+        "note": "2026-07-20在Booking详情页看到的豪华双人或双床间；早餐可另加¥71"
+      },
+      "fit": "预算最低仍保留河景、绿意与度假氛围，适合自然拍照",
+      "tradeoff": "已核验：度假村在Klong Prao河畔，不是直接临海；页面说明可搭免费摆渡船约3分钟到海滩。当前具体价不可退款且需提前付款",
+      "verification_status": "exact_dates_guests_nights_room_price_cancellation_and_beach_access_verified",
+      "shortlist_status": "active_nature_value_anchor",
+      "mobility_verification": "pending_property_layout_review",
+      "verified_at": "2026-07-19T22:55:00+02:00",
+      "url": "https://www.booking.com/hotel/th/aana-resort-spa.zh-cn.html?checkin=2026-09-30&checkout=2026-10-04&group_adults=2&group_children=0&no_rooms=1&selected_currency=CNY"
+    },
+    {
+      "id": "koh_chang_klong_prao_resort",
+      "stay_segment_id": "stay_koh_chang",
+      "name": "Klong Prao Resort",
+      "platform": "Booking.com",
+      "area": "Klong Prao海滩",
+      "property_type": "海滨度假村",
+      "rating": 8.5,
+      "review_count": 1569,
+      "room_summary": "标准双人或双床间、含早餐",
+      "price": {
+        "currency": "CNY",
+        "displayed_total": 1082,
+        "original_total": 3537,
+        "nights": 4,
+        "adults": 2,
+        "tax_fee_status": "included",
+        "cancellation": "not_shown_in_search_result",
+        "note": "登录会员促销价"
+      },
+      "fit": "官方地址在Klong Prao Beach，低预算直接获得海滩带与早餐，是躺平路线的价值锚点",
+      "tradeoff": "当前是会员标准房；具体价率的取消条款未在结果卡显示，标准房也不等于临海房",
+      "verification_status": "exact_dates_guests_nights_and_member_total_verified",
+      "shortlist_status": "active_beach_value_anchor",
+      "mobility_verification": "pending_property_layout_review",
+      "verified_at": "2026-07-19T22:55:00+02:00",
+      "url": "https://www.booking.com/hotel/th/klong-prao-resort.zh-cn.html?checkin=2026-09-30&checkout=2026-10-04&group_adults=2&group_children=0&no_rooms=1&selected_currency=CNY"
+    },
+    {
+      "id": "koh_chang_sea_escape",
+      "stay_segment_id": "stay_koh_chang",
+      "name": "Sea Escape Koh Chang",
+      "platform": "Booking.com",
+      "area": "Kai Bae",
+      "property_type": "花园别墅",
+      "rating": 9,
+      "review_count": 523,
+      "location_rating": 9.6,
+      "room_summary": "28㎡花园别墅、大号双人床、免费取消、到店付款",
+      "price": {
+        "currency": "CNY",
+        "displayed_total": 2209,
+        "nights": 4,
+        "adults": 2,
+        "tax_fee_status": "included",
+        "cancellation": "free_cancellation_shown",
+        "payment": "pay_at_property_no_prepayment"
+      },
+      "fit": "位置评分高、体量更亲密，适合低频外出与自然拍照",
+      "tradeoff": "官方资料显示距Klong Prao Beach约2.4公里；当前房型是花园别墅，不是直接海滩房",
+      "verification_status": "exact_dates_guests_nights_and_total_verified",
+      "shortlist_status": "active_intimate_location_anchor",
+      "mobility_verification": "pending_property_layout_review",
+      "verified_at": "2026-07-19T22:55:00+02:00",
+      "url": "https://www.booking.com/hotel/th/sea-escape-koh-chang.zh-cn.html?checkin=2026-09-30&checkout=2026-10-04&group_adults=2&group_children=0&no_rooms=1&selected_currency=CNY"
+    },
+    {
+      "id": "koh_chang_barali",
+      "stay_segment_id": "stay_koh_chang",
+      "name": "Barali Beach Resort Koh Chang",
+      "platform": "Booking.com",
+      "area": "Klong Prao海滩带",
+      "property_type": "海滩别墅度假村",
+      "rating": 8.6,
+      "review_count": 1008,
+      "room_summary": "豪华别墅、大号双人床与沙发、含早餐",
+      "price": {
+        "currency": "CNY",
+        "displayed_total": 2296,
+        "original_total": 6165,
+        "nights": 4,
+        "adults": 2,
+        "tax_fee_status": "included",
+        "cancellation": "not_shown_in_search_result",
+        "note": "登录会员促销价"
+      },
+      "fit": "官方资料确认在Klong Prao Beach并有海滨泳池；独立别墅、沙滩与含早组合适合低频外出的蜜月节奏",
+      "tradeoff": "会员价促销幅度大，具体价率的取消条款未显示；别墅房型也不自动等于海滨",
+      "verification_status": "exact_dates_guests_nights_and_member_total_verified",
+      "shortlist_status": "active_beach_villa_anchor",
+      "mobility_verification": "pending_property_layout_review",
+      "verified_at": "2026-07-19T22:55:00+02:00",
+      "url": "https://www.booking.com/hotel/th/barali-beach-resort-spa.zh-cn.html?checkin=2026-09-30&checkout=2026-10-04&group_adults=2&group_children=0&no_rooms=1&selected_currency=CNY"
+    },
+    {
+      "id": "koh_chang_retreat",
+      "stay_segment_id": "stay_koh_chang",
+      "name": "The Retreat Koh Chang, Small Luxury Hotels of the World",
+      "platform": "Booking.com",
+      "area": "Kai Bae",
+      "property_type": "精品豪华度假村",
+      "rating": 9.7,
+      "review_count": 286,
+      "location_rating": 9.6,
+      "room_summary": "45㎡豪华特大号床间、花园或泳池景、含早餐、免费取消",
+      "price": {
+        "currency": "CNY",
+        "displayed_total": 11285,
+        "nights": 4,
+        "adults": 2,
+        "tax_fee_status": "included",
+        "cancellation": "free_cancellation_before_2026-09-23",
+        "payment": "no_payment_before_2026-09-21"
+      },
+      "fit": "安静精品、无边泳池与高评分构成象岛蜜月天花板参考",
+      "tradeoff": "超过本轮象岛四晚¥2,500上限",
+      "verification_status": "exact_dates_guests_nights_room_and_total_verified",
+      "shortlist_status": "inactive_over_koh_chang_budget",
+      "mobility_verification": "pending_property_layout_review",
+      "verified_at": "2026-07-19T23:05:00+02:00",
+      "url": "https://www.booking.com/hotel/th/the-retreat-koh-chang.zh-cn.html?checkin=2026-09-30&checkout=2026-10-04&group_adults=2&group_children=0&no_rooms=1&selected_currency=CNY"
+    },
+    {
+      "id": "pattaya_siam_guest_house",
+      "stay_segment_id": "stay_pattaya",
+      "name": "The Siam Guest House - SHA Extra Plus",
+      "platform": "Booking.com",
+      "area": "芭提雅市中心 / 第二路",
+      "property_type": "旅馆",
+      "rating": 8.7,
+      "review_count": 1737,
+      "location_rating": 9.5,
+      "room_summary": "21㎡经济或标准双人间，独立浴室；可选26㎡高级双人间",
+      "price": {
+        "currency": "CNY",
+        "displayed_total": 256,
+        "nights": 2,
+        "adults": 2,
+        "tax_fee_status": "included",
+        "cancellation": "free_cancellation_until_2026-09-25",
+        "payment": "pay_at_property_no_prepayment",
+        "note": "匹配日期搜索结果为登录会员价；详情页确认可取消价率与到店付款"
+      },
+      "fit": "市中心、距芭提雅海滩约500米，靠近迈克购物中心、便利店、餐饮和步行街；适合只把酒店当便利落脚点。",
+      "tradeoff": "是旅馆而非度假酒店，没有泳池，房间与设施更朴素；蜜月氛围弱于Amethyst或Grande。",
+      "verification_status": "exact_dates_guests_nights_member_total_room_cancellation_location_and_visible_reviews_verified",
+      "shortlist_status": "inactive_under_minimum_price",
+      "inactive_reason": "两晚总价256元，日均128元，低于用户设定的250元/晚下限；保留在历史池，不进入本轮。",
+      "verified_at": "2026-07-20T02:00:00+02:00",
+      "url": "https://www.booking.cn/hotel/th/the-siam-guest-house.zh-cn.html?checkin=2026-09-28&checkout=2026-09-30&group_adults=2&group_children=0&no_rooms=1&selected_currency=CNY"
+    },
+    {
+      "id": "koh_samet_larissa_private_beach",
+      "stay_segment_id": "stay_koh_samet",
+      "name": "Larissa Samed Resort",
+      "platform": "Booking.com",
+      "area": "西开奥海滩旁 / 私人海滩",
+      "property_type": "度假村（私人房东管理）",
+      "rating": 9.1,
+      "review_count": 869,
+      "location_rating": 9.3,
+      "room_summary": "32㎡豪华双人间或双床间，阳台、庭院、独立浴室",
+      "price": {
+        "currency": "CNY",
+        "displayed_total": 2015,
+        "nights": 4,
+        "adults": 2,
+        "tax_fee_status": "included",
+        "cancellation": "free_cancellation_until_2026-09-25",
+        "payment": "no_payment_before_2026-09-23"
+      },
+      "fit": "当前首选：页面明确标注私人海滩，位于Sai Kaew Beach东侧，步行可到主街、餐厅、7-Eleven与主海滩；适合把四晚重心放在酒店、海边散步和日落拍照。",
+      "tradeoff": "私人海滩不大且礁石较多，住客建议穿沙滩鞋；公开评价对酒店是否提供餐厅/早餐存在时间差异，需直接向酒店确认；由私人房东管理，平台提示职业房东消费者法规可能不完全适用。",
+      "route_adaptation": {
+        "arrival_day": "从Na Dan主码头到酒店预留短途接送；提前确认车辆是送到Larissa入口还是Sai Kaew Beach Resort门口，避免带行李走小路。",
+        "day_1": "酒店私属小海滩浅浮潜/看海 + Sai Kaew Beach游泳与主街晚餐，不去南部海滩。",
+        "day_2": "只租一天摩托做Ao Wong Duean、Ao Thian、Ao Wai、Laem Toei、Ao Prao日落环线；18:00前回酒店。",
+        "day_3": "天气好再从Na Dan主码头参加跳岛/浮潜；下雨或风浪大就留在Larissa与Sai Kaew周边。",
+        "departure_day": "提前让酒店确认到Na Dan主码头的短途接送，再乘船回班佩。"
+      },
+      "verification_status": "exact_dates_guests_nights_room_price_cancellation_beach_and_visible_reviews_verified",
+      "shortlist_status": "confirmed_working_choice",
+      "selection_note": "用户确认于2026-07-20；继续推进中间城市芭提雅，不再把沙美岛酒店作为开放决策",
+      "verified_at": "2026-07-20T01:00:00+02:00",
+      "url": "https://www.booking.cn/hotel/th/larissa-resort.zh-cn.html?checkin=2026-09-30&checkout=2026-10-04&group_adults=2&group_children=0&no_rooms=1&selected_currency=CNY",
+      "image_assets": [
+        "outputs/assets/booking/koh_samet_larissa_private_beach-candidate-01.jpg",
+        "outputs/assets/booking/koh_samet_larissa_private_beach-candidate-18.jpg",
+        "outputs/assets/booking/koh_samet_larissa_private_beach-candidate-16.jpg",
+        "outputs/assets/booking/koh_samet_larissa_private_beach-candidate-19.jpg"
+      ],
+      "image_source": "Booking.com 中国站页面实际加载的官方图库",
+      "image_categories": [
+        "度假村外景",
+        "卧床",
+        "露台休憩区",
+        "海边景观"
+      ],
+      "image_category_note": "Booking 页面官方图库未提供卫生间图，第四张保留真实海边景观。"
+    },
+    {
+      "id": "koh_samet_tubtim_beachfront",
+      "stay_segment_id": "stay_koh_samet",
+      "name": "Tubtim Resort",
+      "platform": "Booking.com",
+      "area": "Tubtim Beach",
+      "property_type": "海滨度假村 / 整租简易别墅",
+      "rating": 8.4,
+      "review_count": 1045,
+      "location_rating": 9.4,
+      "room_summary": "20㎡花园景标准简易别墅，超大号双人床，含早餐",
+      "price": {
+        "currency": "CNY",
+        "displayed_total": 2021,
+        "original_total": 2378,
+        "nights": 4,
+        "adults": 2,
+        "tax_fee_status": "included",
+        "cancellation": "free_cancellation_until_2026-09-25",
+        "payment": "pay_at_property_no_prepayment",
+        "note": "当前结果卡为优惠价；房型与取消规则按对应价率记录"
+      },
+      "fit": "页面明确写在Tubtim Beach白色沙滩上，海滨餐厅营业至深夜；这是“酒店本身就是海边”的最直接方案。",
+      "tradeoff": "总评分低于Larissa，房间更基础；距离主码头约10分钟车程，外出频率应保持低。",
+      "verification_status": "exact_dates_guests_nights_price_cancellation_beach_and_visible_reviews_verified",
+      "shortlist_status": "active_direct_beach_backup",
+      "verified_at": "2026-07-20T01:00:00+02:00",
+      "url": "https://www.booking.com/hotel/th/tubtim-resort-2.zh-cn.html?checkin=2026-09-30&checkout=2026-10-04&group_adults=2&group_children=0&no_rooms=1&selected_currency=CNY",
+      "image_assets": [
+        "outputs/assets/booking/koh_samet_tubtim_beachfront-candidate-01.jpg",
+        "outputs/assets/booking/koh_samet_tubtim_beachfront-candidate-12.jpg",
+        "outputs/assets/booking/koh_samet_tubtim_beachfront-candidate-03.jpg",
+        "outputs/assets/booking/koh_samet_tubtim_beachfront-candidate-02.jpg"
+      ],
+      "image_source": "Booking.com 中国站页面实际加载的官方图库",
+      "image_categories": [
+        "海滩外景",
+        "简易别墅外观",
+        "公共休息区",
+        "卫生间"
+      ],
+      "image_category_note": "Booking 页面官方图库未提供室内卧床图，第二张保留真实简易别墅外观。"
+    },
+    {
+      "id": "koh_samet_viking_ao_thian",
+      "stay_segment_id": "stay_koh_samet",
+      "name": "Viking Holiday Resort",
+      "platform": "Booking.com",
+      "area": "Ao Thian / Ao Wai",
+      "property_type": "海边度假村",
+      "rating": 9.1,
+      "review_count": 879,
+      "location_rating": 9.1,
+      "room_summary": "20㎡标准双人间，阳台、庭院、独立浴室，含早餐",
+      "price": {
+        "currency": "CNY",
+        "displayed_total": 1270,
+        "nights": 4,
+        "adults": 2,
+        "tax_fee_status": "included",
+        "cancellation": "free_cancellation_until_2026-09-16",
+        "payment": "no_payment_before_2026-09-14"
+      },
+      "fit": "价格很友好，页面距Ao Thian海滩5分钟；多条住客评价提到酒店自带安静小沙滩、餐厅和很强的放松氛围。",
+      "tradeoff": "离主街和码头更远，晚间可能需要手电或接送；若希望每天步行觅食，不如Larissa方便。",
+      "verification_status": "exact_dates_guests_nights_room_price_cancellation_beach_and_visible_reviews_verified",
+      "shortlist_status": "active_quiet_value_backup",
+      "verified_at": "2026-07-20T01:00:00+02:00",
+      "url": "https://www.booking.com/hotel/th/viking-resort.zh-cn.html?checkin=2026-09-30&checkout=2026-10-04&group_adults=2&group_children=0&no_rooms=1&selected_currency=CNY",
+      "image_assets": [
+        "outputs/assets/booking/koh_samet_viking_ao_thian-candidate-03.jpg",
+        "outputs/assets/booking/koh_samet_viking_ao_thian-candidate-04.jpg",
+        "outputs/assets/booking/koh_samet_viking_ao_thian-candidate-06.jpg",
+        "outputs/assets/booking/koh_samet_viking_ao_thian-candidate-05.jpg"
+      ],
+      "image_source": "Booking.com 中国站页面实际加载的官方图库",
+      "image_categories": [
+        "度假村外景",
+        "卧床",
+        "室内休憩区",
+        "卫生间"
+      ],
+      "image_category_note": null
+    },
+    {
+      "id": "koh_samet_samed_garden_aonoinna",
+      "stay_segment_id": "stay_koh_samet",
+      "name": "Samed Garden Resort",
+      "platform": "Booking.com",
+      "area": "Ao Noi Na",
+      "property_type": "度假村",
+      "rating": 8.9,
+      "review_count": 694,
+      "location_rating": 8.4,
+      "room_summary": "26㎡带阳台大号床间，可选海景；私人浴室",
+      "price": {
+        "currency": "CNY",
+        "displayed_total": 1060,
+        "non_refundable_total": 954,
+        "nights": 4,
+        "adults": 2,
+        "tax_fee_status": "included",
+        "cancellation": "free_cancellation_until_2026-09-27",
+        "payment": "no_payment_before_2026-09-25",
+        "note": "954元为不可退款价；看板优先展示可取消的1060元价率"
+      },
+      "fit": "页面显示邻近海滩0米，住客多次提到出门约2分钟到人少的海边；适合最安静、最省预算的完整酒店日。",
+      "tradeoff": "Ao Noi Na在岛的北侧，离主码头与主街较远，周边餐饮少且打车不方便；没有早餐。",
+      "verification_status": "exact_dates_guests_nights_room_price_cancellation_beach_and_visible_reviews_verified",
+      "shortlist_status": "active_budget_beach_backup",
+      "verified_at": "2026-07-20T01:00:00+02:00",
+      "url": "https://www.booking.com/hotel/th/samed-garden-resort.zh-cn.html?checkin=2026-09-30&checkout=2026-10-04&group_adults=2&group_children=0&no_rooms=1&selected_currency=CNY",
+      "image_assets": [
+        "outputs/assets/booking/koh_samet_samed_garden_aonoinna-candidate-01.jpg",
+        "outputs/assets/booking/koh_samet_samed_garden_aonoinna-candidate-02.jpg",
+        "outputs/assets/booking/koh_samet_samed_garden_aonoinna-candidate-05.jpg",
+        "outputs/assets/booking/koh_samet_samed_garden_aonoinna-candidate-03.jpg"
+      ],
+      "image_source": "Booking.com 中国站页面实际加载的官方图库",
+      "image_categories": [
+        "度假村外景",
+        "卧床",
+        "室内休憩区",
+        "卫生间"
+      ],
+      "image_category_note": null
+    },
+    {
+      "id": "koh_samet_horizon_ao_thian",
+      "stay_segment_id": "stay_koh_samet",
+      "name": "Horizon Resort",
+      "platform": "Booking.com",
+      "area": "Ao Thian",
+      "property_type": "度假村",
+      "rating": 9.2,
+      "review_count": 676,
+      "location_rating": 9.2,
+      "room_summary": "22㎡带浴室双人间，阳台、隔音设备、含早餐",
+      "price": {
+        "currency": "CNY",
+        "displayed_total": 1270,
+        "nights": 4,
+        "adults": 2,
+        "tax_fee_status": "included",
+        "cancellation": "free_cancellation_until_2026-09-16"
+      },
+      "fit": "距Ao Thian海滩约5分钟，价格和评分都很强。",
+      "tradeoff": "可见近期住客评价提到附近工地与房内偶发装修/材料声。",
+      "verification_status": "exact_dates_guests_nights_room_price_cancellation_beach_and_visible_reviews_verified",
+      "shortlist_status": "inactive_recent_construction_noise",
+      "inactive_reason": "用户要求有明确街噪、异味或维护负面信号直接淘汰；本页近期评价明确提到工地和施工声。",
+      "verified_at": "2026-07-20T01:00:00+02:00",
+      "url": "https://www.booking.com/hotel/th/horizon-resort.zh-cn.html?checkin=2026-09-30&checkout=2026-10-04&group_adults=2&group_children=0&no_rooms=1&selected_currency=CNY"
+    },
+    {
+      "id": "koh_samet_samed_villa",
+      "stay_segment_id": "stay_koh_samet",
+      "name": "Samed Villa Resort",
+      "platform": "Booking.com",
+      "area": "Ao Phai与Tubtim之间",
+      "property_type": "酒店",
+      "rating": 8.6,
+      "review_count": 2288,
+      "location_rating": 9.2,
+      "room_summary": "18㎡经济双人或双床间，含早餐；可选海景房",
+      "price": {
+        "currency": "CNY",
+        "displayed_total": 2189,
+        "original_total": 2488,
+        "nights": 4,
+        "adults": 2,
+        "tax_fee_status": "included",
+        "cancellation": "free_cancellation_until_2026-09-23",
+        "payment": "no_payment_before_2026-09-21"
+      },
+      "fit": "位于Ao Phai与Tubtim之间，海滩照片和情侣位置评分很好。",
+      "tradeoff": "可见评价提到被罩偏旧，且进出路段需经过沙滩，对行李不友好。",
+      "verification_status": "exact_dates_guests_nights_room_price_cancellation_beach_and_visible_reviews_verified",
+      "shortlist_status": "inactive_maintenance_and_luggage_access_signal",
+      "inactive_reason": "近期可见评价出现维护与行李动线的明确负面，不符合本轮严格排除标准。",
+      "verified_at": "2026-07-20T01:00:00+02:00",
+      "url": "https://www.booking.com/hotel/th/samed-villa-resort.zh-cn.html?checkin=2026-09-30&checkout=2026-10-04&group_adults=2&group_children=0&no_rooms=1&selected_currency=CNY"
+    },
+    {
+      "id": "koh_samet_tamarind_over_budget",
+      "stay_segment_id": "stay_koh_samet",
+      "name": "Samed Tamarind Beach Resort",
+      "platform": "Booking.com",
+      "area": "Ao Phai海滩",
+      "property_type": "海滩度假村",
+      "rating": 9.4,
+      "review_count": 893,
+      "location_rating": 9.5,
+      "room_summary": "豪华双人或双床间，含早餐",
+      "price": {
+        "currency": "CNY",
+        "displayed_total": 3648,
+        "nights": 4,
+        "adults": 2,
+        "tax_fee_status": "included",
+        "cancellation": "free_cancellation_shown"
+      },
+      "fit": "距Ao Phai Beach约1分钟，评分与位置都很强。",
+      "tradeoff": "超过当前海岛四晚¥2,500上限。",
+      "verification_status": "exact_dates_guests_nights_room_price_cancellation_and_beach_distance_verified",
+      "shortlist_status": "inactive_over_island_budget",
+      "inactive_reason": "四晚含税总价超出当前预算上限；若用户愿意升级，再回看。",
+      "verified_at": "2026-07-20T01:00:00+02:00",
+      "url": "https://www.booking.com/hotel/th/samed-tamarind-beach-resort.zh-cn.html?checkin=2026-09-30&checkout=2026-10-04&group_adults=2&group_children=0&no_rooms=1&selected_currency=CNY"
+    },
+    {
+      "id": "bkk2_baiyoke_sky",
+      "stay_segment_id": "stay_bangkok_2",
+      "name": "彩虹云霄酒店",
+      "platform": "Booking.com",
+      "area": "帕突南，靠近地铁站",
+      "property_type": "酒店",
+      "rating": 8.3,
+      "review_count": 10855,
+      "room_summary": "高级双人或双床间，多种床型",
+      "price": {
+        "currency": "CNY",
+        "displayed_total": 525,
+        "original_total": 1166,
+        "nights": 1,
+        "adults": 2,
+        "tax_fee_status": "included",
+        "cancellation": "free_cancellation_shown",
+        "payment": "pay_at_property"
+      },
+      "fit": "官方页面确认靠近Ratchaprarop Airport Rail Link，适合次日前往BKK的中档缓冲夜",
+      "tradeoff": "酒店体量较大且位于繁忙商圈，是否适合蜜月收尾仍需看房间与噪音评论",
+      "verification_status": "price_and_bkk_airport_link_fit_verified",
+      "shortlist_status": "inactive_user_removed_over_buffer_budget",
+      "inactive_reason": "用户明确认为525元过高；返程前一晚只需要可靠接入Airport Rail Link，不需要大型高层酒店溢价。",
+      "verified_at": "2026-07-18T23:37:00+02:00",
+      "url": "https://www.booking.com/hotel/th/baiyoke-sky.zh-cn.html?checkin=2026-10-04&checkout=2026-10-05&group_adults=2&group_children=0&no_rooms=1&selected_currency=CNY",
+      "transport_source_url": "https://baiyokesky.baiyokehotel.com/near-airport-bangkok.html"
+    },
+    {
+      "id": "bkk2_true_siam_rangnam",
+      "stay_segment_id": "stay_bangkok_2",
+      "name": "True Siam Rangnam Hotel",
+      "platform": "Booking.com",
+      "area": "帕突南，靠近地铁站",
+      "property_type": "酒店",
+      "rating": 8.7,
+      "review_count": 3432,
+      "room_summary": "高级双人或双床间，多种床型，免费取消",
+      "price": {
+        "currency": "CNY",
+        "displayed_total": 286,
+        "member_total": 257,
+        "nights": 1,
+        "adults": 2,
+        "tax_fee_status": "included",
+        "cancellation": "free_cancellation_shown",
+        "payment": "pay_at_property",
+        "cancellation_deadline": "2026-09-29",
+        "payment_deadline": "2026-09-27",
+        "note": "公开价286元；登录会员价257元；含税费；9月29日前可取消，9月27日前无需付款；早餐可选约52元"
+      },
+      "fit": "评分高、公开价落在目标带内；Booking搜索卡约450米，详情页约650米到Ratchaprarop Airport Rail Link，适合作为BKK返程缓冲夜",
+      "tradeoff": "详情页与搜索卡的步行距离口径不同；按约650米保守理解，仍需出发前用地图确认拖行李路线",
+      "verification_status": "public_price_and_bkk_airport_link_fit_verified",
+      "shortlist_status": "active_buffer_baseline",
+      "verified_at": "2026-07-20T19:05:00+02:00",
+      "url": "https://www.booking.cn/hotel/th/true-siam-rangnam.zh-cn.html?checkin=2026-10-04&checkout=2026-10-05&group_adults=2&group_children=0&no_rooms=1&selected_currency=CNY",
+      "transport_source_url": "https://www.truesiambangkokhotel.com/locationrangnam",
+      "image_assets": [
+        "outputs/assets/booking/bkk2_true_siam_rangnam-candidate-06.jpg",
+        "outputs/assets/booking/bkk2_true_siam_rangnam-candidate-02.jpg",
+        "outputs/assets/booking/bkk2_true_siam_rangnam-candidate-04.jpg",
+        "outputs/assets/booking/bkk2_true_siam_rangnam-candidate-17.jpg"
+      ],
+      "image_source": "Booking.com 中国站页面实际加载的官方图库",
+      "image_categories": [
+        "酒店外景",
+        "卧床",
+        "室内休憩区",
+        "卧床细节"
+      ],
+      "image_category_note": "Booking 页面官方图库未提供卫生间图，第四张保留真实卧床细节。"
+    },
+    {
+      "id": "bkk2_global_pratunam",
+      "stay_segment_id": "stay_bangkok_2",
+      "name": "Global Hotel Pratunam Bangkok",
+      "platform": "Booking.com",
+      "area": "帕突南，靠近Ratchaprarop Airport Rail Link",
+      "property_type": "酒店",
+      "rating": 8.8,
+      "review_count": 17,
+      "location_rating": 8.9,
+      "room_summary": "15平方米无窗高级大床房",
+      "price": {
+        "currency": "CNY",
+        "displayed_total": 279,
+        "nights": 1,
+        "adults": 2,
+        "tax_fee_status": "included",
+        "cancellation": "free_cancellation_before_2026-10-02",
+        "payment": "pay_at_property"
+      },
+      "fit": "公开价279元，详情页约400米到Ratchaprarop Airport Rail Link；评分8.8，适合追求低价与机场快线接入的缓冲夜",
+      "tradeoff": "当前目标房型无窗且只有17条点评；周边是市场巷道，需接受房间采光和证据量较少",
+      "verification_status": "china_site_exact_date_room_price_and_transport_verified",
+      "shortlist_status": "active_buffer_value_candidate",
+      "verified_at": "2026-07-20T19:05:00+02:00",
+      "url": "https://www.booking.cn/hotel/th/global.zh-cn.html?checkin=2026-10-04&checkout=2026-10-05&group_adults=2&no_rooms=1&selected_currency=CNY",
+      "image_assets": [
+        "outputs/assets/booking/bkk2_global_pratunam-candidate-01.jpg",
+        "outputs/assets/booking/bkk2_global_pratunam-candidate-02.jpg",
+        "outputs/assets/booking/bkk2_global_pratunam-candidate-04.jpg",
+        "outputs/assets/booking/bkk2_global_pratunam-candidate-03.jpg"
+      ],
+      "image_source": "Booking.com 中国站页面实际加载的官方图库",
+      "image_categories": [
+        "酒店外景",
+        "卧床",
+        "室内休憩区",
+        "卫生间"
+      ],
+      "image_category_note": null
+    },
+    {
+      "id": "bkk2_siam_star",
+      "stay_segment_id": "stay_bangkok_2",
+      "name": "Siam Star Hotel",
+      "platform": "Booking.com",
+      "area": "帕突南，靠近Ratchaprarop Airport Rail Link",
+      "property_type": "酒店",
+      "rating": 7.9,
+      "review_count": 582,
+      "location_rating": 8.8,
+      "room_summary": "15平方米标准双人间",
+      "price": {
+        "currency": "CNY",
+        "displayed_total": 260,
+        "nights": 1,
+        "adults": 2,
+        "tax_fee_status": "included",
+        "cancellation": "free_cancellation_before_2026-10-02",
+        "payment": "pay_at_property",
+        "payment_deadline": "2026-09-30",
+        "refundable_deposit": "THB1001（约¥201）"
+      },
+      "fit": "公开价260元，详情页约450米到Ratchaprarop Airport Rail Link；位置评分8.8，适合把预算压在目标带下沿",
+      "tradeoff": "总评分7.9，房间与公共区域偏朴素；需要接受可退押金约¥201的到店冻结",
+      "verification_status": "china_site_exact_date_room_price_and_transport_verified",
+      "shortlist_status": "active_buffer_value_candidate",
+      "verified_at": "2026-07-20T19:05:00+02:00",
+      "url": "https://www.booking.cn/hotel/th/siam-star.zh-cn.html?checkin=2026-10-04&checkout=2026-10-05&group_adults=2&no_rooms=1&selected_currency=CNY",
+      "image_assets": [
+        "outputs/assets/booking/bkk2_siam_star-candidate-04.jpg",
+        "outputs/assets/booking/bkk2_siam_star-candidate-02.jpg",
+        "outputs/assets/booking/bkk2_siam_star-candidate-10.jpg",
+        "outputs/assets/booking/bkk2_siam_star-candidate-03.jpg"
+      ],
+      "image_source": "Booking.com 中国站页面实际加载的官方图库",
+      "image_categories": [
+        "酒店公共区",
+        "卧床",
+        "室内休憩区",
+        "卫生间"
+      ],
+      "image_category_note": "Booking 页面官方图库未提供明确酒店外景，第一张保留真实酒店公共区。"
+    },
+    {
+      "id": "bkk2_4m_pratunam",
+      "stay_segment_id": "stay_bangkok_2",
+      "name": "4M Pratunam Hotel",
+      "platform": "Booking.com",
+      "area": "帕突南，靠近Phaya Thai Airport Rail Link与BTS",
+      "property_type": "酒店",
+      "rating": 7.9,
+      "review_count": 1069,
+      "location_rating": 8.9,
+      "room_summary": "16平方米高级双人或双床间",
+      "price": {
+        "currency": "CNY",
+        "displayed_total": 281,
+        "nights": 1,
+        "adults": 2,
+        "tax_fee_status": "included",
+        "cancellation": "free_cancellation_before_2026-10-03",
+        "payment": "pay_at_property"
+      },
+      "fit": "公开价281元；详情页约600米到Phaya Thai Airport Rail Link、约500米到Phaya Thai BTS，也可从Ratchaprarop约650米接入",
+      "tradeoff": "评分7.9、房间16平方米且风格朴素；比True Siam和Siam Star更依赖拖行李时的实际路线选择",
+      "verification_status": "china_site_exact_date_room_price_and_transport_verified",
+      "shortlist_status": "active_buffer_value_candidate",
+      "verified_at": "2026-07-20T19:05:00+02:00",
+      "url": "https://www.booking.cn/hotel/th/4m-pratunam.zh-cn.html?checkin=2026-10-04&checkout=2026-10-05&group_adults=2&no_rooms=1&selected_currency=CNY",
+      "image_assets": [
+        "outputs/assets/booking/bkk2_4m_pratunam-candidate-01.jpg",
+        "outputs/assets/booking/bkk2_4m_pratunam-candidate-02.jpg",
+        "outputs/assets/booking/bkk2_4m_pratunam-candidate-05.jpg",
+        "outputs/assets/booking/bkk2_4m_pratunam-candidate-03.jpg"
+      ],
+      "image_source": "Booking.com 中国站页面实际加载的官方图库",
+      "image_categories": [
+        "酒店外景",
+        "卧床",
+        "公共休息区",
+        "卫生间"
+      ],
+      "image_category_note": null
+    },
+    {
+      "id": "bkk2_surestay_ramkhamhaeng",
+      "stay_segment_id": "stay_bangkok_2",
+      "name": "SureStay Plus by Best Western Ramkhamhaeng Airport Rail Link Bangkok",
+      "platform": "Booking.com",
+      "area": "Ramkhamhaeng Airport Rail Link一带",
+      "property_type": "酒店",
+      "rating": 8.8,
+      "review_count": 189,
+      "location_rating": 8,
+      "room_summary": "28平方米特大床或双床房",
+      "price": {
+        "currency": "CNY",
+        "displayed_total": 345,
+        "nonrefundable_total": 272,
+        "nights": 1,
+        "adults": 2,
+        "tax_fee_status": "included",
+        "cancellation": "free_cancellation_before_2026-10-03_16:00",
+        "payment": "zero_payment_before_2026-10-01",
+        "breakfast_optional": 50
+      },
+      "fit": "评分8.8、28平方米且约500米到Ramkhamhaeng Airport Rail Link；若愿意把预算放宽到345元，房间舒适度更好",
+      "tradeoff": "可退款价超出本轮250—300元目标；272元为不可退款价，不适合作为当前主选",
+      "verification_status": "china_site_exact_date_room_price_and_transport_verified",
+      "shortlist_status": "deferred_flexible_over_buffer_budget",
+      "inactive_reason": "可退款价345元超出本轮目标；保留作房间面积与评分的上沿参考",
+      "verified_at": "2026-07-20T19:05:00+02:00",
+      "url": "https://www.booking.cn/hotel/th/surestay-plus-by-best-western-ramkhamhaeng-airport-rail-link-bangkok.zh-cn.html?checkin=2026-10-04&checkout=2026-10-05&group_adults=2&no_rooms=1&selected_currency=CNY"
+    }
+  ],
+  "open_questions": [
+    {
+      "id": "next_pattaya_role",
+      "priority": 1,
+      "question": "芭提雅两晚更想承担哪种角色？",
+      "context": "象岛已有4晚海岛度假；芭提雅可以补城市与夜景，也可以继续安静海滩，或压低预算把钱留给象岛。",
+      "options": [
+        {
+          "id": "pattaya_city",
+          "label": "市中心便利与夜景",
+          "anchor_candidate_id": "pattaya_grande_centre_point"
+        },
+        {
+          "id": "pattaya_beach",
+          "label": "乔木提恩安静海滩",
+          "anchor_candidate_id": "pattaya_heritage_beachfront"
+        },
+        {
+          "id": "pattaya_value",
+          "label": "芭提雅省预算，象岛升级",
+          "anchor_candidate_id": "pattaya_the_base_condo"
+        }
+      ],
+      "answer": "pattaya_city",
+      "status": "answered_by_user_2026-07-18"
+    },
+    {
+      "id": "next_pattaya_property_profile",
+      "priority": 1,
+      "question": "芭提雅两晚从新一轮可退款、短距离候选中选哪一家？",
+      "context": "用户要求可退款或较晚取消，且过渡段尽量靠近市区与海滩；Altera与Best Western已移出，Bayview仅作位置基线参考，Best Beach Villa已确认为工作首选。按2026-09-28至09-30、2位成人、1间房从Booking中国站重搜，当前主选覆盖¥524—¥713，上沿参考为¥801与¥884。",
+      "options": [
+        {
+          "id": "pattaya_best_beach_baseline",
+          "label": "Best Beach Villa：海滩近、价格低边界",
+          "anchor_candidate_ids": [
+            "pattaya_best_beach_villa"
+          ]
+        },
+        {
+          "id": "pattaya_edge_central_refundable",
+          "label": "EDGE Central：市区海滩都近的整租公寓",
+          "anchor_candidate_ids": [
+            "pattaya_edge_central_walking_street"
+          ]
+        },
+        {
+          "id": "pattaya_holiday_inn_express_refundable",
+          "label": "Holiday Inn Express：含早、规则最清楚",
+          "anchor_candidate_ids": [
+            "pattaya_holiday_inn_express_central"
+          ]
+        },
+        {
+          "id": "pattaya_bayview_reference",
+          "label": "Bayview：位置最省心的参考基线",
+          "anchor_candidate_ids": [
+            "pattaya_bayview"
+          ]
+        },
+        {
+          "id": "pattaya_leela_upper_reference",
+          "label": "The Leela：安静氛围，但略超日均上沿",
+          "anchor_candidate_ids": [
+            "pattaya_leela_resort_spa"
+          ]
+        }
+      ],
+      "answer": "pattaya_best_beach_baseline",
+      "status": "answered_by_user_2026-07-20"
+    },
+    {
+      "id": "next_bangkok2_buffer_hotel",
+      "priority": 1,
+      "question": "返程前一晚从250—300元机场快线缓冲候选中选哪一家？",
+      "context": "10月4—5日，2位成人、1间房、素万那普机场；True Siam当前首选，另有Global、Siam Star、4M，均按Booking中国站准确日期核验。",
+      "options": [
+        {
+          "id": "bkk2_true_siam",
+          "label": "True Siam Rangnam Hotel：评分最高且机场快线近",
+          "anchor_candidate_ids": [
+            "bkk2_true_siam_rangnam"
+          ]
+        },
+        {
+          "id": "bkk2_global",
+          "label": "Global Hotel Pratunam Bangkok：¥279且评分高",
+          "anchor_candidate_ids": [
+            "bkk2_global_pratunam"
+          ]
+        },
+        {
+          "id": "bkk2_siam_star",
+          "label": "Siam Star Hotel：¥260，距离近但评分较低",
+          "anchor_candidate_ids": [
+            "bkk2_siam_star"
+          ]
+        },
+        {
+          "id": "bkk2_4m",
+          "label": "4M Pratunam Hotel：¥281，机场快线与BTS都能接",
+          "anchor_candidate_ids": [
+            "bkk2_4m_pratunam"
+          ]
+        }
+      ],
+      "answer": "bkk2_true_siam",
+      "status": "answered_by_user_2026-07-20"
+    },
+    {
+      "id": "next_major_stays_direction",
+      "priority": 1,
+      "question": "曼谷前4晚与象岛4晚分别承担什么旅行角色？",
+      "context": "先确定曼谷的主要游玩重心与象岛的度假方式，再按方向扩展真实住宿候选；当前3个样本仅作方向锚点。",
+      "bangkok_options": [
+        {
+          "id": "B1",
+          "label": "经典曼谷＋城市夜生活",
+          "recommended_area": "Silom / Sala Daeng / Lumphini",
+          "route_seed": [
+            "9月24日抵达晚：入住后就近晚餐，不跨城",
+            "9月25日：大皇宫、卧佛寺、郑王庙、河边日落",
+            "9月26日：周末市场或城市街区，晚上唐人街",
+            "9月27日：公园、商场、按摩与约会晚餐的松弛日"
+          ],
+          "anchor_candidate_ids": [
+            "bkk1_airbnb_silom_apartment",
+            "bkk1_airbnb_silom_lumpini_serviced"
+          ]
+        },
+        {
+          "id": "B2",
+          "label": "购物咖啡＋周末市场",
+          "recommended_area": "Siam / Ratchathewi / Chit Lom",
+          "route_seed": [
+            "9月24日抵达晚：机场线进城、夜宵",
+            "9月25日：Siam、Jim Thompson或设计艺术支线、夜景酒吧",
+            "9月26日：Chatuchak周末市场、Ari咖啡街区",
+            "9月27日：半天经典寺庙或河边，半天按摩与购物"
+          ],
+          "anchor_candidate_ids": []
+        },
+        {
+          "id": "B3",
+          "label": "老城寺庙＋河畔氛围",
+          "recommended_area": "Charoen Krung / Saphan Taksin / Riverside",
+          "route_seed": [
+            "9月24日抵达晚：河畔或Charoen Krung晚餐",
+            "9月25日：大皇宫、卧佛寺、郑王庙完整线",
+            "9月26日：Talat Noi、唐人街与河上交通体验",
+            "9月27日：周末市场可选，或留在河畔做慢节奏约会日"
+          ],
+          "anchor_candidate_ids": []
+        }
+      ],
+      "koh_samet_options": [
+        {
+          "id": "K1",
+          "label": "蜜月慢住：两天泡酒店＋一天轻活动",
+          "recommended_area": "Ao Prao或Ao Thian一带",
+          "route_seed": [
+            "9月30日抵达：从班佩上岛、入住、海滩日落与酒店晚餐",
+            "10月1日：整天享受沙滩、泳池、Spa与拍照",
+            "10月2日：Ao Thian或Ao Wai轻量自然半日，体力不足就留店",
+            "10月3日：第二个完整泡酒店日，预留天气与身体状态机动"
+          ],
+          "anchor_candidate_ids": [
+            "koh_samet_larissa_private_beach",
+            "koh_samet_viking_ao_thian"
+          ]
+        },
+        {
+          "id": "K2",
+          "label": "海边平衡：一天轻自然＋两天酒店松弛",
+          "recommended_area": "Tubtim或Ao Phai一带",
+          "route_seed": [
+            "9月30日抵达：入住、沙滩日落，晚上只在附近吃饭",
+            "10月1日：完整酒店日；不把浮潜设为必选项",
+            "10月2日：半日海岸拍照或短程观景，按天气和体力交换",
+            "10月3日：酒店、沙滩、Spa与餐厅的松弛日"
+          ],
+          "anchor_candidate_ids": [
+            "koh_samet_tubtim_beachfront",
+            "koh_samet_samed_garden_aonoinna"
+          ]
+        },
+        {
+          "id": "K3",
+          "label": "便利探索：主街餐饮＋短活动",
+          "recommended_area": "Sai Kaew / Ao Phai一带",
+          "route_seed": [
+            "9月30日抵达：入住后步行找餐厅与海滩夜景",
+            "10月1日：只安排一项短活动，其余时间回酒店",
+            "10月2日：可选短程出海或海岸拍照，海况不好就取消",
+            "10月3日：海滩、按摩与自由活动"
+          ],
+          "anchor_candidate_ids": [
+            "koh_samet_larissa_private_beach"
+          ]
+        }
+      ],
+      "answer": {
+        "bangkok": "B1_plus_light",
+        "koh_samet": "K2_chill_photo_flexible",
+        "koh_chang": "candidate_only"
+      },
+      "status": "answered_by_user_2026-07-20"
+    },
+    {
+      "id": "next_koh_samet_hotel_confirmation",
+      "priority": 1,
+      "question": "沙美岛4晚是否按当前首选酒店方向推进？",
+      "context": "沙美岛已替代象岛成为最终海岛首选。当前按2026-09-30至10-04、2位成人、4晚、总价不超过¥2,500筛出4个合格候选，并淘汰了施工噪音、维护与超预算项。",
+      "options": [
+        {
+          "id": "koh_samet_primary_larissa",
+          "label": "按Larissa私人海滩首选",
+          "recommended": true,
+          "anchor_candidate_ids": [
+            "koh_samet_larissa_private_beach"
+          ]
+        },
+        {
+          "id": "koh_samet_direct_beach",
+          "label": "Tubtim直接住在沙滩上",
+          "anchor_candidate_ids": [
+            "koh_samet_tubtim_beachfront"
+          ]
+        },
+        {
+          "id": "koh_samet_quiet_value",
+          "label": "Viking安静海边性价比",
+          "anchor_candidate_ids": [
+            "koh_samet_viking_ao_thian"
+          ]
+        },
+        {
+          "id": "koh_samet_budget_north_beach",
+          "label": "Samed Garden低价直达海边",
+          "anchor_candidate_ids": [
+            "koh_samet_samed_garden_aonoinna"
+          ]
+        }
+      ],
+      "answer": "koh_samet_primary_larissa",
+      "status": "answered_by_user_2026-07-20"
+    },
+    {
+      "id": "departure_airport",
+      "priority": 2,
+      "question": "10月5日曼谷返程航班从哪个机场起飞？",
+      "reason": "决定10月4日最后一晚住宿区域",
+      "answer": "素万那普机场（BKK）",
+      "status": "answered_by_user_2026-07-18"
+    },
+    {
+      "id": "trip_rhythm",
+      "priority": 3,
+      "question": "整体更偏慢节奏、均衡，还是高密度体验？",
+      "status": "ask_after_accommodation_direction"
+    },
+    {
+      "id": "transfer_time_windows",
+      "priority": 4,
+      "question": "三个大巴移动日采用早出发、午间移动还是保留首尾半天？",
+      "status": "plan_after_daily_style_known"
+    }
+  ],
+  "research_notes": [
+    {
+      "observed_at": "2026-07-18",
+      "note": "所有住宿报价均为动态网页快照，库存、汇率、促销和登录状态可能改变。"
+    },
+    {
+      "observed_at": "2026-07-18",
+      "note": "Airbnb 页面以EUR显示总价，未打开价格明细，因此不宣称税费组成。"
+    },
+    {
+      "observed_at": "2026-07-18",
+      "note": "Booking候选仅在页面明确显示匹配日期、2位成人、1间房、正确晚数和含税总价时记录为已核验报价。"
+    },
+    {
+      "observed_at": "2026-07-18",
+      "note": "用户确认往返均为素万那普机场（BKK）；Baiyoke Sky与True Siam Rangnam的官方网站均说明靠近Ratchaprarop Airport Rail Link，因此返程前一晚的帕突南方向已从条件候选升级为可评估候选。"
+    },
+    {
+      "observed_at": "2026-07-18",
+      "note": "用户选择芭提雅住市中心、侧重便利与夜景。The Heritage海滩度假村保留在历史数据但移出当前短名单；新增Amethyst Hotel Pattaya作为Soi Buakhao精品酒店样本，其1155元为匹配日期和2位成人的登录会员免费取消价。"
+    },
+    {
+      "observed_at": "2026-07-18",
+      "note": "用户要求方向确认后扩大选择面。芭提雅可见短名单扩展到9家，覆盖豪华海景、服务式公寓、精品屋顶、传统市中心酒店与整租公寓；下一步从中圈选2至4家再做房型、取消、早餐、噪音与微观位置深挖。"
+    },
+    {
+      "observed_at": "2026-07-18",
+      "note": "用户调整决策优先级：先处理曼谷前4晚与象岛4晚。芭提雅9家候选池保留但暂停深挖；下一步先确认曼谷B1/B2/B3与象岛K1/K2/K3的旅行角色组合。"
+    },
+    {
+      "observed_at": "2026-07-19",
+      "note": "用户确认曼谷采用轻量B1+：寺庙只保留顺路且最有名的大皇宫与卧佛寺，郑王庙仅作顺路外观/拍照停留；不做打卡式寺庙游。住宿区继续锁定Silom、Sala Daeng、Lumphini与Bang Rak轨道交通带，精确日期Airbnb候选扩至8个。"
+    },
+    {
+      "observed_at": "2026-07-19",
+      "note": "用户确认象岛采用低体力K2轻松版：酒店与自然海景拍照优先，浮潜不设为目标；活动按天气与身体状态互换。精确日期活跃候选扩至9家，集中Klong Prao与Kai Bae；山侧Kacha移出可见短名单。所有候选仍需二轮核验坡度、楼梯、房间到餐厅/沙滩动线。"
+    },
+    {
+      "observed_at": "2026-07-19",
+      "note": "象岛4晚精确日期价格形成明显档位：约865—1082元价值档，2209—3546元均衡蜜月档，5657元海景升级档，11285元超豪华参考档。下一步只询问预算档，不同时追问其他偏好。"
+    },
+    {
+      "observed_at": "2026-07-19",
+      "note": "用户要求看板统一以人民币展示。本轮8个曼谷Airbnb仍保留网页原始EUR报价，面向用户的看板按固定假设1 EUR = 8 CNY直接换算；以后平台可选币种时优先选择CNY，只有无法取得人民币报价时才做显式汇率换算。"
+    },
+    {
+      "observed_at": "2026-07-20",
+      "note": "用户将沙美岛升为最终海岛首选、象岛降为候选。Booking按2026-09-30至10-04、2位成人、1间房、人民币重新核验：Larissa Samed Resort 2015元（私人海滩、9.1/869、位置9.3、可取消至9月25日）；Tubtim Resort 2021元（位于Tubtim Beach、8.4/1045、位置9.4、可取消至9月25日）；Viking Holiday Resort 1270元（Ao Thian约5分钟、9.1/879、可取消至9月16日）；Samed Garden Resort 1060元可取消（Ao Noi Na邻近海滩0米、8.9/694，954元为不可退款价）。Horizon因近期评价提到工地与施工声停用，Samed Villa因被罩偏旧及行李需经过沙滩的近期评价停用，Samed Tamarind因3648元超预算停用。"
+    },
+    {
+      "observed_at": "2026-07-20",
+      "note": "路线当前改为曼谷4晚→中间城市2晚（芭提雅仍是便利与夜景首选，罗勇市仅作更安静的替代）→沙美岛4晚→曼谷1晚。原截图的芭提雅—象岛大巴时长与价格不再套用；沙美岛段改为经班佩码头的陆路+渡船，班次与具体接驳待后续核验。"
+    },
+    {
+      "observed_at": "2026-07-20",
+      "note": "用户确认Larissa Samed Resort为沙美岛工作首选，下一轮转向芭提雅两晚。按2026-09-28至09-30、2位成人、1间房、人民币重新打开详情页：Grande Centre Point Pattaya评分9.2/2971、位置9.5，匹配价率可见9月25日前免费取消；Amethyst评分9.0/1183、位置9.1，登录会员价沿用此前¥1,155，可取消价率至9月23日，页面近期评价称临街但车流少、噪音可接受；The Bayview Hotel评分8.4、位置9.4，会员可取消价率至9月25日，距海滩与中央购物中心很近；Hilton Pattaya评分9.2、位置9.6，海景豪华房可取消价约¥2,839，作为高价夜景标尺。Somerset Pattaya虽评分9.0/位置9.5，但近期点评提到9楼仍能听到交通与酒吧声，另有毛巾易发臭描述，按用户硬筛选停用；Arden评分9.2但近期点评明确提到隔音差，停用。补入The Siam Guest House：评分8.7/1737、位置9.5，登录会员价¥256，可取消至9月25日、到店付款，定位为省预算过渡项。"
+    },
+    {
+      "observed_at": "2026-07-20",
+      "note": "用户把芭提雅两晚过渡预算收敛为日均约300—400元且不低于250元；从Booking中国站按2026-09-28至09-30、2位成人、1间房、CNY重搜。当前4选为Bayview¥801（8.4/1766，位置9.4，9月25日前可取消）、Altera¥729不可退款或¥979可取消（8.9/1490，位置9.1，45㎡整租一室公寓）、Best Beach Villa¥524（8.5/1366，位置9.1，距海滩约200米，9月28日14:00前可取消）、Best Western Plus Nexen¥711（9.0/696，位置8.4，距海滩约1.9公里，9月26日前可取消）。Siam低于最低价停用，Intimate、Flipper与Nova因近期噪音信号停用；Grande、Amethyst、Hilton暂因超出价格带转入历史池。"
+    },
+    {
+      "observed_at": "2026-07-20",
+      "note": "用户补充沙美岛住宿为Larissa Samed Resort。Booking与Tripadvisor公开信息显示其在Sai Kaew Beach东侧的安静区域，步行可到主海滩、主街和餐厅，主码头通常约5分钟车程；近期小红书实测提醒双条车可能只停在Sai Kaew Beach Resort门口、酒店私属海滩偏礁石且餐饮供应需确认。因此路线改为酒店周边步行休闲、只租一天摩托环岛，9/30与10/4提前确认酒店入口和码头接送。"
+    },
+    {
+      "observed_at": "2026-07-20",
+      "note": "用户进一步要求可退款或较晚取消、过渡段尽量短距离连接市区与海滩，并明确移除Altera与Best Western；Bayview只保留参考。Booking中国站第三轮核验得到：Best Beach Villa¥524（9月28日14:00前可取消、到店付款，距海滩约200米）；EDGE Central pattaya near walking street¥685（9月21日前可取消、9月19日前零付款，海滩约400米，但私人房东与THB3000可退押金）；Holiday Inn Express Pattaya Central by IHG¥713（含早、9月27日16:00前可取消、9月25日前零付款，海滩约650米）；The Leela Resort & Spa Pattaya可退款价¥884（9月26日前可取消、9月24日前零付款，距海滩约800米，略超日均400元上沿）。View Talay6 by Blue Ocean Suite虽¥564且评分8.8/1391、位置9.5，但当前可见房型不可退款，停用。"
+    }
+  ]
+}

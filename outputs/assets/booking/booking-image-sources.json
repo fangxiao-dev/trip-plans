@@ -1,0 +1,282 @@
+{
+  "updated_at": "2026-07-20T22:00:00+02:00",
+  "source": "Booking.com 中国站实际加载页面图库",
+  "items": [
+    {
+      "candidate_id": "pattaya_best_beach_villa",
+      "property_name": "Best Beach Villa",
+      "source_page": "https://www.booking.cn/hotel/th/best-beach-villa.zh-cn.html?checkin=2026-09-28&checkout=2026-09-30&group_adults=2&group_children=0&no_rooms=1&selected_currency=CNY",
+      "images": [
+        {
+          "path": "outputs/assets/booking/pattaya_best_beach_villa-candidate-06.jpg",
+          "category": "酒店外景"
+        },
+        {
+          "path": "outputs/assets/booking/pattaya_best_beach_villa-candidate-02.jpg",
+          "category": "卧床"
+        },
+        {
+          "path": "outputs/assets/booking/pattaya_best_beach_villa-candidate-05.jpg",
+          "category": "公共休息区"
+        },
+        {
+          "path": "outputs/assets/booking/pattaya_best_beach_villa-candidate-03.jpg",
+          "category": "卫生间"
+        }
+      ]
+    },
+    {
+      "candidate_id": "pattaya_edge_central_walking_street",
+      "property_name": "EDGE Central pattaya near walking street",
+      "source_page": "https://www.booking.cn/hotel/th/edge-central-pattaya-near-walking-street.zh-cn.html?checkin=2026-09-28&checkout=2026-09-30&group_adults=2&group_children=0&no_rooms=1&selected_currency=CNY",
+      "images": [
+        {
+          "path": "outputs/assets/booking/pattaya_edge_central_walking_street-candidate-01.jpg",
+          "category": "酒店外景"
+        },
+        {
+          "path": "outputs/assets/booking/pattaya_edge_central_walking_street-candidate-02.jpg",
+          "category": "卧床"
+        },
+        {
+          "path": "outputs/assets/booking/pattaya_edge_central_walking_street-candidate-04.jpg",
+          "category": "公共休息区"
+        },
+        {
+          "path": "outputs/assets/booking/pattaya_edge_central_walking_street-candidate-03.jpg",
+          "category": "卫生间"
+        }
+      ]
+    },
+    {
+      "candidate_id": "pattaya_holiday_inn_express_central",
+      "property_name": "Holiday Inn Express Pattaya Central by IHG",
+      "source_page": "https://www.booking.cn/hotel/th/holiday-inn-express-pattaya-central.zh-cn.html?checkin=2026-09-28&checkout=2026-09-30&group_adults=2&group_children=0&no_rooms=1&selected_currency=CNY",
+      "images": [
+        {
+          "path": "outputs/assets/booking/pattaya_holiday_inn_express_central-candidate-03.jpg",
+          "category": "酒店外景"
+        },
+        {
+          "path": "outputs/assets/booking/pattaya_holiday_inn_express_central-candidate-13.jpg",
+          "category": "卧床"
+        },
+        {
+          "path": "outputs/assets/booking/pattaya_holiday_inn_express_central-candidate-11.jpg",
+          "category": "公共休息区"
+        },
+        {
+          "path": "outputs/assets/booking/pattaya_holiday_inn_express_central-candidate-16.jpg",
+          "category": "卫生间"
+        }
+      ]
+    },
+    {
+      "candidate_id": "pattaya_leela_resort_spa",
+      "property_name": "The Leela Resort & Spa Pattaya",
+      "source_page": "https://www.booking.cn/hotel/th/the-leela-resort-amp-spa-pattaya.zh-cn.html?checkin=2026-09-28&checkout=2026-09-30&group_adults=2&group_children=0&no_rooms=1&selected_currency=CNY",
+      "images": [
+        {
+          "path": "outputs/assets/booking/pattaya_leela_resort_spa-candidate-01.jpg",
+          "category": "酒店外景"
+        },
+        {
+          "path": "outputs/assets/booking/pattaya_leela_resort_spa-candidate-04.jpg",
+          "category": "卧床"
+        },
+        {
+          "path": "outputs/assets/booking/pattaya_leela_resort_spa-candidate-02.jpg",
+          "category": "公共休息区"
+        },
+        {
+          "path": "outputs/assets/booking/pattaya_leela_resort_spa-candidate-07.jpg",
+          "category": "盥洗区"
+        }
+      ]
+    },
+    {
+      "candidate_id": "koh_samet_larissa_private_beach",
+      "property_name": "Larissa Samed Resort",
+      "source_page": "https://www.booking.cn/hotel/th/larissa-resort.zh-cn.html?checkin=2026-09-30&checkout=2026-10-04&group_adults=2&group_children=0&no_rooms=1&selected_currency=CNY",
+      "images": [
+        {
+          "path": "outputs/assets/booking/koh_samet_larissa_private_beach-candidate-01.jpg",
+          "category": "度假村外景"
+        },
+        {
+          "path": "outputs/assets/booking/koh_samet_larissa_private_beach-candidate-18.jpg",
+          "category": "卧床"
+        },
+        {
+          "path": "outputs/assets/booking/koh_samet_larissa_private_beach-candidate-16.jpg",
+          "category": "露台休憩区"
+        },
+        {
+          "path": "outputs/assets/booking/koh_samet_larissa_private_beach-candidate-19.jpg",
+          "category": "海边景观"
+        }
+      ]
+    },
+    {
+      "candidate_id": "koh_samet_tubtim_beachfront",
+      "property_name": "Tubtim Resort",
+      "source_page": "https://www.booking.com/hotel/th/tubtim-resort-2.zh-cn.html?checkin=2026-09-30&checkout=2026-10-04&group_adults=2&group_children=0&no_rooms=1&selected_currency=CNY",
+      "images": [
+        {
+          "path": "outputs/assets/booking/koh_samet_tubtim_beachfront-candidate-01.jpg",
+          "category": "海滩外景"
+        },
+        {
+          "path": "outputs/assets/booking/koh_samet_tubtim_beachfront-candidate-12.jpg",
+          "category": "简易别墅外观"
+        },
+        {
+          "path": "outputs/assets/booking/koh_samet_tubtim_beachfront-candidate-03.jpg",
+          "category": "公共休息区"
+        },
+        {
+          "path": "outputs/assets/booking/koh_samet_tubtim_beachfront-candidate-02.jpg",
+          "category": "卫生间"
+        }
+      ]
+    },
+    {
+      "candidate_id": "koh_samet_viking_ao_thian",
+      "property_name": "Viking Holiday Resort",
+      "source_page": "https://www.booking.com/hotel/th/viking-resort.zh-cn.html?checkin=2026-09-30&checkout=2026-10-04&group_adults=2&group_children=0&no_rooms=1&selected_currency=CNY",
+      "images": [
+        {
+          "path": "outputs/assets/booking/koh_samet_viking_ao_thian-candidate-03.jpg",
+          "category": "度假村外景"
+        },
+        {
+          "path": "outputs/assets/booking/koh_samet_viking_ao_thian-candidate-04.jpg",
+          "category": "卧床"
+        },
+        {
+          "path": "outputs/assets/booking/koh_samet_viking_ao_thian-candidate-06.jpg",
+          "category": "室内休憩区"
+        },
+        {
+          "path": "outputs/assets/booking/koh_samet_viking_ao_thian-candidate-05.jpg",
+          "category": "卫生间"
+        }
+      ]
+    },
+    {
+      "candidate_id": "koh_samet_samed_garden_aonoinna",
+      "property_name": "Samed Garden Resort",
+      "source_page": "https://www.booking.com/hotel/th/samed-garden-resort.zh-cn.html?checkin=2026-09-30&checkout=2026-10-04&group_adults=2&group_children=0&no_rooms=1&selected_currency=CNY",
+      "images": [
+        {
+          "path": "outputs/assets/booking/koh_samet_samed_garden_aonoinna-candidate-01.jpg",
+          "category": "度假村外景"
+        },
+        {
+          "path": "outputs/assets/booking/koh_samet_samed_garden_aonoinna-candidate-02.jpg",
+          "category": "卧床"
+        },
+        {
+          "path": "outputs/assets/booking/koh_samet_samed_garden_aonoinna-candidate-05.jpg",
+          "category": "室内休憩区"
+        },
+        {
+          "path": "outputs/assets/booking/koh_samet_samed_garden_aonoinna-candidate-03.jpg",
+          "category": "卫生间"
+        }
+      ]
+    },
+    {
+      "candidate_id": "bkk2_true_siam_rangnam",
+      "property_name": "True Siam Rangnam Hotel",
+      "source_page": "https://www.booking.cn/hotel/th/true-siam-rangnam.zh-cn.html?checkin=2026-10-04&checkout=2026-10-05&group_adults=2&group_children=0&no_rooms=1&selected_currency=CNY",
+      "images": [
+        {
+          "path": "outputs/assets/booking/bkk2_true_siam_rangnam-candidate-06.jpg",
+          "category": "酒店外景"
+        },
+        {
+          "path": "outputs/assets/booking/bkk2_true_siam_rangnam-candidate-02.jpg",
+          "category": "卧床"
+        },
+        {
+          "path": "outputs/assets/booking/bkk2_true_siam_rangnam-candidate-04.jpg",
+          "category": "室内休憩区"
+        },
+        {
+          "path": "outputs/assets/booking/bkk2_true_siam_rangnam-candidate-17.jpg",
+          "category": "卧床细节"
+        }
+      ]
+    },
+    {
+      "candidate_id": "bkk2_global_pratunam",
+      "property_name": "Global Hotel Pratunam Bangkok",
+      "source_page": "https://www.booking.cn/hotel/th/global.zh-cn.html?checkin=2026-10-04&checkout=2026-10-05&group_adults=2&no_rooms=1&selected_currency=CNY",
+      "images": [
+        {
+          "path": "outputs/assets/booking/bkk2_global_pratunam-candidate-01.jpg",
+          "category": "酒店外景"
+        },
+        {
+          "path": "outputs/assets/booking/bkk2_global_pratunam-candidate-02.jpg",
+          "category": "卧床"
+        },
+        {
+          "path": "outputs/assets/booking/bkk2_global_pratunam-candidate-04.jpg",
+          "category": "室内休憩区"
+        },
+        {
+          "path": "outputs/assets/booking/bkk2_global_pratunam-candidate-03.jpg",
+          "category": "卫生间"
+        }
+      ]
+    },
+    {
+      "candidate_id": "bkk2_siam_star",
+      "property_name": "Siam Star Hotel",
+      "source_page": "https://www.booking.cn/hotel/th/siam-star.zh-cn.html?checkin=2026-10-04&checkout=2026-10-05&group_adults=2&no_rooms=1&selected_currency=CNY",
+      "images": [
+        {
+          "path": "outputs/assets/booking/bkk2_siam_star-candidate-04.jpg",
+          "category": "酒店公共区"
+        },
+        {
+          "path": "outputs/assets/booking/bkk2_siam_star-candidate-02.jpg",
+          "category": "卧床"
+        },
+        {
+          "path": "outputs/assets/booking/bkk2_siam_star-candidate-10.jpg",
+          "category": "室内休憩区"
+        },
+        {
+          "path": "outputs/assets/booking/bkk2_siam_star-candidate-03.jpg",
+          "category": "卫生间"
+        }
+      ]
+    },
+    {
+      "candidate_id": "bkk2_4m_pratunam",
+      "property_name": "4M Pratunam Hotel",
+      "source_page": "https://www.booking.cn/hotel/th/4m-pratunam.zh-cn.html?checkin=2026-10-04&checkout=2026-10-05&group_adults=2&no_rooms=1&selected_currency=CNY",
+      "images": [
+        {
+          "path": "outputs/assets/booking/bkk2_4m_pratunam-candidate-01.jpg",
+          "category": "酒店外景"
+        },
+        {
+          "path": "outputs/assets/booking/bkk2_4m_pratunam-candidate-02.jpg",
+          "category": "卧床"
+        },
+        {
+          "path": "outputs/assets/booking/bkk2_4m_pratunam-candidate-05.jpg",
+          "category": "公共休息区"
+        },
+        {
+          "path": "outputs/assets/booking/bkk2_4m_pratunam-candidate-03.jpg",
+          "category": "卫生间"
+        }
+      ]
+    }
+  ]
+}
