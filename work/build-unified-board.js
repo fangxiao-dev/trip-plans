@@ -3,7 +3,7 @@ const path = require('path');
 
 const root = 'E:/Personal/旅行';
 const dataPath = path.join(root, 'work/trip-data.json');
-const outputPath = path.join(root, 'outputs/index.html');
+const outputPath = path.join(root, 'outputs/thailand-honeymoon-board.html');
 const data = JSON.parse(fs.readFileSync(dataPath, 'utf8'));
 const byId = new Map(data.accommodation_candidates.map((candidate) => [candidate.id, candidate]));
 
