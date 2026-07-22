@@ -7,3 +7,6 @@ outputs/assets/booking/.chrome-profile/
 
 # Local visual QA screenshots
 outputs/*-check.png
+
+.vercel
+.env*

@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const root = 'E:/Personal/旅行';
+const root = path.resolve(__dirname, '..', '..');
 const templatePath = path.join(root, '.agents/skills/trip-map-builder/assets/template.html');
 const dataPath = path.join(root, 'work/trip-data.json');
 const outputPath = path.join(root, 'outputs/thailand-honeymoon-map.html');
