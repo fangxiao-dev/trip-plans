@@ -1,0 +1,4 @@
+:root { color-scheme: light; }
+html, body { min-height: 100%; margin: 0; }
+#app { min-height: 100vh; }
+body.spa-map, body.spa-details { overflow-x: hidden; }
