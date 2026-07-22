@@ -113,7 +113,6 @@ function cancellationMetric(value) {
   if (text.includes('免费取消')) return '可取消';
   return '待复核';
 }
-function priceOf(candidate) { return candidate.price?.board_display?.displayed_total ?? candidate.price?.displayed_total ?? candidate.price?.current_total ?? '待复核'; }
 function bookingLabel(candidate) { return candidate.platform === 'Airbnb' ? '打开 Airbnb' : '打开 Booking 中国站'; }
 function getPhotos(candidate) {
   if (photoChoices[candidate.id]) return photoChoices[candidate.id].map(([index, label]) => ({ path: `outputs/assets/booking/${candidate.id}-candidate-${String(index).padStart(2, '0')}.jpg`, label }));
@@ -138,7 +137,6 @@ function updateData() {
 function card(candidate, group) {
   const photos = getPhotos(candidate);
   const candidateId = `stay-${group.id}`;
-  const metricPrice = priceOf(candidate);
   const rating = candidate.rating ?? candidate.review_score ?? '待复核';
   const review = candidate.review_count ? `${candidate.review_count.toLocaleString('zh-CN')} 条评价` : '评分详情待复核';
   const cancellation = cancellationText(candidate.price?.cancellation || candidate.cancellation);
@@ -147,7 +145,7 @@ function card(candidate, group) {
   const note = candidate.tradeoff || '预订前确认实际房型、含税价格与最终取消条件。';
   const images = photos.map((photo, photoIndex) => `<img class="stay-image${photoIndex ? '' : ' is-active'}" src="${escapeHtml(assetPath(photo.path))}" alt="${escapeHtml(candidate.name)} · ${escapeHtml(photo.label)}" loading="lazy">`).join('');
   const controls = photos.length > 1 ? `<div class="gallery-controls"><button type="button" data-gallery-step="-1" aria-label="上一张图片">←</button><button type="button" data-gallery-step="1" aria-label="下一张图片">→</button></div><span class="gallery-count" aria-live="polite">1 / ${photos.length}</span>` : '';
-  return `<article class="accommodation-card" id="${candidateId}"><div class="stay-gallery" data-gallery><div class="stay-images">${images}</div>${controls}</div><div class="stay-body"><div class="stay-intro"><p class="stay-kicker">${escapeHtml(candidate.area || group.city)}</p><h3>${escapeHtml(candidate.name)}</h3><p class="stay-area">${escapeHtml(candidate.room_summary || candidate.property_type || '具体房型以预订页为准')}</p></div><p class="stay-reason">${escapeHtml(reason)}</p><dl class="stay-metrics"><div><dt>${group.nights}记录总价</dt><dd>${metricPrice === '待复核' ? metricPrice : `¥${metricPrice}`}</dd><small>2位成人 · 人民币</small></div><div><dt>评分</dt><dd>${escapeHtml(rating)}</dd><small>${escapeHtml(review)}</small></div><div><dt>取消提示</dt><dd class="metric-date">${escapeHtml(cancellationMetricText)}</dd><small>${escapeHtml(cancellation)}</small></div></dl><footer class="stay-footer"><p>${escapeHtml(note)}</p><a class="booking-link" href="${escapeHtml(candidate.url)}" target="_blank" rel="noreferrer">${bookingLabel(candidate)} <span aria-hidden="true">↗</span></a></footer></div></article>`;
+  return `<article class="accommodation-card" id="${candidateId}"><div class="stay-gallery" data-gallery><div class="stay-images">${images}</div>${controls}</div><div class="stay-body"><div class="stay-intro"><p class="stay-kicker">${escapeHtml(candidate.area || group.city)}</p><h3>${escapeHtml(candidate.name)}</h3><p class="stay-area">${escapeHtml(candidate.room_summary || candidate.property_type || '具体房型以预订页为准')}</p></div><p class="stay-reason">${escapeHtml(reason)}</p><dl class="stay-metrics"><div><dt>评分</dt><dd>${escapeHtml(rating)}</dd><small>${escapeHtml(review)}</small></div><div><dt>取消提示</dt><dd class="metric-date">${escapeHtml(cancellationMetricText)}</dd><small>${escapeHtml(cancellation)}</small></div></dl><footer class="stay-footer"><p>${escapeHtml(note)}</p><a class="booking-link" href="${escapeHtml(candidate.url)}" target="_blank" rel="noreferrer">${bookingLabel(candidate)} <span aria-hidden="true">↗</span></a></footer></div></article>`;
 }
 function stage(group) {
   const candidate = byId.get(group.primary);
@@ -178,6 +176,7 @@ body{overflow-x:hidden}.stay-heading{display:flex;align-items:end;justify-conten
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition:none!important}}
 .stage-saffron .stay-kicker,.stage-saffron .section-label{color:var(--saffron-text)}.stage-lagoon .stay-kicker,.stage-lagoon .section-label{color:var(--lagoon-text)}.rail-button[aria-current="true"] .rail-dot{color:#fffaf0}.rail-map-switch:hover,.booking-link:hover,.booking-link:focus-visible{background:var(--coral)}button:focus-visible,a:focus-visible{outline-color:var(--coral)}
 </style></head>`);
+html = html.replace('</head>', '<style data-metric-layout>.stay-metrics{grid-template-columns:repeat(2,minmax(0,1fr))}.stay-metrics>div{padding:14px 20px}.stay-metrics .metric-date{font-size:clamp(20px,2.2vw,29px)}@media(max-width:700px){.stay-metrics{grid-template-columns:repeat(2,minmax(0,1fr))}.stay-metrics>div{padding:12px 14px}}@media(max-width:380px){.stay-metrics>div:first-child{grid-column:auto;border-bottom:0}.stay-metrics>div:nth-child(2){border-right:0}}</style></head>');
 html = html.replace('</body>', '<script data-stay-observer>const stageButtons=[...document.querySelectorAll("[data-stage-target]")];const stageObserver=new IntersectionObserver((entries)=>{const visible=entries.filter((entry)=>entry.isIntersecting).sort((a,b)=>b.intersectionRatio-a.intersectionRatio)[0];if(!visible)return;stageButtons.forEach((button)=>button.setAttribute("aria-current",String(button.dataset.stageTarget===visible.target.dataset.stage)));},{rootMargin:"-20% 0px -60% 0px",threshold:[0,.25,.5]});document.querySelectorAll("[data-stage]").forEach((stage)=>stageObserver.observe(stage));</script></body>');
 fs.writeFileSync(outputPath, html, 'utf8');
 console.log(`Wrote ${outputPath}`);

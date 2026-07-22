@@ -4,7 +4,8 @@ const { execFileSync } = require('child_process');
 
 const root = path.resolve(__dirname, '..');
 const outputsDir = path.join(root, 'outputs');
-const routeDir = path.join(outputsDir, 'ing', 'honeymoon-with-live');
+const routeDir = path.join(outputsDir, 'ing', 'honeymoon-with-liv');
+const formerRouteDir = path.join(outputsDir, 'ing', 'honeymoon-with-live');
 const legacyMapPath = path.join(outputsDir, 'thailand-honeymoon-map.html');
 const legacyBoardPath = path.join(outputsDir, 'thailand-honeymoon-board.html');
 const legacyPrototypePath = path.join(outputsDir, 'thailand-honeymoon-layout-prototype.html');
@@ -30,12 +31,12 @@ function writeRootEntry() {
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta http-equiv="refresh" content="0;url=/ing/honeymoon-with-live/">
+  <meta http-equiv="refresh" content="0;url=/ing/honeymoon-with-liv/">
   <title>泰国蜜月 · 行程地图</title>
 </head>
 <body>
   <p>正在打开行程地图……</p>
-  <p><a href="/ing/honeymoon-with-live/">进入行程地图</a></p>
+  <p><a href="/ing/honeymoon-with-liv/">进入行程地图</a></p>
 </body>
 </html>
 `, 'utf8');
@@ -43,6 +44,7 @@ function writeRootEntry() {
 
 function writeStaticRoutes(mapHtml, boardHtml) {
   const detailsDir = path.join(routeDir, 'details');
+  fs.rmSync(formerRouteDir, { recursive: true, force: true });
   fs.rmSync(routeDir, { recursive: true, force: true });
   fs.mkdirSync(detailsDir, { recursive: true });
 
