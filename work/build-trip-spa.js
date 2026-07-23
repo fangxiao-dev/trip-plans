@@ -49,10 +49,10 @@ function writeStaticRoutes(mapHtml, boardHtml) {
   fs.mkdirSync(detailsDir, { recursive: true });
 
   fs.writeFileSync(path.join(routeDir, 'index.html'), rewriteStaticPaths(mapHtml, {
-    'thailand-honeymoon-board.html': 'details/'
+    'thailand-honeymoon-board.html': '/ing/honeymoon-with-liv/details/'
   }), 'utf8');
   fs.writeFileSync(path.join(detailsDir, 'index.html'), rewriteStaticPaths(boardHtml, {
-    'thailand-honeymoon-map.html': '../'
+    'thailand-honeymoon-map.html': '/ing/honeymoon-with-liv/'
   }), 'utf8');
 }
 
