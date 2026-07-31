@@ -1,8 +1,9 @@
 const fs = require('fs');
 const path = require('path');
 
-const root = path.resolve(__dirname, '..', '..');
-const dataPath = path.join(root, 'work/trip-data.json');
+const moduleDir = path.resolve(__dirname, '..');
+const root = path.resolve(moduleDir, '..', '..', '..');
+const dataPath = path.join(moduleDir, 'trip-data.json');
 const outputPath = path.join(root, 'outputs/thailand-honeymoon-board.html');
 const data = JSON.parse(fs.readFileSync(dataPath, 'utf8'));
 const byId = new Map(data.accommodation_candidates.map((candidate) => [candidate.id, candidate]));

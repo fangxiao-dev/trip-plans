@@ -1,0 +1,37 @@
+{
+  "profile": {
+    "name": "Xiao",
+    "tagline": "我的自留地。\n旅行、工具、和想法。",
+    "taglineHighlight": "自留地",
+    "intro": "一个自己用的小站 —— 想到什么就做点什么挂上来。"
+  },
+  "sections": [
+    {
+      "id": "us",
+      "title": "我和 Liv",
+      "accent": "pink",
+      "entries": [
+        {
+          "title": "泰国蜜月行程地图",
+          "desc": "曼谷 / 芭提雅 / 沙美岛,12 天逐日地图与住宿详情。",
+          "href": "/ing/honeymoon-with-liv/"
+        }
+      ],
+      "emptyText": "以后会往这里加更多"
+    },
+    {
+      "id": "tools",
+      "title": "小工具",
+      "accent": "blue",
+      "entries": [],
+      "emptyText": "还没有工具,敬请期待"
+    },
+    {
+      "id": "blog",
+      "title": "博客",
+      "accent": "green",
+      "entries": [],
+      "emptyText": "还没有文章"
+    }
+  ]
+}

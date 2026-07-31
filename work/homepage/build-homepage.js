@@ -1,11 +1,114 @@
-<!doctype html>
+const fs = require('fs');
+const path = require('path');
+
+const root = path.resolve(__dirname, '..', '..');
+const dataPath = path.join(__dirname, 'site-data.json');
+const outputPath = path.join(root, 'outputs', 'index.html');
+
+const data = JSON.parse(fs.readFileSync(dataPath, 'utf8'));
+
+// 分区主色:圆点 / 卡片底 / 卡片文字。新增模块时在这里加一个色名即可。
+const ACCENTS = {
+  pink:  { dot: '#f2789f', bg: '#fff0f4', ink: '#8a2846', band: '#ffd6e0' },
+  blue:  { dot: '#4a7dd6', bg: '#eef4ff', ink: '#1f3f80', band: '#cfe0ff' },
+  green: { dot: '#4d9b6a', bg: '#eef7f0', ink: '#1f5334', band: '#cfe8d6' }
+};
+
+const escapeHtml = (value) => String(value)
+  .replace(/&/g, '&amp;')
+  .replace(/</g, '&lt;')
+  .replace(/>/g, '&gt;')
+  .replace(/"/g, '&quot;');
+
+const accentOf = (name) => {
+  const accent = ACCENTS[name];
+  if (!accent) throw new Error(`site-data.json 使用了未定义的分区主色:${name}`);
+  return accent;
+};
+
+// 派生色在构建期算好,直接输出 rgba()。
+// 不用 color-mix():它在旧引擎里会让整条声明失效并回退到继承色,
+// 边框和文字会一起变成深墨色,和设计完全不符。
+const rgba = (hex, alpha) => {
+  const m = /^#([0-9a-f]{6})$/i.exec(hex);
+  if (!m) throw new Error(`分区主色必须是 6 位十六进制:${hex}`);
+  const int = parseInt(m[1], 16);
+  return `rgba(${(int >> 16) & 255}, ${(int >> 8) & 255}, ${int & 255}, ${alpha})`;
+};
+
+const ARROW = '<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
+
+function renderTagline({ tagline, taglineHighlight }) {
+  const lines = tagline.split('\n').map(escapeHtml);
+  if (!taglineHighlight) return lines.join('<br>');
+  const target = escapeHtml(taglineHighlight);
+  let done = false;
+  return lines
+    .map((line) => {
+      if (done || !line.includes(target)) return line;
+      done = true;
+      return line.replace(target, `<mark>${target}</mark>`);
+    })
+    .join('<br>');
+}
+
+function renderEntry(entry, index) {
+  return `        <a class="card" href="${escapeHtml(entry.href)}" style="--i:${index}">
+          <span class="card-body">
+            <h3>${escapeHtml(entry.title)}</h3>
+            <p>${escapeHtml(entry.desc)}</p>
+          </span>
+          <span class="card-go">打开${ARROW}</span>
+        </a>`;
+}
+
+function renderEmptyCard(section, index) {
+  return `        <p class="card card-empty" style="--i:${index}">${escapeHtml(section.emptyText)}</p>`;
+}
+
+function renderSection(section) {
+  const cards = section.entries.map(renderEntry);
+  if (section.emptyText) cards.push(renderEmptyCard(section, cards.length));
+  return `      <section class="zone zone-${escapeHtml(section.accent)}" id="${escapeHtml(section.id)}" aria-labelledby="${escapeHtml(section.id)}-title">
+        <div class="zone-head">
+          <span class="zone-dot" aria-hidden="true"></span>
+          <h2 id="${escapeHtml(section.id)}-title">${escapeHtml(section.title)}</h2>
+        </div>
+        <div class="zone-grid">
+${cards.join('\n')}
+        </div>
+      </section>`;
+}
+
+function renderAccentVars() {
+  return Object.entries(ACCENTS)
+    .map(([name, a]) => `    .zone-${name} {
+      --dot: ${a.dot};
+      --card-bg: ${a.bg};
+      --card-ink: ${a.ink};
+      --card-soft: ${rgba(a.ink, 0.88)};
+      --card-edge: ${rgba(a.ink, 0.28)};
+      --card-shadow: ${rgba(a.ink, 0.22)};
+    }`)
+    .join('\n');
+}
+
+function renderBlobs() {
+  return data.sections
+    .map((section) => `<span style="background:${accentOf(section.accent).dot}"></span>`)
+    .join('');
+}
+
+const heroBand = accentOf(data.sections[0].accent).band;
+
+const html = `<!doctype html>
 <html lang="zh-CN">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Xiao · 自留地</title>
-  <meta name="description" content="一个自己用的小站 —— 想到什么就做点什么挂上来。">
-  <meta name="author" content="Xiao">
+  <title>${escapeHtml(data.profile.name)} · 自留地</title>
+  <meta name="description" content="${escapeHtml(data.profile.intro)}">
+  <meta name="author" content="${escapeHtml(data.profile.name)}">
   <meta name="theme-color" content="#ffffff">
   <style>
     *, *::before, *::after { box-sizing: border-box; }
@@ -15,36 +118,13 @@
       --ink:        #141414;
       --ink-soft:   #5f5f63;
       --page:       #ffffff;
-      --hero-band:  #ffd6e0;
+      --hero-band:  ${heroBand};
       --gutter:     clamp(24px, 6vw, 56px);
       --maxw:       1100px;
       --ease:       cubic-bezier(.22, .8, .3, 1);
     }
 
-    .zone-pink {
-      --dot: #f2789f;
-      --card-bg: #fff0f4;
-      --card-ink: #8a2846;
-      --card-soft: rgba(138, 40, 70, 0.88);
-      --card-edge: rgba(138, 40, 70, 0.28);
-      --card-shadow: rgba(138, 40, 70, 0.22);
-    }
-    .zone-blue {
-      --dot: #4a7dd6;
-      --card-bg: #eef4ff;
-      --card-ink: #1f3f80;
-      --card-soft: rgba(31, 63, 128, 0.88);
-      --card-edge: rgba(31, 63, 128, 0.28);
-      --card-shadow: rgba(31, 63, 128, 0.22);
-    }
-    .zone-green {
-      --dot: #4d9b6a;
-      --card-bg: #eef7f0;
-      --card-ink: #1f5334;
-      --card-soft: rgba(31, 83, 52, 0.88);
-      --card-edge: rgba(31, 83, 52, 0.28);
-      --card-shadow: rgba(31, 83, 52, 0.22);
-    }
+${renderAccentVars()}
 
     html { scroll-behavior: smooth; }
 
@@ -214,51 +294,16 @@
 <body>
   <div class="wrap">
     <header class="hero">
-      <div class="blobs" aria-hidden="true"><span style="background:#f2789f"></span><span style="background:#4a7dd6"></span><span style="background:#4d9b6a"></span></div>
-      <h1>我的<mark>自留地</mark>。<br>旅行、工具、和想法。</h1>
-      <p class="intro">一个自己用的小站 —— 想到什么就做点什么挂上来。</p>
+      <div class="blobs" aria-hidden="true">${renderBlobs()}</div>
+      <h1>${renderTagline(data.profile)}</h1>
+      <p class="intro">${escapeHtml(data.profile.intro)}</p>
     </header>
 
     <main>
-      <section class="zone zone-pink" id="us" aria-labelledby="us-title">
-        <div class="zone-head">
-          <span class="zone-dot" aria-hidden="true"></span>
-          <h2 id="us-title">我和 Liv</h2>
-        </div>
-        <div class="zone-grid">
-        <a class="card" href="/ing/honeymoon-with-liv/" style="--i:0">
-          <span class="card-body">
-            <h3>泰国蜜月行程地图</h3>
-            <p>曼谷 / 芭提雅 / 沙美岛,12 天逐日地图与住宿详情。</p>
-          </span>
-          <span class="card-go">打开<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-        </a>
-        <p class="card card-empty" style="--i:1">以后会往这里加更多</p>
-        </div>
-      </section>
-
-      <section class="zone zone-blue" id="tools" aria-labelledby="tools-title">
-        <div class="zone-head">
-          <span class="zone-dot" aria-hidden="true"></span>
-          <h2 id="tools-title">小工具</h2>
-        </div>
-        <div class="zone-grid">
-        <p class="card card-empty" style="--i:0">还没有工具,敬请期待</p>
-        </div>
-      </section>
-
-      <section class="zone zone-green" id="blog" aria-labelledby="blog-title">
-        <div class="zone-head">
-          <span class="zone-dot" aria-hidden="true"></span>
-          <h2 id="blog-title">博客</h2>
-        </div>
-        <div class="zone-grid">
-        <p class="card card-empty" style="--i:0">还没有文章</p>
-        </div>
-      </section>
+${data.sections.map(renderSection).join('\n\n')}
     </main>
 
-    <footer>© 2026 Xiao</footer>
+    <footer>© ${new Date().getFullYear()} ${escapeHtml(data.profile.name)}</footer>
   </div>
 
   <script>
@@ -294,3 +339,8 @@
   </script>
 </body>
 </html>
+`;
+
+fs.mkdirSync(path.dirname(outputPath), { recursive: true });
+fs.writeFileSync(outputPath, html, 'utf8');
+console.log(`Wrote homepage to ${outputPath}`);

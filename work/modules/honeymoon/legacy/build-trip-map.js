@@ -1,12 +1,13 @@
 const fs = require('fs');
 const path = require('path');
 
-const root = path.resolve(__dirname, '..', '..');
+const moduleDir = path.resolve(__dirname, '..');
+const root = path.resolve(moduleDir, '..', '..', '..');
 const templatePath = path.join(root, '.agents/skills/trip-map-builder/assets/template.html');
-const dataPath = path.join(root, 'work/trip-data.json');
+const dataPath = path.join(moduleDir, 'trip-data.json');
 const outputPath = path.join(root, 'outputs/thailand-honeymoon-map.html');
 const boardOutputPath = path.join(root, 'outputs/thailand-honeymoon-board.html');
-const coordinateAuditPath = path.join(root, 'work/trip-map-coordinate-audit.json');
+const coordinateAuditPath = path.join(moduleDir, 'trip-map-coordinate-audit.json');
 const data = JSON.parse(fs.readFileSync(dataPath, 'utf8'));
 const candidateById = new Map(data.accommodation_candidates.map((candidate) => [candidate.id, candidate]));
 const stayById = new Map(data.stay_segments.map((stay) => [stay.id, stay]));
