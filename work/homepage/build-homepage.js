@@ -254,6 +254,22 @@ ${renderAccentVars()}
       padding: 28px 0 40px;
       font-size: 13px;
       color: var(--ink-soft);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 20px;
+      align-items: center;
+      justify-content: space-between;
+    }
+    footer a {
+      color: inherit;
+      text-decoration-color: #c9c9ce;
+      text-underline-offset: 3px;
+      min-height: 24px;
+      display: inline-flex;
+      align-items: center;
+    }
+    @media (hover: hover) {
+      footer a:hover { color: var(--ink); text-decoration-color: currentColor; }
     }
 
     /* ---------- 入场动画 ----------
@@ -303,7 +319,10 @@ ${renderAccentVars()}
 ${data.sections.map(renderSection).join('\n\n')}
     </main>
 
-    <footer>© ${new Date().getFullYear()} ${escapeHtml(data.profile.name)}</footer>
+    <footer>
+      <span>© ${new Date().getFullYear()} ${escapeHtml(data.profile.name)}</span>
+${data.profile.email ? `      <a href="mailto:${escapeHtml(data.profile.email)}">${escapeHtml(data.profile.email)}</a>` : ''}
+    </footer>
   </div>
 
   <script>
