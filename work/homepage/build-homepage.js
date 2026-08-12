@@ -10,6 +10,7 @@ const data = JSON.parse(fs.readFileSync(dataPath, 'utf8'));
 // 分区主色:圆点 / 卡片底 / 卡片文字。新增模块时在这里加一个色名即可。
 const ACCENTS = {
   pink:  { dot: '#f2789f', bg: '#fff0f4', ink: '#8a2846', band: '#ffd6e0' },
+  orange:{ dot: '#d76a43', bg: '#fff4ea', ink: '#7b351f', band: '#f5d2bf' },
   blue:  { dot: '#4a7dd6', bg: '#eef4ff', ink: '#1f3f80', band: '#cfe0ff' },
   green: { dot: '#4d9b6a', bg: '#eef7f0', ink: '#1f5334', band: '#cfe8d6' }
 };
@@ -56,10 +57,10 @@ function renderEntry(entry, index) {
   const icon = entry.icon
     ? `<span class="card-icon" aria-hidden="true">${escapeHtml(entry.icon)}</span>`
     : '';
+  const iconLine = icon ? `            ${icon}\n` : '';
   return `        <a class="card" href="${escapeHtml(entry.href)}" style="--i:${index}">
           <span class="card-body">
-            ${icon}
-            <h3>${escapeHtml(entry.title)}</h3>
+${iconLine}            <h3>${escapeHtml(entry.title)}</h3>
             <p>${escapeHtml(entry.desc)}</p>
           </span>
           <span class="card-go">打开${ARROW}</span>
