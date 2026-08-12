@@ -187,8 +187,8 @@ h1 { margin: 0; font-size: clamp(31px, 4vw, 46px); line-height: 1.15; letter-spa
 }
 .route-desc { margin: 0; color: var(--ink-soft); font-size: 16px; line-height: 1.65; }
 .choices { margin: 9px 0 0; padding-left: 20px; color: var(--ink-soft); font-size: 14px; }
-.card-tools { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 13px; }
-.notice-tools { display: flex; flex-wrap: wrap; gap: 8px; }
+.card-tools { display: flex; flex-wrap: nowrap; align-items: center; gap: 12px; margin-top: 13px; }
+.notice-tools { display: flex; flex: 0 0 auto; gap: 8px; margin-left: auto; }
 .notice-trigger {
   display: inline-grid; width: 44px; height: 44px; place-items: center; padding: 0;
   border: 1px solid var(--line); border-radius: 50%; color: var(--ink-soft);
@@ -207,7 +207,7 @@ h1 { margin: 0; font-size: clamp(31px, 4vw, 46px); line-height: 1.15; letter-spa
 .reserve-link { color: var(--green); border: 1px solid var(--line-strong); background: var(--paper-strong); }
 .nav-link:hover, .reserve-link:hover { filter: brightness(.94); }
 .nav-link svg, .reserve-link svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; }
-.card-links { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 8px; }
+.card-links { display: flex; flex: 1 1 auto; min-width: 0; flex-wrap: wrap; justify-content: flex-start; gap: 8px; }
 .map-pane { min-width: 0; min-height: 0; }
 #map {
   width: 100%; height: 100%; min-height: 420px; overflow: hidden;
@@ -228,13 +228,14 @@ h1 { margin: 0; font-size: clamp(31px, 4vw, 46px); line-height: 1.15; letter-spa
 .leaflet-control-zoom a { color: var(--green) !important; background: var(--paper-strong) !important; }
 .leaflet-control-attribution { font-size: 9px; }
 .notice-popover {
-  position: fixed; z-index: 1200; width: min(330px, calc(100vw - 24px));
+  position: fixed; z-index: 1200; top: var(--popover-center-y, 50%); left: var(--popover-center-x, 50%); width: min(330px, calc(100vw - 24px));
+  max-height: calc(100dvh - 32px); overflow-y: auto;
   padding: 18px 46px 18px 18px; border: 1px solid var(--line-strong); border-radius: 16px;
   color: var(--ink); background: rgba(255, 250, 240, .98); box-shadow: var(--shadow-popover);
-  opacity: 0; transform: translateY(7px) scale(.985); pointer-events: none;
+  opacity: 0; transform: translate(-50%, calc(-50% + 7px)) scale(.985); pointer-events: none;
   transition: opacity 160ms ease-out, transform var(--motion);
 }
-.notice-popover[data-open="true"] { opacity: 1; transform: translateY(0) scale(1); pointer-events: auto; }
+.notice-popover[data-open="true"] { opacity: 1; transform: translate(-50%, -50%) scale(1); pointer-events: auto; }
 .notice-popover h3 { margin: 0 0 6px; font-size: 17px; line-height: 1.3; }
 .notice-list { display: grid; gap: 12px; margin-top: 12px; }
 .notice-row { display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 10px; align-items: start; }
@@ -281,15 +282,12 @@ h1 { margin: 0; font-size: clamp(31px, 4vw, 46px); line-height: 1.15; letter-spa
   .route-dot { left: -22px; }
   .route-card { padding: 18px 11px 20px 14px; }
   .route-name { font-size: 20px; }
-  .card-tools { align-items: flex-end; }
-  .notice-popover { left: 12px !important; right: 12px; bottom: calc(12px + env(safe-area-inset-bottom)); top: auto !important; width: auto; }
 }
 @media (max-width: 520px) {
   .day-tab small { display: none; }
   .route-name-row { display: block; }
   .kind-tag { display: inline-flex; margin: 0 0 6px; }
-  .card-tools { display: block; }
-  .card-links { justify-content: flex-start; margin-top: 10px; }
+  .card-links { justify-content: flex-start; }
 }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
@@ -364,7 +362,7 @@ function cardLinks(location) {
 }
 
 function renderDay(day) {
-  const cards = day.locations.map((location) => '<article class="route-item" data-location-id="' + safe(location.id) + '" style="--day-color:' + safe(day.color) + '"><span class="route-dot" aria-hidden="true"></span><div class="route-card"><div class="route-time">' + safe(location.time) + '</div><div class="route-name-row"><h3 class="route-name">' + safe(location.name) + '</h3><span class="kind-tag">' + safe(TYPE_LABELS[location.type] || '地点') + '</span></div><p class="route-desc">' + safe(location.desc) + '</p>' + (location.choices?.length ? '<ul class="choices">' + location.choices.map((choice) => '<li>' + safe(choice) + '</li>').join('') + '</ul>' : '') + '<div class="card-tools"><div class="notice-tools" aria-label="' + safe(location.name) + '提醒">' + noticeButtons(location) + '</div><div class="card-links">' + cardLinks(location) + '</div></div></div></article>').join('');
+  const cards = day.locations.map((location) => '<article class="route-item" data-location-id="' + safe(location.id) + '" style="--day-color:' + safe(day.color) + '"><span class="route-dot" aria-hidden="true"></span><div class="route-card"><div class="route-time">' + safe(location.time) + '</div><div class="route-name-row"><h3 class="route-name">' + safe(location.name) + '</h3><span class="kind-tag">' + safe(TYPE_LABELS[location.type] || '地点') + '</span></div><p class="route-desc">' + safe(location.desc) + '</p>' + (location.choices?.length ? '<ul class="choices">' + location.choices.map((choice) => '<li>' + safe(choice) + '</li>').join('') + '</ul>' : '') + '<div class="card-tools"><div class="card-links">' + cardLinks(location) + '</div><div class="notice-tools" aria-label="' + safe(location.name) + '提醒">' + noticeButtons(location) + '</div></div></div></article>').join('');
   content.innerHTML = '<div class="day-intro"><div class="day-title-row"><h2>' + safe(day.displayDate || day.label) + '</h2><p>' + safe(day.title) + '</p></div>' + (day.weather ? '<div class="weather-note">' + WEATHER_ICON + '<span>' + safe(day.weather) + '</span></div>' : '') + '</div><div class="section-label">当天行程</div><div class="timeline">' + cards + '</div>';
 }
 
@@ -412,16 +410,15 @@ function findLocation(locationId) {
   return TRIP.days.flatMap((day) => day.locations).find((location) => location.id === locationId);
 }
 
-function positionPopover(trigger) {
-  if (window.innerWidth <= 900) return;
-  const rect = trigger.getBoundingClientRect();
-  const width = popover.offsetWidth || 330;
-  const height = popover.offsetHeight || 150;
-  const left = Math.min(window.innerWidth - width - 12, Math.max(12, rect.left + rect.width / 2 - width / 2));
-  const roomAbove = rect.top - 12;
-  const top = roomAbove >= height ? rect.top - height - 10 : Math.min(window.innerHeight - height - 12, rect.bottom + 10);
-  popover.style.left = left + 'px';
-  popover.style.top = Math.max(12, top) + 'px';
+function positionPopover() {
+  const pane = document.querySelector('.itinerary-pane');
+  const rect = pane.getBoundingClientRect();
+  const visibleTop = Math.max(0, rect.top);
+  const visibleBottom = Math.min(window.innerHeight, rect.bottom);
+  const visibleHeight = Math.max(0, visibleBottom - visibleTop);
+  popover.style.setProperty('--popover-center-x', (Math.max(0, rect.left) + Math.min(window.innerWidth, rect.right)) / 2 + 'px');
+  popover.style.setProperty('--popover-center-y', visibleTop + visibleHeight / 2 + 'px');
+  popover.style.maxHeight = Math.max(160, visibleHeight - 24) + 'px';
 }
 
 function closePopover(restoreFocus = false) {
@@ -445,7 +442,7 @@ function openNotice(trigger) {
   popoverBody.innerHTML = location.notices.map((notice) => '<div class="notice-row"><span class="notice-row-icon">' + (ICONS[notice.kind] || ICONS.transport) + '</span><div><strong>' + safe(notice.label) + '</strong><p>' + safe(notice.text) + '</p></div></div>').join('');
   popover.hidden = false;
   popover.dataset.open = 'false';
-  positionPopover(trigger);
+  positionPopover();
   requestAnimationFrame(() => { popover.dataset.open = 'true'; popover.querySelector('.popover-close').focus({ preventScroll: true }); });
 }
 
@@ -482,7 +479,7 @@ document.addEventListener('pointerdown', (event) => {
   if (activeTrigger && !popover.contains(event.target) && !activeTrigger.contains(event.target)) closePopover(false);
 });
 document.addEventListener('keydown', (event) => { if (event.key === 'Escape') closePopover(true); });
-window.addEventListener('resize', () => { if (activeTrigger) positionPopover(activeTrigger); if (map) map.invalidateSize(); });
+window.addEventListener('resize', () => { if (activeTrigger) positionPopover(); if (map) map.invalidateSize(); });
 
 function initMap() {
   if (!window.L) return;
