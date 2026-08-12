@@ -53,8 +53,12 @@ function renderTagline({ tagline, taglineHighlight }) {
 }
 
 function renderEntry(entry, index) {
+  const icon = entry.icon
+    ? `<span class="card-icon" aria-hidden="true">${escapeHtml(entry.icon)}</span>`
+    : '';
   return `        <a class="card" href="${escapeHtml(entry.href)}" style="--i:${index}">
           <span class="card-body">
+            ${icon}
             <h3>${escapeHtml(entry.title)}</h3>
             <p>${escapeHtml(entry.desc)}</p>
           </span>
@@ -89,6 +93,7 @@ function renderAccentVars() {
       --card-soft: ${rgba(a.ink, 0.88)};
       --card-edge: ${rgba(a.ink, 0.28)};
       --card-shadow: ${rgba(a.ink, 0.22)};
+      --card-border: ${rgba(a.ink, 0.12)};
     }`)
     .join('\n');
 }
@@ -199,19 +204,33 @@ ${renderAccentVars()}
       gap: 18px;
     }
 
+    /* 卡片本底是中性白,颜色只出现在图标徽章、边框和"打开"箭头上——
+       避免整块纯色底,分区之间靠色块跳动而不是靠色块铺满区分。 */
     .card {
       border-radius: 20px;
-      padding: 26px;
+      padding: 24px;
       min-height: 158px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       gap: 16px;
-      background: var(--card-bg);
-      color: var(--card-ink);
+      background: var(--page);
+      border: 1.5px solid var(--card-border);
+      color: var(--ink);
       text-decoration: none;
       cursor: pointer;
-      transition: transform .25s var(--ease), box-shadow .25s var(--ease);
+      transition: transform .25s var(--ease), box-shadow .25s var(--ease), border-color .25s var(--ease);
+    }
+    .card-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      background: var(--card-bg);
+      margin-bottom: 12px;
     }
     .card h3 {
       font-size: clamp(19px, 2.6vw, 21px);
@@ -219,18 +238,19 @@ ${renderAccentVars()}
       letter-spacing: -.01em;
       margin-bottom: 8px;
     }
-    .card p { font-size: 15px; line-height: 1.65; opacity: .84; }
+    .card p { font-size: 15px; line-height: 1.65; color: var(--ink-soft); }
     .card-go {
       display: inline-flex;
       align-items: center;
       gap: 6px;
       font-size: 13px;
       font-weight: 600;
+      color: var(--card-ink);
     }
     .arrow { width: 16px; height: 16px; transition: transform .25s var(--ease); }
 
     @media (hover: hover) {
-      .card:hover { transform: translateY(-3px); box-shadow: 0 12px 28px -12px var(--card-shadow); }
+      .card:hover { transform: translateY(-3px); border-color: var(--card-edge); box-shadow: 0 12px 28px -12px var(--card-shadow); }
       .card:hover .arrow { transform: translateX(3px); }
     }
     .card:active { transform: translateY(-1px); }
