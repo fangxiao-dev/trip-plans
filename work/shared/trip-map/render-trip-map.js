@@ -7,7 +7,7 @@ function assertTripData(data) {
   }
   const locationIds = new Set();
   for (const day of data.days) {
-    if (!day.id || !day.label || !day.date || !day.title || !Array.isArray(day.locations)) {
+    if (!day.id || !day.label || !day.displayDate || !day.title || !Array.isArray(day.locations)) {
       throw new Error(`Invalid day: ${day.id || '(missing id)'}`);
     }
     for (const location of day.locations) {
@@ -129,9 +129,10 @@ button:focus-visible, a:focus-visible {
 .eyebrow { margin: 0 0 4px; color: var(--orange); font-size: 13px; font-weight: 800; letter-spacing: .12em; }
 h1, h2, h3 { font-family: "Noto Serif SC", "Songti SC", STSong, serif; }
 h1 { margin: 0; font-size: clamp(31px, 4vw, 46px); line-height: 1.15; letter-spacing: -.035em; }
-.trip-subtitle { margin: 8px 0 0; color: var(--ink-soft); font-size: 17px; }
+.trip-title-row { display: flex; align-items: baseline; gap: 14px; }
+.trip-date { flex: 0 0 auto; color: var(--orange); font-size: 16px; font-weight: 750; white-space: nowrap; }
 .base-row {
-  display: flex; align-items: center; gap: 10px; margin-top: 15px;
+  display: flex; align-items: center; gap: 10px; margin-top: 12px;
   color: var(--ink-soft); font-size: 14px; font-weight: 650;
 }
 .base-mark {
@@ -152,8 +153,9 @@ h1 { margin: 0; font-size: clamp(31px, 4vw, 46px); line-height: 1.15; letter-spa
 .day-tab[aria-selected="true"] { color: #fffaf0; border-color: var(--green); background: var(--green); }
 .day-tab small { display: block; margin-top: 1px; font-size: 11px; font-weight: 650; opacity: .82; }
 .day-intro { padding: 24px 4px 8px; }
-.day-intro h2 { margin: 0; font-size: clamp(26px, 3vw, 34px); line-height: 1.24; letter-spacing: -.025em; }
-.day-intro p { margin: 5px 0 0; color: var(--ink-soft); }
+.day-title-row { display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: baseline; gap: 12px; }
+.day-title-row h2 { margin: 0; font-size: clamp(26px, 3vw, 34px); line-height: 1.24; letter-spacing: -.025em; white-space: nowrap; }
+.day-title-row p { margin: 0; color: var(--ink-soft); font-size: 15px; font-weight: 650; line-height: 1.55; }
 .weather-note {
   display: flex; gap: 10px; margin: 14px 0 2px; padding: 12px 14px;
   border: 1px solid rgba(182, 106, 19, .24); border-radius: 14px;
@@ -268,8 +270,9 @@ h1 { margin: 0; font-size: clamp(31px, 4vw, 46px); line-height: 1.15; letter-spa
   .itinerary-inner { width: 100%; padding: 0 16px calc(32px + env(safe-area-inset-bottom)); }
   .trip-header { margin: 0 -16px; padding: 18px 16px 16px; border-radius: 26px 26px 0 0; background: rgba(245, 239, 223, .97); backdrop-filter: blur(16px); }
   .eyebrow { font-size: 12px; }
-  h1 { font-size: clamp(29px, 9vw, 38px); }
-  .trip-subtitle { font-size: 15px; }
+  h1 { font-size: clamp(29px, 8.5vw, 38px); }
+  .trip-title-row { gap: 10px; }
+  .trip-date { font-size: 14px; }
   .base-row { margin-top: 11px; }
   .day-tabs { margin-top: 14px; padding-bottom: 0; border: 0; }
   .day-tab { min-height: 48px; font-size: 14px; }
@@ -300,8 +303,7 @@ h1 { margin: 0; font-size: clamp(31px, 4vw, 46px); line-height: 1.15; letter-spa
     <div class="itinerary-inner">
       <header class="trip-header">
         <p class="eyebrow" id="trip-eyebrow"></p>
-        <h1 id="trip-title"></h1>
-        <p class="trip-subtitle" id="trip-subtitle"></p>
+        <div class="trip-title-row"><h1 id="trip-title"></h1><span class="trip-date" id="trip-date"></span></div>
         <div class="base-row"><span class="base-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 20V10l8-6 8 6v10h-6v-6h-4v6H4Z"/></svg></span><span id="trip-base"></span></div>
         <div class="day-tabs" id="day-tabs" role="tablist" aria-label="选择日期"></div>
       </header>
@@ -332,7 +334,7 @@ const amapUrl = (location) => 'https://uri.amap.com/marker?position=' + location
 
 document.getElementById('trip-eyebrow').textContent = TRIP.eyebrow;
 document.getElementById('trip-title').textContent = TRIP.title;
-document.getElementById('trip-subtitle').textContent = TRIP.dateRange + ' · ' + TRIP.summary;
+document.getElementById('trip-date').textContent = TRIP.dateRange;
 document.getElementById('trip-base').textContent = TRIP.base.label + '：' + TRIP.base.name;
 
 const tabs = document.getElementById('day-tabs');
@@ -363,7 +365,7 @@ function cardLinks(location) {
 
 function renderDay(day) {
   const cards = day.locations.map((location) => '<article class="route-item" data-location-id="' + safe(location.id) + '" style="--day-color:' + safe(day.color) + '"><span class="route-dot" aria-hidden="true"></span><div class="route-card"><div class="route-time">' + safe(location.time) + '</div><div class="route-name-row"><h3 class="route-name">' + safe(location.name) + '</h3><span class="kind-tag">' + safe(TYPE_LABELS[location.type] || '地点') + '</span></div><p class="route-desc">' + safe(location.desc) + '</p>' + (location.choices?.length ? '<ul class="choices">' + location.choices.map((choice) => '<li>' + safe(choice) + '</li>').join('') + '</ul>' : '') + '<div class="card-tools"><div class="notice-tools" aria-label="' + safe(location.name) + '提醒">' + noticeButtons(location) + '</div><div class="card-links">' + cardLinks(location) + '</div></div></div></article>').join('');
-  content.innerHTML = '<div class="day-intro"><h2>' + safe(day.title) + '</h2><p>' + safe(day.date) + '</p>' + (day.weather ? '<div class="weather-note">' + WEATHER_ICON + '<span>' + safe(day.weather) + '</span></div>' : '') + '</div><div class="section-label">当天行程</div><div class="timeline">' + cards + '</div>';
+  content.innerHTML = '<div class="day-intro"><div class="day-title-row"><h2>' + safe(day.displayDate || day.label) + '</h2><p>' + safe(day.title) + '</p></div>' + (day.weather ? '<div class="weather-note">' + WEATHER_ICON + '<span>' + safe(day.weather) + '</span></div>' : '') + '</div><div class="section-label">当天行程</div><div class="timeline">' + cards + '</div>';
 }
 
 function clearMap() {
