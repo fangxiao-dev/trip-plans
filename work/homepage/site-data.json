@@ -8,6 +8,18 @@
   },
   "sections": [
     {
+      "id": "trips",
+      "title": "和家人去走走",
+      "accent": "orange",
+      "entries": [
+        {
+          "title": "长沙3日游",
+          "desc": "五一广场落脚，橘子洲、岳麓书院与湖南博物院的周末地图。",
+          "href": "/ing/changsha2608/"
+        }
+      ]
+    },
+    {
       "id": "us",
       "title": "我和 Liv",
       "accent": "pink",
@@ -20,18 +32,6 @@
         }
       ],
       "emptyText": "以后会往这里加更多"
-    },
-    {
-      "id": "trips",
-      "title": "和家人去走走",
-      "accent": "orange",
-      "entries": [
-        {
-          "title": "长沙3日游",
-          "desc": "五一广场落脚，橘子洲、岳麓书院与湖南博物院的周末地图。",
-          "href": "/ing/changsha2608/"
-        }
-      ]
     },
     {
       "id": "tools",
