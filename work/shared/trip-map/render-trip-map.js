@@ -295,7 +295,7 @@ h1 { margin: 0; font-size: clamp(31px, 4vw, 46px); line-height: 1.15; letter-spa
 <body>
 <a class="skip-link" href="#itinerary">跳到行程</a>
 <main class="trip-shell">
-  <section class="itinerary-pane" id="itinerary" aria-label="长沙行程">
+  <section class="itinerary-pane" id="itinerary" aria-label="${title}行程">
     <div class="itinerary-inner">
       <header class="trip-header">
         <p class="eyebrow" id="trip-eyebrow"></p>
@@ -327,6 +327,7 @@ const RESERVE_ICON = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5h
 const WEATHER_ICON = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 16h10a4 4 0 1 0-1-7 5 5 0 0 0-9 2 2.5 2.5 0 0 0 0-4 4Z"/><path d="m9 19-1 2m5-2-1 2m5-2-1 2"/></svg>';
 const safe = (value) => String(value ?? '').replace(/[&<>"']/g, (char) => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#039;' }[char]));
 const amapUrl = (location) => 'https://uri.amap.com/marker?position=' + location.lng + ',' + location.lat + '&name=' + encodeURIComponent(location.name) + '&src=changsha2608&coordinate=wgs84&callnative=1';
+const navigationUrl = (location) => location.gmap || amapUrl(location);
 
 document.getElementById('trip-eyebrow').textContent = TRIP.eyebrow;
 document.getElementById('trip-title').textContent = TRIP.title;
@@ -354,7 +355,7 @@ function noticeButtons(location) {
 }
 
 function cardLinks(location) {
-  let links = '<a class="nav-link" href="' + amapUrl(location) + '" target="_blank" rel="noreferrer">' + NAV_ICON + '导航</a>';
+  let links = '<a class="nav-link" href="' + safe(navigationUrl(location)) + '" target="_blank" rel="noreferrer">' + NAV_ICON + '导航</a>';
   if (location.reserve) links += '<a class="reserve-link" href="' + safe(location.reserve) + '" target="_blank" rel="noreferrer">' + RESERVE_ICON + '预约</a>';
   return links;
 }
@@ -385,10 +386,12 @@ function showDayOnMap(day) {
     marker.on('click', () => activateLocation(location.id, false));
     markerByLocation.set(location.id, marker);
     layers.push(marker);
-    coordinates.push([location.lat, location.lng]);
+    if (location.fit !== false) coordinates.push([location.lat, location.lng]);
   });
-  const baseMarker = L.marker([TRIP.base.lat, TRIP.base.lng], { icon: markerIcon(TRIP.theme.green, '住', true), zIndexOffset: 800 }).addTo(map).bindPopup('<strong>' + safe(TRIP.base.name) + '</strong><br><span>住宿定位锚点</span>');
-  layers.push(baseMarker);
+  if (!TRIP.base.placeholder) {
+    const baseMarker = L.marker([TRIP.base.lat, TRIP.base.lng], { icon: markerIcon(TRIP.theme.green, '住', true), zIndexOffset: 800 }).addTo(map).bindPopup('<strong>' + safe(TRIP.base.name) + '</strong><br><span>住宿定位锚点</span>');
+    layers.push(baseMarker);
+  }
   if (coordinates.length > 1) {
     const line = L.polyline(coordinates, { color: day.color, weight: 3, opacity: .62, dashArray: '7 7' }).addTo(map);
     layers.push(line);
@@ -484,7 +487,10 @@ function initMap() {
   document.getElementById('map').innerHTML = '';
   map = L.map('map', { center: [TRIP.base.lat, TRIP.base.lng], zoom: 13, zoomControl: false });
   L.control.zoom({ position: 'topright' }).addTo(map);
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', { maxZoom: 19, attribution: '&copy; OpenStreetMap &copy; CARTO' }).addTo(map);
+  const basemap = TRIP.basemap === 'topo'
+    ? { url: 'https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', maxZoom: 17, attribution: 'Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>, SRTM | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (CC-BY-SA)' }
+    : { url: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png', maxZoom: 19, attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>' };
+  L.tileLayer(basemap.url, { maxZoom: basemap.maxZoom, attribution: basemap.attribution }).addTo(map);
   const LocateControl = L.Control.extend({
     options: { position: 'bottomright' },
     onAdd() {

@@ -1,0 +1,50 @@
+{
+  "route": "/ing/__SLUG__/",
+  "eyebrow": "__DESTINATION__ · __TRIP_TYPE__",
+  "title": "__页面标题__",
+  "description": "__页面简介__",
+  "dateRange": "__YYYY.MM.DD ~ MM.DD__",
+  "basemap": "osm",
+  "theme": {
+    "green": "#164d46",
+    "orange": "#d75d3f",
+    "blue": "#176ba0"
+  },
+  "base": {
+    "name": "待定",
+    "label": "住宿",
+    "lat": "__地图中心纬度__",
+    "lng": "__地图中心经度__",
+    "placeholder": true
+  },
+  "days": [
+    {
+      "id": "__MMDD__",
+      "label": "__MM.DD__",
+      "displayDate": "__M月D日__",
+      "weekday": "__周几__",
+      "title": "__当天一句话主题__",
+      "color": "#d75d3f",
+      "weather": "__天气或弹性调整提醒__",
+      "locations": [
+        {
+          "id": "__唯一英文ID__",
+          "name": "__地点名称__",
+          "lat": "__纬度__",
+          "lng": "__经度__",
+          "type": "spot",
+          "time": "__时间__",
+          "desc": "__地点安排__",
+          "gmap": "__Google Maps 直达链接；国内地点可删除本字段__",
+          "notices": [
+            {
+              "kind": "weather",
+              "label": "__提醒标题__",
+              "text": "__提醒内容__"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -6,7 +6,8 @@ const { execFileSync } = require('child_process');
 const BUILDERS = [
   path.join(__dirname, 'homepage', 'build-homepage.js'),
   path.join(__dirname, 'modules', 'honeymoon', 'build-trip-spa.js'),
-  path.join(__dirname, 'modules', 'changsha2608', 'build-changsha2608.js')
+  path.join(__dirname, 'modules', 'changsha2608', 'build-changsha2608.js'),
+  path.join(__dirname, 'modules', 'fuessen2609', 'build-fuessen2609.js')
 ];
 
 for (const builder of BUILDERS) {

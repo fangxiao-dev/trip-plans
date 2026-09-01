@@ -1,0 +1,259 @@
+{
+  "route": "/ing/fuessen2609/",
+  "eyebrow": "FÜSSEN · SOLO ALPINE TRIP",
+  "title": "Füssen 三日自然旅行",
+  "description": "2026 年 9 月 8 日至 10 日，从 Reutlingen 出发的 Füssen 湖景与高山公共交通行程",
+  "dateRange": "2026.09.08 ~ 09.10",
+  "basemap": "topo",
+  "theme": {
+    "green": "#164d46",
+    "orange": "#d75d3f",
+    "blue": "#176ba0"
+  },
+  "base": {
+    "name": "my Hostel Füssen",
+    "label": "住宿",
+    "lat": 47.571124,
+    "lng": 10.70151,
+    "placeholder": false
+  },
+  "days": [
+    {
+      "id": "0908",
+      "label": "09.08",
+      "displayDate": "9月8日",
+      "weekday": "周二",
+      "title": "抵达后只留一段轻松湖景",
+      "color": "#d75d3f",
+      "weather": "抵达时间优先服从实际铁路与 SEV 连接；到得晚就缩短或取消 Hopfensee，不影响后两天核心山景。",
+      "locations": [
+        {
+          "id": "tue-reutlingen",
+          "name": "Reutlingen Hbf",
+          "lat": 48.49597,
+          "lng": 9.2095,
+          "type": "transport",
+          "fit": false,
+          "time": "上午出发",
+          "desc": "乘 DB / 区域铁路前往 Füssen，不把中午前抵达设为硬目标。",
+          "gmap": "https://www.google.com/maps/search/?api=1&query=Reutlingen+Hbf",
+          "notices": [
+            {
+              "kind": "transport",
+              "label": "施工与 SEV",
+              "text": "9 月 8 日 Buchloe—Füssen 区段处于施工窗口，可能改乘铁路替代巴士。出发前在 DB Navigator 或 BRB 重新确认具体连接和替代站点。"
+            }
+          ]
+        },
+        {
+          "id": "tue-fuessen-arrival",
+          "name": "Füssen Bahnhof",
+          "lat": 47.5702629,
+          "lng": 10.6978184,
+          "type": "transport",
+          "time": "抵达后",
+          "desc": "抵达后步行前往 my Hostel Füssen 办理入住或放下行李，再判断当天剩余时间。",
+          "gmap": "https://www.google.com/maps/search/?api=1&query=F%C3%BCssen+Bahnhof",
+          "notices": [
+            {
+              "kind": "effort",
+              "label": "入住提醒",
+              "text": "住宿地址为 Augsburger Straße 12；具体入住时间、门禁和行李安排以订单及住宿方确认为准。"
+            }
+          ]
+        },
+        {
+          "id": "tue-hopfensee",
+          "name": "Hopfensee · 湖边散步",
+          "lat": 47.6077,
+          "lng": 10.6774,
+          "type": "spot",
+          "time": "下午有余量时",
+          "desc": "沿 Hopfen am See 湖边轻松散步，看湖面和 Allgäu / Ammergau Alps 背景，不安排高强度徒步。",
+          "gmap": "https://www.google.com/maps/search/?api=1&query=Hopfensee+Hopfen+am+See",
+          "notices": [
+            {
+              "kind": "transport",
+              "label": "往返交通",
+              "text": "默认从 Füssen 乘 Bus 56 往返；以当天时刻表为准，避免错过返程班次。"
+            },
+            {
+              "kind": "weather",
+              "label": "可直接取消",
+              "text": "若抵达偏晚、下雨或已经疲惫，直接留在 Füssen 休息，不把湖边散步挪到后两天。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0909",
+      "label": "09.09",
+      "displayDate": "9月9日",
+      "weekday": "周三",
+      "title": "整趟旅行的核心高山全景日",
+      "color": "#176ba0",
+      "weather": "早上先看 Tegelberg 山顶天气、风力和缆车状态；条件不好时与 9 月 10 日交换，不为固定日期冒险。",
+      "locations": [
+        {
+          "id": "wed-fuessen-bus",
+          "name": "Füssen Bahnhof · Bus 78",
+          "lat": 47.5702629,
+          "lng": 10.6978184,
+          "type": "transport",
+          "time": "早上",
+          "desc": "从 Füssen Bahnhof 乘 Bus 78 前往 Tegelbergbahn，给换乘和候车留出余量。",
+          "gmap": "https://www.google.com/maps/search/?api=1&query=F%C3%BCssen+Bahnhof",
+          "notices": [
+            {
+              "kind": "transport",
+              "label": "当天时刻表",
+              "text": "Bus 78 连接 Füssen、Hohenschwangau 与 Tegelberg；出发前再次确认去程和下午返程班次。"
+            }
+          ]
+        },
+        {
+          "id": "wed-tegelberg-valley",
+          "name": "Tegelbergbahn · Talstation",
+          "lat": 47.568532,
+          "lng": 10.756744,
+          "type": "transport",
+          "time": "上午",
+          "desc": "到达谷站后核对当天运营公告，乘 Tegelbergbahn 上山。",
+          "gmap": "https://www.google.com/maps/search/?api=1&query=Tegelbergbahn+Talstation",
+          "notices": [
+            {
+              "kind": "ticket",
+              "label": "运营优先",
+              "text": "缆车营业时间和停运信息以 Tegelbergbahn 当天官方公告为准；页面不把当前状态当成出发日保证。"
+            }
+          ]
+        },
+        {
+          "id": "wed-tegelberg-top",
+          "name": "Tegelberg · Königsrunde",
+          "lat": 47.5595,
+          "lng": 10.7785,
+          "type": "spot",
+          "time": "上午至下午",
+          "desc": "先走 Königsrunde / Panorama 区域；天气、路况和体力都合适时，再继续约 2—4 小时的高山徒步。",
+          "gmap": "https://www.google.com/maps/search/?api=1&query=Tegelberghaus",
+          "choices": [
+            "保底：Königsrunde 与 Bergstation 周边全景",
+            "进阶：在明确路线、返程时间和天气允许时增加高山步行",
+            "目标：湖区、山谷、Säuling 与 Ammergauer Alpen 的开阔视野"
+          ],
+          "notices": [
+            {
+              "kind": "effort",
+              "label": "高山路线",
+              "text": "不把 Klettersteig 或陌生技术路线作为临场加项。离开 Panorama 区域前先确认标识、难度、剩余时间和末班缆车。"
+            },
+            {
+              "kind": "weather",
+              "label": "及时收缩",
+              "text": "遇到低云、强风、雷雨或湿滑路面就停在观景区域，必要时提前下山。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0910",
+      "label": "09.10",
+      "displayDate": "9月10日",
+      "weekday": "周四",
+      "title": "第二座山的草甸山脊后返程",
+      "color": "#16806f",
+      "weather": "早上先确认 Breitenberg / Hochalpbahn 运行、山顶天气和回程连接；返程缓冲高于完成全部路线。",
+      "locations": [
+        {
+          "id": "thu-fuessen-depart",
+          "name": "Füssen · 退房出发",
+          "lat": 47.5702629,
+          "lng": 10.6978184,
+          "type": "transport",
+          "time": "早上",
+          "desc": "从 my Hostel Füssen 退房后，按住宿方确认的规则处理行李，再前往 Pfronten-Steinach。",
+          "gmap": "https://www.google.com/maps/search/?api=1&query=F%C3%BCssen+Bahnhof",
+          "notices": [
+            {
+              "kind": "transport",
+              "label": "行李与交通",
+              "text": "出发前向 my Hostel Füssen 确认退房后能否寄存行李。前往 Pfronten 可查 Bus 56 / 71 或当天铁路连接，不预设唯一班次。"
+            }
+          ]
+        },
+        {
+          "id": "thu-pfronten-steinach",
+          "name": "Pfronten-Steinach · Breitenbergbahn",
+          "lat": 47.565986,
+          "lng": 10.574672,
+          "type": "transport",
+          "time": "上午",
+          "desc": "Pfronten-Steinach 站与 Breitenbergbahn 谷站相邻；到达后核对 Breitenbergbahn 和 Hochalpbahn 当日状态。",
+          "gmap": "https://www.google.com/maps/search/?api=1&query=Breitenbergbahn+Pfronten",
+          "notices": [
+            {
+              "kind": "ticket",
+              "label": "两段缆车",
+              "text": "Breitenbergbahn 与 Hochalpbahn 的营业时间可能不同；购票和上山前确认两段运营及最晚下山时间。"
+            }
+          ]
+        },
+        {
+          "id": "thu-breitenberg-top",
+          "name": "Breitenberg · Bergstation",
+          "lat": 47.548526,
+          "lng": 10.570132,
+          "type": "spot",
+          "time": "上午至中午",
+          "desc": "乘 Breitenbergbahn 上山，按运营情况继续使用 Hochalpbahn 或步行，进入高山草甸与山脊景观。",
+          "gmap": "https://www.google.com/maps/search/?api=1&query=Breitenbergbahn+Bergstation",
+          "notices": [
+            {
+              "kind": "effort",
+              "label": "路线终点",
+              "text": "默认路线只做到 Breitenberg / Ostlerhütte，不临时追加 Aggenstein；后者包含更陡、狭窄及钢索辅助路段。"
+            }
+          ]
+        },
+        {
+          "id": "thu-ostlerhuette",
+          "name": "Ostlerhütte",
+          "lat": 47.548686,
+          "lng": 10.551147,
+          "type": "spot",
+          "time": "中午前后",
+          "desc": "以 Ostlerhütte 一带作为默认终点，看 Allgäuer / Tiroler Alpen、高山草甸和 360° 全景，再按返程时间下山。",
+          "gmap": "https://www.google.com/maps/search/?api=1&query=Ostlerh%C3%BCtte",
+          "notices": [
+            {
+              "kind": "weather",
+              "label": "返程优先",
+              "text": "天气转差或时间不足时提前折返。下山后还要回 Füssen 取行李并返回 Reutlingen，不把山顶停留拖到最后余量。"
+            }
+          ]
+        },
+        {
+          "id": "thu-reutlingen-return",
+          "name": "Reutlingen Hbf · 返程",
+          "lat": 48.49597,
+          "lng": 9.2095,
+          "type": "transport",
+          "fit": false,
+          "time": "下山取行李后",
+          "desc": "返回 Füssen 取行李，再按当天 DB 连接回 Reutlingen。",
+          "gmap": "https://www.google.com/maps/search/?api=1&query=Reutlingen+Hbf",
+          "notices": [
+            {
+              "kind": "transport",
+              "label": "回程缓冲",
+              "text": "出发前保存一组较早回程和一组备用连接；山上行程必须为取行李、换乘和可能延误留出余量。"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
