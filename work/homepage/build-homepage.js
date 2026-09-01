@@ -178,8 +178,9 @@ const html = `<!doctype html>
     .card-section { display: inline-flex; align-items: center; gap: 7px; color: var(--tag); font-size: 14px; font-weight: 800; }
     .tag-icon { width: 16px; height: 16px; flex: none; }
     .card-body { margin: auto 0; }
+    .card-body h3, .card-body p { display: -webkit-box; overflow: hidden; -webkit-box-orient: vertical; -webkit-line-clamp: 2; }
     .card-body h3 { margin-bottom: 9px; color: var(--tag); font-size: clamp(19px, 1.8vw, 23px); line-height: 1.16; letter-spacing: -.025em; }
-    .card-body p { color: #526078; font-size: 13px; line-height: 1.55; }
+    .card-body p { min-height: 3.1em; color: #526078; font-size: 13px; line-height: 1.55; }
     .card-foot { min-height: 42px; display: flex; align-items: end; justify-content: space-between; gap: 16px; }
     .card-date { color: #263149; font-family: inherit; font-size: 13px; font-weight: 700; line-height: 1.2; letter-spacing: 0; font-variant-numeric: tabular-nums; }
     .card-open { width: 42px; height: 42px; display: grid; place-items: center; flex: none; color: var(--tag); border: 2px solid currentColor; border-radius: 12px; transition: color .2s var(--ease), background .2s var(--ease), transform .2s var(--ease); }
@@ -219,7 +220,7 @@ const html = `<!doctype html>
       .tag-icon { width: 14px; height: 14px; }
       .card-body { margin: 12px 0 10px; }
       .card-body h3 { margin-bottom: 0; font-size: 15px; line-height: 1.16; }
-      .card-body p { display: -webkit-box; margin-top: 7px; overflow: hidden; font-size: 11px; line-height: 1.45; -webkit-box-orient: vertical; -webkit-line-clamp: 3; }
+      .card-body p { margin-top: 7px; font-size: 11px; line-height: 1.45; }
       .card-foot { min-height: 34px; margin-top: auto; gap: 7px; }
       .card-date { font-size: 11px; white-space: nowrap; }
       .card-open { width: 34px; height: 34px; border-radius: 10px; }

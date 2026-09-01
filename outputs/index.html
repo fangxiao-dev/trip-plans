@@ -75,8 +75,9 @@
     .card-section { display: inline-flex; align-items: center; gap: 7px; color: var(--tag); font-size: 14px; font-weight: 800; }
     .tag-icon { width: 16px; height: 16px; flex: none; }
     .card-body { margin: auto 0; }
+    .card-body h3, .card-body p { display: -webkit-box; overflow: hidden; -webkit-box-orient: vertical; -webkit-line-clamp: 2; }
     .card-body h3 { margin-bottom: 9px; color: var(--tag); font-size: clamp(19px, 1.8vw, 23px); line-height: 1.16; letter-spacing: -.025em; }
-    .card-body p { color: #526078; font-size: 13px; line-height: 1.55; }
+    .card-body p { min-height: 3.1em; color: #526078; font-size: 13px; line-height: 1.55; }
     .card-foot { min-height: 42px; display: flex; align-items: end; justify-content: space-between; gap: 16px; }
     .card-date { color: #263149; font-family: inherit; font-size: 13px; font-weight: 700; line-height: 1.2; letter-spacing: 0; font-variant-numeric: tabular-nums; }
     .card-open { width: 42px; height: 42px; display: grid; place-items: center; flex: none; color: var(--tag); border: 2px solid currentColor; border-radius: 12px; transition: color .2s var(--ease), background .2s var(--ease), transform .2s var(--ease); }
@@ -116,7 +117,7 @@
       .tag-icon { width: 14px; height: 14px; }
       .card-body { margin: 12px 0 10px; }
       .card-body h3 { margin-bottom: 0; font-size: 15px; line-height: 1.16; }
-      .card-body p { display: -webkit-box; margin-top: 7px; overflow: hidden; font-size: 11px; line-height: 1.45; -webkit-box-orient: vertical; -webkit-line-clamp: 3; }
+      .card-body p { margin-top: 7px; font-size: 11px; line-height: 1.45; }
       .card-foot { min-height: 34px; margin-top: auto; gap: 7px; }
       .card-date { font-size: 11px; white-space: nowrap; }
       .card-open { width: 34px; height: 34px; border-radius: 10px; }
@@ -168,17 +169,17 @@
       <div class="region-grid">
       <a class="archive-card" href="/ing/honeymoon-with-liv/" style="--i:0;--paper:#fffaf2;--card-ink:#681a38;--card-soft:#81445b;--tag:#ed5f91">
         <span class="card-head"><span class="card-section"><svg class="tag-icon tag-icon-heart" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1.1L12 21l7.8-7.5 1.1-1.1a5.5 5.5 0 0 0-.1-7.8Z"/></svg><span>我和 Liv</span></span></span>
-        <span class="card-body"><h3>泰国蜜月行程地图</h3><p>曼谷 / 芭提雅 / 沙美岛,12 天逐日地图与住宿详情。</p></span>
+        <span class="card-body"><h3>泰国蜜月行程地图</h3><p>曼谷 / 芭提雅 / 沙美岛。</p></span>
         <span class="card-foot"><span class="card-date">2026-09 12天</span><span class="card-open" aria-hidden="true"><svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
       </a>
       <a class="archive-card" href="/ing/fuessen2609/" style="--i:1;--paper:#fffaf2;--card-ink:#193f7b;--card-soft:#49678e;--tag:#3f7ce0">
         <span class="card-head"><span class="card-section"><svg class="tag-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="5" r="2"/><path d="M8 7.5v6l-3 6.5M8 13.5l4 6.5M8 9l4 2"/><rect x="13" y="8" width="5" height="8" rx="2"/><path d="M13 10h-2"/></svg><span>个人旅行</span></span></span>
-        <span class="card-body"><h3>Füssen 三日自然旅行</h3><p>从湖边到两座高山，Hopfensee、Tegelberg 与 Breitenberg 的三日地图。</p></span>
+        <span class="card-body"><h3>Füssen 三日自然旅行</h3><p>Hopfensee、Tegelberg 与 Breitenberg。</p></span>
         <span class="card-foot"><span class="card-date">2026-09 3天</span><span class="card-open" aria-hidden="true"><svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
       </a>
       <a class="archive-card" href="/ing/changsha2608/" style="--i:2;--paper:#fffaf2;--card-ink:#205838;--card-soft:#4b725b;--tag:#4aa66c">
         <span class="card-head"><span class="card-section"><svg class="tag-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 11 9-7 9 7v9h-6v-6H9v6H3Z"/></svg><span>家庭旅行</span></span></span>
-        <span class="card-body"><h3>长沙3日游</h3><p>五一广场落脚，橘子洲、岳麓书院与湖南博物院的周末地图。</p></span>
+        <span class="card-body"><h3>长沙3日游</h3><p>五一广场、橘子洲、岳麓书院与湖南博物院。</p></span>
         <span class="card-foot"><span class="card-date">2026-08 3天</span><span class="card-open" aria-hidden="true"><svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
       </a>
       <article class="archive-card card-empty" style="--i:3">
