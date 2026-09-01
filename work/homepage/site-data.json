@@ -1,40 +1,58 @@
 {
   "profile": {
     "name": "Xiao",
-    "tagline": "我的自留地。\n旅行、工具、和想法。",
-    "taglineHighlight": "自留地",
-    "intro": "一个自己用的小站 —— 想到什么就做点什么挂上来。",
+    "tagline": "Xiao 的空间",
+    "taglineHighlight": "Xiao",
+    "intro": "欢迎光临",
     "email": "fang.x.helloworld@gmail.com"
   },
   "sections": [
     {
+      "id": "us",
+      "region": "travel",
+      "title": "我和 Liv",
+      "accent": "pink",
+      "entries": [
+        {
+          "title": "泰国蜜月行程地图",
+          "desc": "曼谷 / 芭提雅 / 沙美岛,12 天逐日地图与住宿详情。",
+          "date": "2026-09 12天",
+          "href": "/ing/honeymoon-with-liv/"
+        }
+      ],
+      "emptyText": "敬请期待"
+    },
+    {
+      "id": "solo-trips",
+      "region": "travel",
+      "title": "个人旅行",
+      "accent": "blue",
+      "entries": [
+        {
+          "title": "Füssen 三日自然旅行",
+          "desc": "从湖边到两座高山，Hopfensee、Tegelberg 与 Breitenberg 的三日地图。",
+          "date": "2026-09 3天",
+          "href": "/ing/fuessen2609/"
+        }
+      ]
+    },
+    {
       "id": "trips",
-      "title": "和家人去走走",
+      "region": "travel",
+      "title": "家庭旅行",
       "accent": "orange",
       "entries": [
         {
           "title": "长沙3日游",
           "desc": "五一广场落脚，橘子洲、岳麓书院与湖南博物院的周末地图。",
+          "date": "2026-08 3天",
           "href": "/ing/changsha2608/"
         }
       ]
     },
     {
-      "id": "us",
-      "title": "我和 Liv",
-      "accent": "pink",
-      "entries": [
-        {
-          "icon": "🌴",
-          "title": "泰国蜜月行程地图",
-          "desc": "曼谷 / 芭提雅 / 沙美岛,12 天逐日地图与住宿详情。",
-          "href": "/ing/honeymoon-with-liv/"
-        }
-      ],
-      "emptyText": "以后会往这里加更多"
-    },
-    {
       "id": "tools",
+      "region": "tools",
       "title": "小工具",
       "accent": "blue",
       "entries": [],
@@ -42,6 +60,7 @@
     },
     {
       "id": "blog",
+      "region": "blog",
       "title": "博客",
       "accent": "green",
       "entries": [],

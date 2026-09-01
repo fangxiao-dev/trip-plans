@@ -4,16 +4,35 @@ const path = require('path');
 const root = path.resolve(__dirname, '..', '..');
 const dataPath = path.join(__dirname, 'site-data.json');
 const outputPath = path.join(root, 'outputs', 'index.html');
-
 const data = JSON.parse(fs.readFileSync(dataPath, 'utf8'));
 
-// 分区主色:圆点 / 卡片底 / 卡片文字。新增模块时在这里加一个色名即可。
 const ACCENTS = {
-  pink:  { dot: '#f2789f', bg: '#fff0f4', ink: '#8a2846', band: '#ffd6e0' },
-  orange:{ dot: '#d76a43', bg: '#fff4ea', ink: '#7b351f', band: '#f5d2bf' },
-  blue:  { dot: '#4a7dd6', bg: '#eef4ff', ink: '#1f3f80', band: '#cfe0ff' },
-  green: { dot: '#4d9b6a', bg: '#eef7f0', ink: '#1f5334', band: '#cfe8d6' }
+  pink:   { paper: '#ffd1df', ink: '#681a38', soft: '#81445b', tag: '#ed5f91' },
+  orange: { paper: '#ffd9bd', ink: '#713418', soft: '#81543c', tag: '#dc6b3e' },
+  blue:   { paper: '#d6e4ff', ink: '#193f7b', soft: '#49678e', tag: '#3f7ce0' },
+  green:  { paper: '#d5f0dd', ink: '#205838', soft: '#4b725b', tag: '#4aa66c' }
 };
+
+const TRAVEL_ACCENTS = {
+  us: ACCENTS.pink,
+  'solo-trips': ACCENTS.blue,
+  trips: ACCENTS.green
+};
+
+const TRAVEL_ICONS = {
+  us: '<svg class="tag-icon tag-icon-heart" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1.1L12 21l7.8-7.5 1.1-1.1a5.5 5.5 0 0 0-.1-7.8Z"/></svg>',
+  'solo-trips': '<svg class="tag-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="5" r="2"/><path d="M8 7.5v6l-3 6.5M8 13.5l4 6.5M8 9l4 2"/><rect x="13" y="8" width="5" height="8" rx="2"/><path d="M13 10h-2"/></svg>',
+  trips: '<svg class="tag-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 11 9-7 9 7v9h-6v-6H9v6H3Z"/></svg>'
+};
+
+const ARROW = '<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
+const WELCOME_ICON = '<svg class="welcome-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.35 4.15L17.5 8.5l-4.15 1.35L12 14l-1.35-4.15L6.5 8.5l4.15-1.35L12 3Z"/><path d="M18.5 14l.75 2.25L21.5 17l-2.25.75L18.5 20l-.75-2.25L15.5 17l2.25-.75L18.5 14Z"/></svg>';
+
+const REGIONS = [
+  { id: 'travel', title: '旅行' },
+  { id: 'tools', title: '小工具' },
+  { id: 'blog', title: '博客' }
+];
 
 const escapeHtml = (value) => String(value)
   .replace(/&/g, '&amp;')
@@ -21,91 +40,66 @@ const escapeHtml = (value) => String(value)
   .replace(/>/g, '&gt;')
   .replace(/"/g, '&quot;');
 
-const accentOf = (name) => {
-  const accent = ACCENTS[name];
-  if (!accent) throw new Error(`site-data.json 使用了未定义的分区主色:${name}`);
+const accentOf = (section) => {
+  const accent = TRAVEL_ACCENTS[section.id] || ACCENTS[section.accent];
+  if (!accent) throw new Error(`site-data.json 使用了未定义的分区主色:${section.accent}`);
   return accent;
 };
-
-// 派生色在构建期算好,直接输出 rgba()。
-// 不用 color-mix():它在旧引擎里会让整条声明失效并回退到继承色,
-// 边框和文字会一起变成深墨色,和设计完全不符。
-const rgba = (hex, alpha) => {
-  const m = /^#([0-9a-f]{6})$/i.exec(hex);
-  if (!m) throw new Error(`分区主色必须是 6 位十六进制:${hex}`);
-  const int = parseInt(m[1], 16);
-  return `rgba(${(int >> 16) & 255}, ${(int >> 8) & 255}, ${int & 255}, ${alpha})`;
-};
-
-const ARROW = '<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
 
 function renderTagline({ tagline, taglineHighlight }) {
   const lines = tagline.split('\n').map(escapeHtml);
   if (!taglineHighlight) return lines.join('<br>');
   const target = escapeHtml(taglineHighlight);
-  let done = false;
-  return lines
-    .map((line) => {
-      if (done || !line.includes(target)) return line;
-      done = true;
-      return line.replace(target, `<mark>${target}</mark>`);
-    })
-    .join('<br>');
+  let highlighted = false;
+  return lines.map((line) => {
+    if (highlighted || !line.includes(target)) return line;
+    highlighted = true;
+    return line.replace(target, `<mark>${target}</mark>`);
+  }).join('<br>');
 }
 
-function renderEntry(entry, index) {
-  const icon = entry.icon
-    ? `<span class="card-icon" aria-hidden="true">${escapeHtml(entry.icon)}</span>`
-    : '';
-  const iconLine = icon ? `            ${icon}\n` : '';
-  return `        <a class="card" href="${escapeHtml(entry.href)}" style="--i:${index}">
-          <span class="card-body">
-${iconLine}            <h3>${escapeHtml(entry.title)}</h3>
-            <p>${escapeHtml(entry.desc)}</p>
-          </span>
-          <span class="card-go">打开${ARROW}</span>
-        </a>`;
+function renderEntryCard(section, entry, index) {
+  const accent = accentOf(section);
+  const icon = TRAVEL_ICONS[section.id] || '';
+  const paper = section.region === 'travel' ? '#fffaf2' : accent.paper;
+  const date = entry.date ? `<span class="card-date">${escapeHtml(entry.date)}</span>` : '';
+  return `      <a class="archive-card" href="${escapeHtml(entry.href)}" style="--i:${index};--paper:${paper};--card-ink:${accent.ink};--card-soft:${accent.soft};--tag:${accent.tag}">
+        <span class="card-head"><span class="card-section">${icon}<span>${escapeHtml(section.title)}</span></span></span>
+        <span class="card-body"><h3>${escapeHtml(entry.title)}</h3><p>${escapeHtml(entry.desc)}</p></span>
+        <span class="card-foot">${date}<span class="card-open" aria-hidden="true">${ARROW}</span></span>
+      </a>`;
 }
 
 function renderEmptyCard(section, index) {
-  return `        <p class="card card-empty" style="--i:${index}">${escapeHtml(section.emptyText)}</p>`;
+  return `      <article class="archive-card card-empty" style="--i:${index}">
+        <span class="empty-copy">${escapeHtml(section.emptyText)}</span>
+      </article>`;
 }
 
-function renderSection(section) {
-  const cards = section.entries.map(renderEntry);
-  if (section.emptyText) cards.push(renderEmptyCard(section, cards.length));
-  return `      <section class="zone zone-${escapeHtml(section.accent)}" id="${escapeHtml(section.id)}" aria-labelledby="${escapeHtml(section.id)}-title">
-        <div class="zone-head">
-          <span class="zone-dot" aria-hidden="true"></span>
-          <h2 id="${escapeHtml(section.id)}-title">${escapeHtml(section.title)}</h2>
-        </div>
-        <div class="zone-grid">
-${cards.join('\n')}
-        </div>
-      </section>`;
+function renderRegions() {
+  let cardIndex = 0;
+  return REGIONS.map((region) => {
+    const sections = data.sections.filter((section) => section.region === region.id);
+    const cards = [];
+    sections.forEach((section) => section.entries.forEach((entry) => cards.push({ type: 'entry', section, entry })));
+    sections.forEach((section) => {
+      if (section.emptyText) cards.push({ type: 'empty', section });
+    });
+    const content = cards.map((card) => {
+      const html = card.type === 'entry'
+        ? renderEntryCard(card.section, card.entry, cardIndex)
+        : renderEmptyCard(card.section, cardIndex);
+      cardIndex += 1;
+      return html;
+    }).join('\n');
+    return `    <section class="module-region" aria-labelledby="region-${region.id}">
+      <header class="region-head"><h2 id="region-${region.id}">${region.title}</h2><span>${String(cards.length).padStart(2, '0')}</span></header>
+      <div class="region-grid">
+${content}
+      </div>
+    </section>`;
+  }).join('\n');
 }
-
-function renderAccentVars() {
-  return Object.entries(ACCENTS)
-    .map(([name, a]) => `    .zone-${name} {
-      --dot: ${a.dot};
-      --card-bg: ${a.bg};
-      --card-ink: ${a.ink};
-      --card-soft: ${rgba(a.ink, 0.88)};
-      --card-edge: ${rgba(a.ink, 0.28)};
-      --card-shadow: ${rgba(a.ink, 0.22)};
-      --card-border: ${rgba(a.ink, 0.12)};
-    }`)
-    .join('\n');
-}
-
-function renderBlobs() {
-  return data.sections
-    .map((section) => `<span style="background:${accentOf(section.accent).dot}"></span>`)
-    .join('');
-}
-
-const heroBand = accentOf(data.sections[0].accent).band;
 
 const html = `<!doctype html>
 <html lang="zh-CN">
@@ -115,229 +109,164 @@ const html = `<!doctype html>
   <title>${escapeHtml(data.profile.name)} · 自留地</title>
   <meta name="description" content="${escapeHtml(data.profile.intro)}">
   <meta name="author" content="${escapeHtml(data.profile.name)}">
-  <meta name="theme-color" content="#ffffff">
+  <meta name="theme-color" content="#182238">
   <style>
     *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body, h1, h2, h3, p { margin: 0; }
 
     :root {
-      --ink:        #141414;
-      --ink-soft:   #5f5f63;
-      --page:       #ffffff;
-      --hero-band:  ${heroBand};
-      --gutter:     clamp(24px, 6vw, 56px);
-      --maxw:       1100px;
-      --ease:       cubic-bezier(.22, .8, .3, 1);
+      --page: #182238;
+      --page-deep: #0c1424;
+      --ink: #fbf5e9;
+      --ink-soft: #c7cfde;
+      --accent: #ffd06f;
+      --line: rgba(255,255,255,.23);
+      --gutter: clamp(20px, 5vw, 64px);
+      --maxw: 1240px;
+      --ease: cubic-bezier(.22,.8,.3,1);
     }
 
-${renderAccentVars()}
-
-    html { scroll-behavior: smooth; }
-
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI",
-                   "PingFang SC", "Microsoft YaHei", sans-serif;
-      background: var(--page);
+      min-width: 320px;
       color: var(--ink);
+      background: var(--page);
+      font-family: "Avenir Next", "PingFang SC", "Microsoft YaHei", sans-serif;
       -webkit-font-smoothing: antialiased;
       line-height: 1.6;
     }
 
-    :focus-visible {
-      outline: 2.5px solid var(--dot, #4a7dd6);
-      outline-offset: 4px;
-      border-radius: 6px;
+    a { color: inherit; }
+    a, button { touch-action: manipulation; }
+    :focus-visible { outline: 3px solid var(--accent); outline-offset: 5px; }
+    .skip-link { position: fixed; left: 16px; top: 16px; z-index: 100; padding: 10px 14px; color: var(--page); background: var(--accent); border-radius: 8px; transform: translateY(-160%); }
+    .skip-link:focus { transform: none; }
+    .shell { max-width: var(--maxw); margin: 0 auto; padding: 0 var(--gutter); }
+
+    .masthead { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 28px 0; border-bottom: 1px solid var(--line); }
+    .masthead strong, .masthead span { font: 800 11px/1.2 ui-monospace, "SFMono-Regular", Consolas, monospace; letter-spacing: .13em; text-transform: uppercase; }
+    .masthead strong { color: var(--accent); }
+    .masthead span { color: var(--ink-soft); text-align: right; }
+
+    .hero { display: grid; grid-template-columns: minmax(0, 1.12fr) minmax(360px, .88fr); gap: clamp(34px, 6vw, 80px); align-items: center; padding: clamp(56px, 7vw, 88px) 0 clamp(64px, 8vw, 96px); }
+    .eyebrow { margin-bottom: 24px; color: var(--accent); font: 800 11px/1.2 ui-monospace, "SFMono-Regular", Consolas, monospace; letter-spacing: .13em; }
+    .hero h1 { font-size: clamp(54px, 7vw, 92px); font-weight: 900; line-height: .96; letter-spacing: -.065em; white-space: nowrap; }
+    .hero h1 mark { color: var(--accent); background: none; }
+    .intro { min-height: 44px; display: inline-flex; align-items: center; gap: 10px; margin-top: 28px; color: var(--ink-soft); font-size: clamp(17px, 1.8vw, 20px); line-height: 1.5; }
+    .welcome-icon { width: 24px; height: 24px; color: var(--accent); flex: none; }
+
+    .passport { position: relative; overflow: hidden; min-height: 360px; padding: 34px; color: var(--page); background: #ffd66b; border-radius: 24px; box-shadow: 18px 18px 0 var(--page-deep); transform: rotate(2.5deg); }
+    .passport::after { content: "XIAO"; position: absolute; right: 20px; bottom: -10px; color: rgba(24,34,56,.14); font: 900 clamp(72px, 10vw, 118px)/1 Impact, "Arial Black", sans-serif; letter-spacing: -.04em; }
+    .passport-label { display: block; font: 900 11px/1.2 ui-monospace, "SFMono-Regular", Consolas, monospace; letter-spacing: .13em; }
+    .passport-title { max-width: 12ch; margin-top: 92px; font-size: clamp(34px, 4.1vw, 50px); font-weight: 900; line-height: 1.02; letter-spacing: -.05em; }
+    .passport-dots { display: flex; gap: 8px; margin-top: 26px; }
+    .passport-dots i { width: 13px; height: 13px; border-radius: 50%; }
+    .passport-dots i:nth-child(1) { background: #d76a43; }
+    .passport-dots i:nth-child(2) { background: #4a7dd6; }
+    .passport-dots i:nth-child(3) { background: #f2789f; }
+    .passport-dots i:nth-child(4) { background: #e3ad3e; }
+    .passport-dots i:nth-child(5) { background: #4d9b6a; }
+
+    .module-region { padding: 40px 0 48px; border-top: 1px solid var(--line); }
+    .module-region:last-child { padding-bottom: clamp(72px, 9vw, 104px); }
+    .region-head { display: flex; align-items: baseline; justify-content: space-between; gap: 24px; margin-bottom: 22px; }
+    .region-head h2 { font-size: clamp(25px, 3vw, 34px); line-height: 1; letter-spacing: -.035em; }
+    .region-head span { color: var(--ink-soft); font: 800 11px/1 ui-monospace, "SFMono-Regular", Consolas, monospace; }
+    .region-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+    .archive-card { aspect-ratio: 1.12 / 1; min-height: 230px; padding: 20px; display: flex; flex-direction: column; color: #263149; background: linear-gradient(145deg, #fffdf8, var(--paper)); border: 1px solid rgba(24,34,56,.16); border-radius: 18px; text-decoration: none; box-shadow: inset 0 1px 0 rgba(255,255,255,.95), 7px 7px 0 var(--tag); transition: transform .22s var(--ease), box-shadow .22s var(--ease); animation: rise .5s var(--ease) backwards; animation-delay: calc(var(--i) * 55ms); }
+    .card-head { padding-bottom: 14px; border-bottom: 2px dashed var(--tag); }
+    .card-section { display: inline-flex; align-items: center; gap: 7px; color: var(--tag); font-size: 14px; font-weight: 800; }
+    .tag-icon { width: 16px; height: 16px; flex: none; }
+    .card-body { margin: auto 0; }
+    .card-body h3 { margin-bottom: 9px; color: var(--tag); font-size: clamp(19px, 1.8vw, 23px); line-height: 1.16; letter-spacing: -.025em; }
+    .card-body p { color: #526078; font-size: 13px; line-height: 1.55; }
+    .card-foot { min-height: 42px; display: flex; align-items: end; justify-content: space-between; gap: 16px; }
+    .card-date { color: #263149; font-family: inherit; font-size: 13px; font-weight: 700; line-height: 1.2; letter-spacing: 0; font-variant-numeric: tabular-nums; }
+    .card-open { width: 42px; height: 42px; display: grid; place-items: center; flex: none; color: var(--tag); border: 2px solid currentColor; border-radius: 12px; transition: color .2s var(--ease), background .2s var(--ease), transform .2s var(--ease); }
+    .arrow { width: 18px; height: 18px; }
+    .archive-card:hover { transform: translate(-3px, -3px); box-shadow: inset 0 1px 0 rgba(255,255,255,.95), 10px 10px 0 var(--tag); }
+    .archive-card:hover .card-open { color: #fff; background: var(--tag); transform: rotate(-5deg); }
+    .archive-card:active { transform: translate(3px, 3px); box-shadow: inset 0 1px 0 rgba(255,255,255,.95), 3px 3px 0 var(--tag); }
+
+    .card-empty { --tag: var(--page-deep); color: var(--ink); background: linear-gradient(145deg, #2b3957, #202d48); border-color: #44536f; box-shadow: inset 0 1px 0 rgba(255,255,255,.08), 7px 7px 0 var(--page-deep); }
+    .card-empty:hover { transform: none; box-shadow: inset 0 1px 0 rgba(255,255,255,.08), 7px 7px 0 var(--page-deep); }
+    .empty-copy { margin: auto; color: #d6ddeb; font-size: 16px; line-height: 1.55; text-align: center; }
+
+    footer { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px 24px; padding: 28px 0 44px; color: var(--ink-soft); border-top: 1px solid var(--line); font-size: 13px; }
+    footer a { min-height: 44px; display: inline-flex; align-items: center; text-underline-offset: 4px; }
+    footer a:hover { color: var(--ink); }
+
+    @keyframes rise { from { opacity: 0; transform: translateY(14px); } }
+
+    @media (max-width: 1080px) {
+      .hero { grid-template-columns: 1fr; }
+      .passport { width: min(100%, 600px); }
+      .region-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .archive-card { min-height: 250px; }
     }
 
-    .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 var(--gutter); }
-
-    /* ---------- Hero ---------- */
-    .hero {
-      min-height: min(88vh, 760px);
-      min-height: min(88svh, 760px);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: clamp(72px, 14vh, 128px) 0 clamp(48px, 9vh, 88px);
-    }
-    .blobs { display: flex; gap: 8px; margin-bottom: clamp(22px, 4vh, 32px); }
-    .blobs span {
-      width: clamp(26px, 6vw, 34px);
-      aspect-ratio: 1;
-      border-radius: 32%;
-      display: block;
-    }
-    .hero h1 {
-      font-size: clamp(38px, 7.4vw, 66px);
-      font-weight: 800;
-      letter-spacing: -.035em;
-      line-height: 1.08;
-      max-width: 15ch;
-      margin-bottom: clamp(16px, 3vh, 24px);
-    }
-    .hero h1 mark {
-      background: linear-gradient(180deg, transparent 62%, var(--hero-band) 62%);
-      color: inherit;
-      padding: 0 .04em;
-    }
-    .hero .intro {
-      font-size: clamp(16px, 2.2vw, 18px);
-      color: var(--ink-soft);
-      max-width: 34ch;
+    @media (max-width: 680px) {
+      .masthead span { display: none; }
+      .hero { padding-top: 72px; }
+      .hero h1 { white-space: normal; }
+      .passport { min-height: 290px; padding: 28px; box-shadow: 10px 10px 0 var(--page-deep); transform: rotate(1.5deg); }
+      .passport-title { margin-top: 58px; }
+      .module-region { padding: 28px 0 34px; }
+      .region-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+      .archive-card { aspect-ratio: auto; min-height: 210px; padding: 12px; border-radius: 15px; }
+      .card-head { padding-bottom: 8px; }
+      .card-section { gap: 5px; font-size: 11px; }
+      .tag-icon { width: 14px; height: 14px; }
+      .card-body { margin: 12px 0 10px; }
+      .card-body h3 { margin-bottom: 0; font-size: 15px; line-height: 1.16; }
+      .card-body p { display: -webkit-box; margin-top: 7px; overflow: hidden; font-size: 11px; line-height: 1.45; -webkit-box-orient: vertical; -webkit-line-clamp: 3; }
+      .card-foot { min-height: 34px; margin-top: auto; gap: 7px; }
+      .card-date { font-size: 11px; white-space: nowrap; }
+      .card-open { width: 34px; height: 34px; border-radius: 10px; }
+      .arrow { width: 16px; height: 16px; }
+      .archive-card { box-shadow: inset 0 1px 0 rgba(255,255,255,.95), 4px 4px 0 var(--tag); }
+      .archive-card:hover { transform: none; box-shadow: inset 0 1px 0 rgba(255,255,255,.95), 4px 4px 0 var(--tag); }
+      .archive-card:active { transform: translate(2px, 2px); box-shadow: inset 0 1px 0 rgba(255,255,255,.95), 2px 2px 0 var(--tag); }
+      .card-empty, .card-empty:hover { box-shadow: inset 0 1px 0 rgba(255,255,255,.08), 4px 4px 0 var(--page-deep); }
+      .empty-copy { margin: auto; font-size: 13px; }
+      footer { align-items: start; flex-direction: column; }
     }
 
-    /* ---------- Zones ---------- */
-    .zone { padding-top: clamp(56px, 9vh, 76px); }
-    main > .zone:last-of-type { padding-bottom: clamp(56px, 9vh, 76px); }
-
-    .zone-head { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; }
-    .zone-dot { width: 12px; height: 12px; border-radius: 4px; background: var(--dot); flex: none; }
-    .zone-head h2 {
-      font-size: 15px;
-      font-weight: 700;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-    }
-
-    .zone-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr));
-      gap: 18px;
-    }
-
-    /* 卡片本底是中性白,颜色只出现在图标徽章、边框和"打开"箭头上——
-       避免整块纯色底,分区之间靠色块跳动而不是靠色块铺满区分。 */
-    .card {
-      border-radius: 20px;
-      padding: 24px;
-      min-height: 158px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      gap: 16px;
-      background: var(--page);
-      border: 1.5px solid var(--card-border);
-      color: var(--ink);
-      text-decoration: none;
-      cursor: pointer;
-      transition: transform .25s var(--ease), box-shadow .25s var(--ease), border-color .25s var(--ease);
-    }
-    .card-icon {
-      width: 40px;
-      height: 40px;
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 20px;
-      background: var(--card-bg);
-      margin-bottom: 12px;
-    }
-    .card h3 {
-      font-size: clamp(19px, 2.6vw, 21px);
-      font-weight: 700;
-      letter-spacing: -.01em;
-      margin-bottom: 8px;
-    }
-    .card p { font-size: 15px; line-height: 1.65; color: var(--ink-soft); }
-    .card-go {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--card-ink);
-    }
-    .arrow { width: 16px; height: 16px; transition: transform .25s var(--ease); }
-
-    @media (hover: hover) {
-      .card:hover { transform: translateY(-3px); border-color: var(--card-edge); box-shadow: 0 12px 28px -12px var(--card-shadow); }
-      .card:hover .arrow { transform: translateX(3px); }
-    }
-    .card:active { transform: translateY(-1px); }
-
-    /* 虚线边框是装饰,可以淡;空态文案是内容,必须可读。两者用不同强度。 */
-    .card-empty {
-      background: none;
-      border: 1.5px dashed var(--card-edge);
-      color: var(--card-soft);
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      font-size: 15px;
-      cursor: default;
-    }
-
-    /* ---------- Footer ---------- */
-    footer {
-      border-top: 1px solid #ededf0;
-      margin-top: clamp(48px, 8vh, 72px);
-      padding: 28px 0 40px;
-      font-size: 13px;
-      color: var(--ink-soft);
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px 20px;
-      align-items: center;
-      justify-content: space-between;
-    }
-    footer a {
-      color: inherit;
-      text-decoration-color: #c9c9ce;
-      text-underline-offset: 3px;
-      min-height: 24px;
-      display: inline-flex;
-      align-items: center;
-    }
-    @media (hover: hover) {
-      footer a:hover { color: var(--ink); text-decoration-color: currentColor; }
-    }
-
-    /* ---------- 入场动画 ----------
-       Hero 在首屏,用纯 CSS 入场,永不依赖 JS 才可见。
-       .reveal 只由脚本加给首屏之外的分区,脚本不跑就什么都不隐藏。 */
-    .hero > * { animation: rise .6s var(--ease) backwards; }
-    .hero .blobs { animation-delay: .05s; }
-    .hero h1    { animation-delay: .13s; }
-    .hero .intro { animation-delay: .21s; }
-
-    .reveal { opacity: 0; transform: translateY(18px); }
-    .reveal.in {
-      opacity: 1;
-      transform: none;
-      transition: opacity .55s var(--ease), transform .55s var(--ease);
-    }
-    .zone:not(.reveal) .card,
-    .zone.in .card {
-      animation: rise .5s var(--ease) backwards;
-      animation-delay: calc(var(--i, 0) * 70ms + 90ms);
-    }
-    @keyframes rise {
-      from { opacity: 0; transform: translateY(14px); }
-      to   { opacity: 1; transform: none; }
+    @media (max-width: 520px) {
+      .archive-card { min-height: 190px; }
+      .card-body h3 { font-size: 14px; }
+      .card-body p { font-size: 10.5px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
-      *, *::before, *::after {
-        animation-duration: .01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: .01ms !important;
-      }
-      .reveal { opacity: 1; transform: none; }
+      *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
     }
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <header class="hero">
-      <div class="blobs" aria-hidden="true">${renderBlobs()}</div>
-      <h1>${renderTagline(data.profile)}</h1>
-      <p class="intro">${escapeHtml(data.profile.intro)}</p>
+  <a class="skip-link" href="#archive">跳到内容</a>
+  <div class="shell">
+    <header class="masthead">
+      <strong>Private archive / ${escapeHtml(data.profile.name)}</strong>
+      <span>旅行、工具、和想法<br>持续更新</span>
     </header>
 
-    <main>
-${data.sections.map(renderSection).join('\n\n')}
+    <section class="hero" aria-labelledby="page-title">
+      <div>
+        <p class="eyebrow">WELCOME / ${new Date().getFullYear()}</p>
+        <h1 id="page-title">${renderTagline(data.profile)}</h1>
+        <p class="intro">${WELCOME_ICON}<span>${escapeHtml(data.profile.intro)}</span></p>
+      </div>
+      <div class="passport" aria-hidden="true">
+        <span class="passport-label">PERSONAL ROUTE DOCUMENT</span>
+        <p class="passport-title">旅行、工具、<br>和想法。</p>
+        <span class="passport-dots"><i></i><i></i><i></i><i></i><i></i></span>
+      </div>
+    </section>
+
+    <main id="archive">
+${renderRegions()}
     </main>
 
     <footer>
@@ -345,38 +274,6 @@ ${data.sections.map(renderSection).join('\n\n')}
 ${data.profile.email ? `      <a href="mailto:${escapeHtml(data.profile.email)}">${escapeHtml(data.profile.email)}</a>` : ''}
     </footer>
   </div>
-
-  <script>
-    (function () {
-      var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      if (reduced || !('IntersectionObserver' in window)) return;
-
-      // 只隐藏首屏之外的分区:首屏内容任何情况下都直接可见。
-      var hidden = [].filter.call(document.querySelectorAll('.zone'), function (el) {
-        return el.getBoundingClientRect().top > window.innerHeight * 0.9;
-      });
-      if (!hidden.length) return;
-
-      hidden.forEach(function (el) { el.classList.add('reveal'); });
-
-      function show(el) { el.classList.add('in'); }
-
-      var io = new IntersectionObserver(function (entries) {
-        entries.forEach(function (entry) {
-          if (!entry.isIntersecting) return;
-          show(entry.target);
-          io.unobserve(entry.target);
-        });
-      }, { rootMargin: '0px 0px -12% 0px', threshold: .1 });
-      hidden.forEach(function (el) { io.observe(el); });
-
-      // 兜底:IO 若因任何原因没有触发,页面也不会停在空白状态。
-      setTimeout(function () {
-        io.disconnect();
-        hidden.forEach(show);
-      }, 2500);
-    })();
-  </script>
 </body>
 </html>
 `;
