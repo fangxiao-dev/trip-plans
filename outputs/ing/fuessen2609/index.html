@@ -75,20 +75,21 @@ button:focus-visible, a:focus-visible {
   background: linear-gradient(var(--paper) 76%, rgba(245, 239, 223, 0));
 }
 .home-link {
-  position: absolute; z-index: 2; top: 9px; left: 4px;
+  position: absolute; z-index: 2;
   display: grid; width: 42px; height: 42px; place-items: center;
-  color: var(--green); background: linear-gradient(145deg, #fffdf6, #e7dfc9);
-  border: 1px solid var(--line-strong); border-radius: 50%; text-decoration: none;
+  color: var(--green, #164d46); background: linear-gradient(145deg, #fffdf6, #e7dfc9);
+  border: 1px solid var(--line-strong, rgba(18,63,55,.3)); border-radius: 50%; text-decoration: none;
   box-shadow: inset 0 1px 0 rgba(255,255,255,.9), 0 5px 0 rgba(18,63,55,.16), 0 10px 22px rgba(18,42,36,.12);
-  transition: color var(--motion), transform var(--motion), box-shadow var(--motion);
+  transition: color var(--motion, 200ms ease), transform var(--motion, 200ms ease), box-shadow var(--motion, 200ms ease);
 }
 .home-link::after {
   content: ""; position: absolute; right: 2px; bottom: 3px; width: 7px; height: 7px;
-  border: 2px solid var(--paper-strong); border-radius: 50%; background: var(--orange);
+  border: 2px solid var(--paper-strong, #fffaf0); border-radius: 50%; background: var(--orange, #d75d3f);
 }
-.home-link:hover { color: var(--orange); transform: translateY(-2px) rotate(-4deg); box-shadow: inset 0 1px 0 rgba(255,255,255,.9), 0 7px 0 rgba(18,63,55,.14), 0 13px 24px rgba(18,42,36,.14); }
+.home-link:hover { color: var(--orange, #d75d3f); transform: translateY(-2px) rotate(-4deg); box-shadow: inset 0 1px 0 rgba(255,255,255,.9), 0 7px 0 rgba(18,63,55,.14), 0 13px 24px rgba(18,42,36,.14); }
 .home-link:active { transform: translateY(3px); box-shadow: inset 0 1px 0 rgba(255,255,255,.9), 0 2px 0 rgba(18,63,55,.16), 0 5px 12px rgba(18,42,36,.10); }
 .home-link svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
+.home-link { top: 9px; left: 4px; }
 .eyebrow { margin: 0 0 4px 54px; min-height: 42px; display: flex; align-items: center; color: var(--orange); font-size: 13px; font-weight: 800; letter-spacing: .12em; }
 h1, h2, h3 { font-family: "Noto Serif SC", "Songti SC", STSong, serif; }
 h1 { margin: 0; font-size: clamp(31px, 4vw, 46px); line-height: 1.15; letter-spacing: -.035em; }
@@ -98,13 +99,34 @@ h1 { margin: 0; font-size: clamp(31px, 4vw, 46px); line-height: 1.15; letter-spa
   display: flex; align-items: center; gap: 10px; margin-top: 12px;
   color: var(--ink-soft); font-size: 14px; font-weight: 650;
 }
+.base-row > span:not(.base-mark) { min-width: 0; }
 .base-mark {
   display: inline-grid; flex: 0 0 28px; width: 28px; height: 28px; place-items: center;
   border-radius: 50%; color: var(--green); background: var(--green-soft);
 }
 .base-mark svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.8; }
+.details-link {
+  display: inline-flex; min-height: 38px; align-items: center; justify-content: center; gap: 6px;
+  flex: 0 0 auto; margin-left: auto; padding: 6px 11px; border-radius: 11px;
+  color: #fffaf0; background: var(--orange); text-decoration: none; font-size: 13px; font-weight: 800;
+  box-shadow: 0 5px 14px rgba(215, 93, 63, .18); transition: filter var(--motion), transform var(--motion);
+}
+.details-link:hover { filter: brightness(.94); transform: translateY(-1px); }
+.details-link svg { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
+.group-tabs {
+  display: grid; grid-template-columns: repeat(var(--group-count, 4), minmax(0, 1fr)); gap: 5px;
+  margin-top: 14px; padding: 5px; border: 1px solid var(--line); border-radius: 15px;
+  background: rgba(255, 250, 240, .56);
+}
+.group-tab {
+  min-width: 0; min-height: 38px; padding: 6px 7px; border: 0; border-radius: 11px;
+  color: var(--ink-soft); background: transparent; cursor: pointer; font-size: 13px; font-weight: 800;
+  white-space: nowrap; transition: color var(--motion), background var(--motion);
+}
+.group-tab:hover { color: var(--green); background: var(--green-soft); }
+.group-tab[aria-selected="true"] { color: #fffaf0; background: var(--green); }
 .day-tabs {
-  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px;
+  display: grid; grid-template-columns: repeat(var(--day-count, 3), minmax(0, 1fr)); gap: 8px;
   margin-top: 18px; padding-bottom: 15px; border-bottom: 1px solid var(--line-strong);
 }
 .day-tab {
@@ -140,6 +162,7 @@ h1 { margin: 0; font-size: clamp(31px, 4vw, 46px); line-height: 1.15; letter-spa
   border-radius: 14px; transition: background var(--motion), box-shadow var(--motion);
 }
 .route-card:hover { background: rgba(255, 250, 240, .48); }
+.route-card:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; background: var(--paper-strong); }
 .route-item.is-active .route-card { background: var(--paper-strong); box-shadow: 0 10px 30px rgba(31, 61, 51, .08); }
 .route-time { color: var(--orange); font-size: 14px; font-weight: 850; letter-spacing: .015em; }
 .route-name-row { display: flex; align-items: baseline; justify-content: flex-start; gap: 10px; }
@@ -239,6 +262,9 @@ h1 { margin: 0; font-size: clamp(31px, 4vw, 46px); line-height: 1.15; letter-spa
   .trip-title-row { gap: 10px; }
   .trip-date { font-size: 14px; }
   .base-row { margin-top: 11px; }
+  .details-link { min-height: 36px; padding: 5px 9px; font-size: 12px; }
+  .group-tabs { margin-top: 12px; }
+  .group-tab { min-height: 36px; padding-inline: 4px; font-size: 12px; }
   .day-tabs { margin-top: 14px; padding-bottom: 0; border: 0; }
   .day-tab { min-height: 48px; font-size: 14px; }
   .day-intro { padding-top: 21px; }
@@ -279,7 +305,7 @@ h1 { margin: 0; font-size: clamp(31px, 4vw, 46px); line-height: 1.15; letter-spa
 </aside>
 <script>
 const TRIP = {"route":"/ing/fuessen2609/","eyebrow":"FÜSSEN · SOLO ALPINE TRIP","title":"Füssen 三日自然旅行","description":"2026 年 9 月 8 日至 10 日，从 Reutlingen 出发的 Füssen 湖景与高山公共交通行程","dateRange":"2026.09.08 ~ 09.10","basemap":"topo","theme":{"green":"#164d46","orange":"#d75d3f","blue":"#176ba0"},"base":{"name":"my Hostel Füssen","label":"住宿","lat":47.571124,"lng":10.70151,"placeholder":false},"days":[{"id":"0908","label":"09.08","displayDate":"9月8日","weekday":"周二","title":"抵达后只留一段轻松湖景","color":"#d75d3f","weather":"抵达时间优先服从实际铁路与 SEV 连接；到得晚就缩短或取消 Hopfensee，不影响后两天核心山景。","locations":[{"id":"tue-reutlingen","name":"Reutlingen Hbf","lat":48.49597,"lng":9.2095,"type":"transport","fit":false,"time":"上午出发","desc":"乘 DB / 区域铁路前往 Füssen，不把中午前抵达设为硬目标。","gmap":"https://www.google.com/maps/search/?api=1&query=Reutlingen+Hbf","notices":[{"kind":"transport","label":"施工与 SEV","text":"9 月 8 日 Buchloe—Füssen 区段处于施工窗口，可能改乘铁路替代巴士。出发前在 DB Navigator 或 BRB 重新确认具体连接和替代站点。"}]},{"id":"tue-fuessen-arrival","name":"Füssen Bahnhof","lat":47.5702629,"lng":10.6978184,"type":"transport","time":"抵达后","desc":"抵达后步行前往 my Hostel Füssen 办理入住或放下行李，再判断当天剩余时间。","gmap":"https://www.google.com/maps/search/?api=1&query=F%C3%BCssen+Bahnhof","notices":[{"kind":"effort","label":"入住提醒","text":"住宿地址为 Augsburger Straße 12；具体入住时间、门禁和行李安排以订单及住宿方确认为准。"}]},{"id":"tue-hopfensee","name":"Hopfensee · 湖边散步","lat":47.6077,"lng":10.6774,"type":"spot","time":"下午有余量时","desc":"沿 Hopfen am See 湖边轻松散步，看湖面和 Allgäu / Ammergau Alps 背景，不安排高强度徒步。","gmap":"https://www.google.com/maps/search/?api=1&query=Hopfensee+Hopfen+am+See","notices":[{"kind":"transport","label":"往返交通","text":"默认从 Füssen 乘 Bus 56 往返；以当天时刻表为准，避免错过返程班次。"},{"kind":"weather","label":"可直接取消","text":"若抵达偏晚、下雨或已经疲惫，直接留在 Füssen 休息，不把湖边散步挪到后两天。"}]}]},{"id":"0909","label":"09.09","displayDate":"9月9日","weekday":"周三","title":"整趟旅行的核心高山全景日","color":"#176ba0","weather":"早上先看 Tegelberg 山顶天气、风力和缆车状态；条件不好时与 9 月 10 日交换，不为固定日期冒险。","locations":[{"id":"wed-fuessen-bus","name":"Füssen Bahnhof · Bus 78","lat":47.5702629,"lng":10.6978184,"type":"transport","time":"早上","desc":"从 Füssen Bahnhof 乘 Bus 78 前往 Tegelbergbahn，给换乘和候车留出余量。","gmap":"https://www.google.com/maps/search/?api=1&query=F%C3%BCssen+Bahnhof","notices":[{"kind":"transport","label":"当天时刻表","text":"Bus 78 连接 Füssen、Hohenschwangau 与 Tegelberg；出发前再次确认去程和下午返程班次。"}]},{"id":"wed-tegelberg-valley","name":"Tegelbergbahn · Talstation","lat":47.568532,"lng":10.756744,"type":"transport","time":"上午","desc":"到达谷站后核对当天运营公告，乘 Tegelbergbahn 上山。","gmap":"https://www.google.com/maps/search/?api=1&query=Tegelbergbahn+Talstation","notices":[{"kind":"ticket","label":"运营优先","text":"缆车营业时间和停运信息以 Tegelbergbahn 当天官方公告为准；页面不把当前状态当成出发日保证。"}]},{"id":"wed-tegelberg-top","name":"Tegelberg · Königsrunde","lat":47.5595,"lng":10.7785,"type":"spot","time":"上午至下午","desc":"先走 Königsrunde / Panorama 区域；天气、路况和体力都合适时，再继续约 2—4 小时的高山徒步。","gmap":"https://www.google.com/maps/search/?api=1&query=Tegelberghaus","choices":["保底：Königsrunde 与 Bergstation 周边全景","进阶：在明确路线、返程时间和天气允许时增加高山步行","目标：湖区、山谷、Säuling 与 Ammergauer Alpen 的开阔视野"],"notices":[{"kind":"effort","label":"高山路线","text":"不把 Klettersteig 或陌生技术路线作为临场加项。离开 Panorama 区域前先确认标识、难度、剩余时间和末班缆车。"},{"kind":"weather","label":"及时收缩","text":"遇到低云、强风、雷雨或湿滑路面就停在观景区域，必要时提前下山。"}]}]},{"id":"0910","label":"09.10","displayDate":"9月10日","weekday":"周四","title":"第二座山的草甸山脊后返程","color":"#16806f","weather":"早上先确认 Breitenberg / Hochalpbahn 运行、山顶天气和回程连接；返程缓冲高于完成全部路线。","locations":[{"id":"thu-fuessen-depart","name":"Füssen · 退房出发","lat":47.5702629,"lng":10.6978184,"type":"transport","time":"早上","desc":"从 my Hostel Füssen 退房后，按住宿方确认的规则处理行李，再前往 Pfronten-Steinach。","gmap":"https://www.google.com/maps/search/?api=1&query=F%C3%BCssen+Bahnhof","notices":[{"kind":"transport","label":"行李与交通","text":"出发前向 my Hostel Füssen 确认退房后能否寄存行李。前往 Pfronten 可查 Bus 56 / 71 或当天铁路连接，不预设唯一班次。"}]},{"id":"thu-pfronten-steinach","name":"Pfronten-Steinach · Breitenbergbahn","lat":47.565986,"lng":10.574672,"type":"transport","time":"上午","desc":"Pfronten-Steinach 站与 Breitenbergbahn 谷站相邻；到达后核对 Breitenbergbahn 和 Hochalpbahn 当日状态。","gmap":"https://www.google.com/maps/search/?api=1&query=Breitenbergbahn+Pfronten","notices":[{"kind":"ticket","label":"两段缆车","text":"Breitenbergbahn 与 Hochalpbahn 的营业时间可能不同；购票和上山前确认两段运营及最晚下山时间。"}]},{"id":"thu-breitenberg-top","name":"Breitenberg · Bergstation","lat":47.548526,"lng":10.570132,"type":"spot","time":"上午至中午","desc":"乘 Breitenbergbahn 上山，按运营情况继续使用 Hochalpbahn 或步行，进入高山草甸与山脊景观。","gmap":"https://www.google.com/maps/search/?api=1&query=Breitenbergbahn+Bergstation","notices":[{"kind":"effort","label":"路线终点","text":"默认路线只做到 Breitenberg / Ostlerhütte，不临时追加 Aggenstein；后者包含更陡、狭窄及钢索辅助路段。"}]},{"id":"thu-ostlerhuette","name":"Ostlerhütte","lat":47.548686,"lng":10.551147,"type":"spot","time":"中午前后","desc":"以 Ostlerhütte 一带作为默认终点，看 Allgäuer / Tiroler Alpen、高山草甸和 360° 全景，再按返程时间下山。","gmap":"https://www.google.com/maps/search/?api=1&query=Ostlerh%C3%BCtte","notices":[{"kind":"weather","label":"返程优先","text":"天气转差或时间不足时提前折返。下山后还要回 Füssen 取行李并返回 Reutlingen，不把山顶停留拖到最后余量。"}]},{"id":"thu-reutlingen-return","name":"Reutlingen Hbf · 返程","lat":48.49597,"lng":9.2095,"type":"transport","fit":false,"time":"下山取行李后","desc":"返回 Füssen 取行李，再按当天 DB 连接回 Reutlingen。","gmap":"https://www.google.com/maps/search/?api=1&query=Reutlingen+Hbf","notices":[{"kind":"transport","label":"回程缓冲","text":"出发前保存一组较早回程和一组备用连接；山上行程必须为取行李、换乘和可能延误留出余量。"}]}]}]};
-const TYPE_LABELS = { hotel: '落脚点', spot: '景点', food: '吃饭', transport: '交通' };
+const TYPE_LABELS = { hotel: '落脚点', spot: '景点', food: '吃饭', drink: '饮品', transport: '交通' };
 const ICONS = {
   transport: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 17h14M7 17l-2-5 2-5h10l2 5-2 5M8 17v2m8-2v2M8 11h8"/></svg>',
   effort: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3h8M12 3v6m0 0-3 3m3-3 3 3M8 21l2-7h4l2 7"/></svg>',
@@ -300,18 +326,36 @@ document.getElementById('trip-date').textContent = TRIP.dateRange;
 document.getElementById('trip-base').textContent = TRIP.base.label + '：' + TRIP.base.name;
 
 const tabs = document.getElementById('day-tabs');
+const groupTabs = document.getElementById('group-tabs');
 const content = document.getElementById('day-content');
 const popover = document.getElementById('notice-popover');
 const popoverTitle = document.getElementById('popover-title');
 const popoverBody = document.getElementById('popover-body');
-let currentDayId = TRIP.days[0].id;
+const navigationGroups = TRIP.navigationGroups || [];
+let currentGroupId = navigationGroups[0]?.id || null;
+let currentDayId = currentGroupId ? navigationGroups[0].dayIds[0] : TRIP.days[0].id;
 let map;
 let layers = [];
 let markerByLocation = new Map();
 let activeTrigger = null;
 
 function renderTabs() {
-  tabs.innerHTML = TRIP.days.map((day) => '<button class="day-tab" type="button" role="tab" data-day="' + safe(day.id) + '" aria-selected="' + (day.id === currentDayId) + '">' + safe(day.label) + '<small>' + safe(day.weekday) + '</small></button>').join('');
+  const visibleDays = currentGroupId
+    ? navigationGroups.find((group) => group.id === currentGroupId).dayIds.map((dayId) => TRIP.days.find((day) => day.id === dayId))
+    : TRIP.days;
+  tabs.style.setProperty('--day-count', visibleDays.length);
+  tabs.innerHTML = visibleDays.map((day) => '<button class="day-tab" type="button" role="tab" data-day="' + safe(day.id) + '" aria-selected="' + (day.id === currentDayId) + '">' + safe(day.label) + '<small>' + safe(day.weekday) + '</small></button>').join('');
+}
+
+function renderGroupTabs() {
+  if (!groupTabs) return;
+  groupTabs.style.setProperty('--group-count', navigationGroups.length);
+  groupTabs.innerHTML = navigationGroups.map((group) => '<button class="group-tab" type="button" role="tab" data-group="' + safe(group.id) + '" aria-selected="' + (group.id === currentGroupId) + '">' + safe(group.label) + '</button>').join('');
+}
+
+function updateGroupTabs() {
+  if (!groupTabs) return;
+  groupTabs.querySelectorAll('.group-tab').forEach((button) => button.setAttribute('aria-selected', String(button.dataset.group === currentGroupId)));
 }
 
 function noticeButtons(location) {
@@ -325,9 +369,16 @@ function cardLinks(location) {
   return links;
 }
 
+function routeCards(day, locations) {
+  return locations.map((location) => '<article class="route-item" data-location-id="' + safe(location.id) + '" style="--day-color:' + safe(day.color) + '"><span class="route-dot" aria-hidden="true"></span><div class="route-card" tabindex="0"><div class="route-time">' + safe(location.time) + '</div><div class="route-name-row"><h3 class="route-name">' + safe(location.name) + '</h3><span class="kind-tag">' + safe(TYPE_LABELS[location.type] || '地点') + '</span></div><p class="route-desc">' + safe(location.desc) + '</p>' + (location.choices?.length ? '<ul class="choices">' + location.choices.map((choice) => '<li>' + safe(choice) + '</li>').join('') + '</ul>' : '') + '<div class="card-tools"><div class="card-links">' + cardLinks(location) + '</div><div class="notice-tools" aria-label="' + safe(location.name) + '提醒">' + noticeButtons(location) + '</div></div></div></article>').join('');
+}
+
 function renderDay(day) {
-  const cards = day.locations.map((location) => '<article class="route-item" data-location-id="' + safe(location.id) + '" style="--day-color:' + safe(day.color) + '"><span class="route-dot" aria-hidden="true"></span><div class="route-card"><div class="route-time">' + safe(location.time) + '</div><div class="route-name-row"><h3 class="route-name">' + safe(location.name) + '</h3><span class="kind-tag">' + safe(TYPE_LABELS[location.type] || '地点') + '</span></div><p class="route-desc">' + safe(location.desc) + '</p>' + (location.choices?.length ? '<ul class="choices">' + location.choices.map((choice) => '<li>' + safe(choice) + '</li>').join('') + '</ul>' : '') + '<div class="card-tools"><div class="card-links">' + cardLinks(location) + '</div><div class="notice-tools" aria-label="' + safe(location.name) + '提醒">' + noticeButtons(location) + '</div></div></div></article>').join('');
-  content.innerHTML = '<div class="day-intro"><div class="day-title-row"><h2>' + safe(day.displayDate || day.label) + '</h2><p>' + safe(day.title) + '</p></div>' + (day.weather ? '<div class="weather-note">' + WEATHER_ICON + '<span>' + safe(day.weather) + '</span></div>' : '') + '</div><div class="section-label">当天行程</div><div class="timeline">' + cards + '</div>';
+  const mainLocations = day.locations.filter((location) => !location.optional);
+  const optionalLocations = day.locations.filter((location) => location.optional);
+  const context = day.subtitle ? safe(day.subtitle) + ' · ' : '';
+  const optionalSection = optionalLocations.length ? '<div class="section-label">备选</div><div class="timeline">' + routeCards(day, optionalLocations) + '</div>' : '';
+  content.innerHTML = '<div class="day-intro"><div class="day-title-row"><h2>' + safe(day.displayDate || day.label) + '</h2><p>' + context + safe(day.title) + '</p></div>' + (day.weather ? '<div class="weather-note">' + WEATHER_ICON + '<span>' + safe(day.weather) + '</span></div>' : '') + '</div><div class="section-label">当天行程</div><div class="timeline">' + routeCards(day, mainLocations) + '</div>' + optionalSection;
 }
 
 function clearMap() {
@@ -415,8 +466,11 @@ function openNotice(trigger) {
 function selectDay(dayId, moveFocus = false) {
   const day = TRIP.days.find((item) => item.id === dayId);
   if (!day) return;
+  const owningGroup = navigationGroups.find((group) => group.dayIds.includes(dayId));
+  if (owningGroup) currentGroupId = owningGroup.id;
   closePopover(false);
   currentDayId = day.id;
+  updateGroupTabs();
   renderTabs();
   renderDay(day);
   showDayOnMap(day);
@@ -426,6 +480,16 @@ function selectDay(dayId, moveFocus = false) {
 tabs.addEventListener('click', (event) => {
   const button = event.target.closest('.day-tab');
   if (button) selectDay(button.dataset.day, true);
+});
+if (groupTabs) groupTabs.addEventListener('click', (event) => {
+  const button = event.target.closest('.group-tab');
+  if (!button) return;
+  const group = navigationGroups.find((item) => item.id === button.dataset.group);
+  if (!group) return;
+  currentGroupId = group.id;
+  updateGroupTabs();
+  selectDay(group.dayIds[0], false);
+  groupTabs.querySelector('[data-group="' + CSS.escape(group.id) + '"]').focus();
 });
 content.addEventListener('click', (event) => {
   const notice = event.target.closest('.notice-trigger');
@@ -447,15 +511,22 @@ document.addEventListener('pointerdown', (event) => {
 document.addEventListener('keydown', (event) => { if (event.key === 'Escape') closePopover(true); });
 window.addEventListener('resize', () => { if (activeTrigger) positionPopover(); if (map) map.invalidateSize(); });
 
+const RASTER_BASEMAPS = {
+  osm: { url: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png', maxZoom: 19, attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>' },
+  topo: { url: 'https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', maxZoom: 17, attribution: 'Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>, SRTM | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (CC-BY-SA)' },
+};
+
+function addRasterBasemap(name = 'osm') {
+  const basemap = RASTER_BASEMAPS[name] || RASTER_BASEMAPS.osm;
+  L.tileLayer(basemap.url, { maxZoom: basemap.maxZoom, attribution: basemap.attribution }).addTo(map);
+}
+
 function initMap() {
   if (!window.L) return;
   document.getElementById('map').innerHTML = '';
   map = L.map('map', { center: [TRIP.base.lat, TRIP.base.lng], zoom: 13, zoomControl: false });
   L.control.zoom({ position: 'topright' }).addTo(map);
-  const basemap = TRIP.basemap === 'topo'
-    ? { url: 'https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', maxZoom: 17, attribution: 'Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>, SRTM | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (CC-BY-SA)' }
-    : { url: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png', maxZoom: 19, attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>' };
-  L.tileLayer(basemap.url, { maxZoom: basemap.maxZoom, attribution: basemap.attribution }).addTo(map);
+  addRasterBasemap(TRIP.basemap);
   const LocateControl = L.Control.extend({
     options: { position: 'bottomright' },
     onAdd() {
@@ -473,6 +544,7 @@ function initMap() {
 }
 
 initMap();
+renderGroupTabs();
 selectDay(currentDayId, false);
 </script>
 </body>

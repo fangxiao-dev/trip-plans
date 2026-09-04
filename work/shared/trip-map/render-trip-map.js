@@ -1,11 +1,52 @@
 const REQUIRED_LOCATION_FIELDS = ['id', 'name', 'lat', 'lng', 'type', 'time', 'desc'];
 
+const HOME_LINK_CSS = `.home-link {
+  position: absolute; z-index: 2;
+  display: grid; width: 42px; height: 42px; place-items: center;
+  color: var(--green, #164d46); background: linear-gradient(145deg, #fffdf6, #e7dfc9);
+  border: 1px solid var(--line-strong, rgba(18,63,55,.3)); border-radius: 50%; text-decoration: none;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.9), 0 5px 0 rgba(18,63,55,.16), 0 10px 22px rgba(18,42,36,.12);
+  transition: color var(--motion, 200ms ease), transform var(--motion, 200ms ease), box-shadow var(--motion, 200ms ease);
+}
+.home-link::after {
+  content: ""; position: absolute; right: 2px; bottom: 3px; width: 7px; height: 7px;
+  border: 2px solid var(--paper-strong, #fffaf0); border-radius: 50%; background: var(--orange, #d75d3f);
+}
+.home-link:hover { color: var(--orange, #d75d3f); transform: translateY(-2px) rotate(-4deg); box-shadow: inset 0 1px 0 rgba(255,255,255,.9), 0 7px 0 rgba(18,63,55,.14), 0 13px 24px rgba(18,42,36,.14); }
+.home-link:active { transform: translateY(3px); box-shadow: inset 0 1px 0 rgba(255,255,255,.9), 0 2px 0 rgba(18,63,55,.16), 0 5px 12px rgba(18,42,36,.10); }
+.home-link svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }`;
+
+function renderHomeLink(extraClass = '') {
+  return `<a class="home-link${extraClass ? ` ${extraClass}` : ''}" href="/" aria-label="返回主页" title="返回主页"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11.5 12 5l8 6.5V20h-6v-5h-4v5H6v-8.5"/><path d="M9 9H3m3-3L3 9l3 3"/></svg></a>`;
+}
+
 function assertTripData(data) {
   if (!data || typeof data !== 'object') throw new Error('Trip data must be an object.');
   if (!data.title || !data.route || !data.base || !Array.isArray(data.days) || data.days.length === 0) {
     throw new Error('Trip data requires title, route, base and at least one day.');
   }
   const locationIds = new Set();
+  const dayIds = new Set(data.days.map((day) => day.id));
+  if (data.navigationGroups !== undefined) {
+    if (!Array.isArray(data.navigationGroups) || data.navigationGroups.length === 0) {
+      throw new Error('navigationGroups must be a non-empty array when provided.');
+    }
+    const groupedDays = new Set();
+    for (const group of data.navigationGroups) {
+      if (!group.id || !group.label || !Array.isArray(group.dayIds) || group.dayIds.length === 0) {
+        throw new Error(`Invalid navigation group: ${group.id || '(missing id)'}`);
+      }
+      for (const dayId of group.dayIds) {
+        if (!dayIds.has(dayId)) throw new Error(`Navigation group ${group.id} references unknown day: ${dayId}`);
+        if (groupedDays.has(dayId)) throw new Error(`Day appears in multiple navigation groups: ${dayId}`);
+        groupedDays.add(dayId);
+      }
+    }
+    if (groupedDays.size !== data.days.length) throw new Error('navigationGroups must include every day exactly once.');
+  }
+  if (data.detailsHref !== undefined && (typeof data.detailsHref !== 'string' || !data.detailsHref.startsWith('/'))) {
+    throw new Error('detailsHref must be an absolute site path.');
+  }
   for (const day of data.days) {
     if (!day.id || !day.label || !day.displayDate || !day.title || !Array.isArray(day.locations)) {
       throw new Error(`Invalid day: ${day.id || '(missing id)'}`);
@@ -49,6 +90,12 @@ function renderTripMap(data) {
   const title = escapeHtml(data.title);
   const description = escapeHtml(data.description || data.summary || data.title);
   const tripJson = serializeForScript(data);
+  const detailsLink = data.detailsHref
+    ? `<a class="details-link" href="${escapeHtml(data.detailsHref)}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19V8m16 11V8M4 15h16M7 11h4a2 2 0 0 1 2 2v2H7v-4Z"/></svg><span>详情</span></a>`
+    : '';
+  const groupTabs = data.navigationGroups
+    ? '        <div class="group-tabs" id="group-tabs" role="tablist" aria-label="选择行程区域"></div>\n'
+    : '';
 
   return `<!doctype html>
 <html lang="zh-CN">
@@ -126,21 +173,8 @@ button:focus-visible, a:focus-visible {
   padding: 14px 4px 18px;
   background: linear-gradient(var(--paper) 76%, rgba(245, 239, 223, 0));
 }
-.home-link {
-  position: absolute; z-index: 2; top: 9px; left: 4px;
-  display: grid; width: 42px; height: 42px; place-items: center;
-  color: var(--green); background: linear-gradient(145deg, #fffdf6, #e7dfc9);
-  border: 1px solid var(--line-strong); border-radius: 50%; text-decoration: none;
-  box-shadow: inset 0 1px 0 rgba(255,255,255,.9), 0 5px 0 rgba(18,63,55,.16), 0 10px 22px rgba(18,42,36,.12);
-  transition: color var(--motion), transform var(--motion), box-shadow var(--motion);
-}
-.home-link::after {
-  content: ""; position: absolute; right: 2px; bottom: 3px; width: 7px; height: 7px;
-  border: 2px solid var(--paper-strong); border-radius: 50%; background: var(--orange);
-}
-.home-link:hover { color: var(--orange); transform: translateY(-2px) rotate(-4deg); box-shadow: inset 0 1px 0 rgba(255,255,255,.9), 0 7px 0 rgba(18,63,55,.14), 0 13px 24px rgba(18,42,36,.14); }
-.home-link:active { transform: translateY(3px); box-shadow: inset 0 1px 0 rgba(255,255,255,.9), 0 2px 0 rgba(18,63,55,.16), 0 5px 12px rgba(18,42,36,.10); }
-.home-link svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
+${HOME_LINK_CSS}
+.home-link { top: 9px; left: 4px; }
 .eyebrow { margin: 0 0 4px 54px; min-height: 42px; display: flex; align-items: center; color: var(--orange); font-size: 13px; font-weight: 800; letter-spacing: .12em; }
 h1, h2, h3 { font-family: "Noto Serif SC", "Songti SC", STSong, serif; }
 h1 { margin: 0; font-size: clamp(31px, 4vw, 46px); line-height: 1.15; letter-spacing: -.035em; }
@@ -150,13 +184,34 @@ h1 { margin: 0; font-size: clamp(31px, 4vw, 46px); line-height: 1.15; letter-spa
   display: flex; align-items: center; gap: 10px; margin-top: 12px;
   color: var(--ink-soft); font-size: 14px; font-weight: 650;
 }
+.base-row > span:not(.base-mark) { min-width: 0; }
 .base-mark {
   display: inline-grid; flex: 0 0 28px; width: 28px; height: 28px; place-items: center;
   border-radius: 50%; color: var(--green); background: var(--green-soft);
 }
 .base-mark svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.8; }
+.details-link {
+  display: inline-flex; min-height: 38px; align-items: center; justify-content: center; gap: 6px;
+  flex: 0 0 auto; margin-left: auto; padding: 6px 11px; border-radius: 11px;
+  color: #fffaf0; background: var(--orange); text-decoration: none; font-size: 13px; font-weight: 800;
+  box-shadow: 0 5px 14px rgba(215, 93, 63, .18); transition: filter var(--motion), transform var(--motion);
+}
+.details-link:hover { filter: brightness(.94); transform: translateY(-1px); }
+.details-link svg { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
+.group-tabs {
+  display: grid; grid-template-columns: repeat(var(--group-count, 4), minmax(0, 1fr)); gap: 5px;
+  margin-top: 14px; padding: 5px; border: 1px solid var(--line); border-radius: 15px;
+  background: rgba(255, 250, 240, .56);
+}
+.group-tab {
+  min-width: 0; min-height: 38px; padding: 6px 7px; border: 0; border-radius: 11px;
+  color: var(--ink-soft); background: transparent; cursor: pointer; font-size: 13px; font-weight: 800;
+  white-space: nowrap; transition: color var(--motion), background var(--motion);
+}
+.group-tab:hover { color: var(--green); background: var(--green-soft); }
+.group-tab[aria-selected="true"] { color: #fffaf0; background: var(--green); }
 .day-tabs {
-  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px;
+  display: grid; grid-template-columns: repeat(var(--day-count, 3), minmax(0, 1fr)); gap: 8px;
   margin-top: 18px; padding-bottom: 15px; border-bottom: 1px solid var(--line-strong);
 }
 .day-tab {
@@ -192,6 +247,7 @@ h1 { margin: 0; font-size: clamp(31px, 4vw, 46px); line-height: 1.15; letter-spa
   border-radius: 14px; transition: background var(--motion), box-shadow var(--motion);
 }
 .route-card:hover { background: rgba(255, 250, 240, .48); }
+.route-card:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; background: var(--paper-strong); }
 .route-item.is-active .route-card { background: var(--paper-strong); box-shadow: 0 10px 30px rgba(31, 61, 51, .08); }
 .route-time { color: var(--orange); font-size: 14px; font-weight: 850; letter-spacing: .015em; }
 .route-name-row { display: flex; align-items: baseline; justify-content: flex-start; gap: 10px; }
@@ -291,6 +347,9 @@ h1 { margin: 0; font-size: clamp(31px, 4vw, 46px); line-height: 1.15; letter-spa
   .trip-title-row { gap: 10px; }
   .trip-date { font-size: 14px; }
   .base-row { margin-top: 11px; }
+  .details-link { min-height: 36px; padding: 5px 9px; font-size: 12px; }
+  .group-tabs { margin-top: 12px; }
+  .group-tab { min-height: 36px; padding-inline: 4px; font-size: 12px; }
   .day-tabs { margin-top: 14px; padding-bottom: 0; border: 0; }
   .day-tab { min-height: 48px; font-size: 14px; }
   .day-intro { padding-top: 21px; }
@@ -314,11 +373,11 @@ h1 { margin: 0; font-size: clamp(31px, 4vw, 46px); line-height: 1.15; letter-spa
   <section class="itinerary-pane" id="itinerary" aria-label="${title}行程">
     <div class="itinerary-inner">
       <header class="trip-header">
-        <a class="home-link" href="/" aria-label="返回主页" title="返回主页"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11.5 12 5l8 6.5V20h-6v-5h-4v5H6v-8.5"/><path d="M9 9H3m3-3L3 9l3 3"/></svg></a>
+        ${renderHomeLink()}
         <p class="eyebrow" id="trip-eyebrow"></p>
         <div class="trip-title-row"><h1 id="trip-title"></h1><span class="trip-date" id="trip-date"></span></div>
-        <div class="base-row"><span class="base-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 20V10l8-6 8 6v10h-6v-6h-4v6H4Z"/></svg></span><span id="trip-base"></span></div>
-        <div class="day-tabs" id="day-tabs" role="tablist" aria-label="选择日期"></div>
+        <div class="base-row"><span class="base-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 20V10l8-6 8 6v10h-6v-6h-4v6H4Z"/></svg></span><span id="trip-base"></span>${detailsLink}</div>
+${groupTabs}        <div class="day-tabs" id="day-tabs" role="tablist" aria-label="选择日期"></div>
       </header>
       <div id="day-content" tabindex="-1"></div>
     </div>
@@ -331,7 +390,7 @@ h1 { margin: 0; font-size: clamp(31px, 4vw, 46px); line-height: 1.15; letter-spa
 </aside>
 <script>
 const TRIP = ${tripJson};
-const TYPE_LABELS = { hotel: '落脚点', spot: '景点', food: '吃饭', transport: '交通' };
+const TYPE_LABELS = { hotel: '落脚点', spot: '景点', food: '吃饭', drink: '饮品', transport: '交通' };
 const ICONS = {
   transport: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 17h14M7 17l-2-5 2-5h10l2 5-2 5M8 17v2m8-2v2M8 11h8"/></svg>',
   effort: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3h8M12 3v6m0 0-3 3m3-3 3 3M8 21l2-7h4l2 7"/></svg>',
@@ -352,18 +411,36 @@ document.getElementById('trip-date').textContent = TRIP.dateRange;
 document.getElementById('trip-base').textContent = TRIP.base.label + '：' + TRIP.base.name;
 
 const tabs = document.getElementById('day-tabs');
+const groupTabs = document.getElementById('group-tabs');
 const content = document.getElementById('day-content');
 const popover = document.getElementById('notice-popover');
 const popoverTitle = document.getElementById('popover-title');
 const popoverBody = document.getElementById('popover-body');
-let currentDayId = TRIP.days[0].id;
+const navigationGroups = TRIP.navigationGroups || [];
+let currentGroupId = navigationGroups[0]?.id || null;
+let currentDayId = currentGroupId ? navigationGroups[0].dayIds[0] : TRIP.days[0].id;
 let map;
 let layers = [];
 let markerByLocation = new Map();
 let activeTrigger = null;
 
 function renderTabs() {
-  tabs.innerHTML = TRIP.days.map((day) => '<button class="day-tab" type="button" role="tab" data-day="' + safe(day.id) + '" aria-selected="' + (day.id === currentDayId) + '">' + safe(day.label) + '<small>' + safe(day.weekday) + '</small></button>').join('');
+  const visibleDays = currentGroupId
+    ? navigationGroups.find((group) => group.id === currentGroupId).dayIds.map((dayId) => TRIP.days.find((day) => day.id === dayId))
+    : TRIP.days;
+  tabs.style.setProperty('--day-count', visibleDays.length);
+  tabs.innerHTML = visibleDays.map((day) => '<button class="day-tab" type="button" role="tab" data-day="' + safe(day.id) + '" aria-selected="' + (day.id === currentDayId) + '">' + safe(day.label) + '<small>' + safe(day.weekday) + '</small></button>').join('');
+}
+
+function renderGroupTabs() {
+  if (!groupTabs) return;
+  groupTabs.style.setProperty('--group-count', navigationGroups.length);
+  groupTabs.innerHTML = navigationGroups.map((group) => '<button class="group-tab" type="button" role="tab" data-group="' + safe(group.id) + '" aria-selected="' + (group.id === currentGroupId) + '">' + safe(group.label) + '</button>').join('');
+}
+
+function updateGroupTabs() {
+  if (!groupTabs) return;
+  groupTabs.querySelectorAll('.group-tab').forEach((button) => button.setAttribute('aria-selected', String(button.dataset.group === currentGroupId)));
 }
 
 function noticeButtons(location) {
@@ -377,9 +454,16 @@ function cardLinks(location) {
   return links;
 }
 
+function routeCards(day, locations) {
+  return locations.map((location) => '<article class="route-item" data-location-id="' + safe(location.id) + '" style="--day-color:' + safe(day.color) + '"><span class="route-dot" aria-hidden="true"></span><div class="route-card" tabindex="0"><div class="route-time">' + safe(location.time) + '</div><div class="route-name-row"><h3 class="route-name">' + safe(location.name) + '</h3><span class="kind-tag">' + safe(TYPE_LABELS[location.type] || '地点') + '</span></div><p class="route-desc">' + safe(location.desc) + '</p>' + (location.choices?.length ? '<ul class="choices">' + location.choices.map((choice) => '<li>' + safe(choice) + '</li>').join('') + '</ul>' : '') + '<div class="card-tools"><div class="card-links">' + cardLinks(location) + '</div><div class="notice-tools" aria-label="' + safe(location.name) + '提醒">' + noticeButtons(location) + '</div></div></div></article>').join('');
+}
+
 function renderDay(day) {
-  const cards = day.locations.map((location) => '<article class="route-item" data-location-id="' + safe(location.id) + '" style="--day-color:' + safe(day.color) + '"><span class="route-dot" aria-hidden="true"></span><div class="route-card"><div class="route-time">' + safe(location.time) + '</div><div class="route-name-row"><h3 class="route-name">' + safe(location.name) + '</h3><span class="kind-tag">' + safe(TYPE_LABELS[location.type] || '地点') + '</span></div><p class="route-desc">' + safe(location.desc) + '</p>' + (location.choices?.length ? '<ul class="choices">' + location.choices.map((choice) => '<li>' + safe(choice) + '</li>').join('') + '</ul>' : '') + '<div class="card-tools"><div class="card-links">' + cardLinks(location) + '</div><div class="notice-tools" aria-label="' + safe(location.name) + '提醒">' + noticeButtons(location) + '</div></div></div></article>').join('');
-  content.innerHTML = '<div class="day-intro"><div class="day-title-row"><h2>' + safe(day.displayDate || day.label) + '</h2><p>' + safe(day.title) + '</p></div>' + (day.weather ? '<div class="weather-note">' + WEATHER_ICON + '<span>' + safe(day.weather) + '</span></div>' : '') + '</div><div class="section-label">当天行程</div><div class="timeline">' + cards + '</div>';
+  const mainLocations = day.locations.filter((location) => !location.optional);
+  const optionalLocations = day.locations.filter((location) => location.optional);
+  const context = day.subtitle ? safe(day.subtitle) + ' · ' : '';
+  const optionalSection = optionalLocations.length ? '<div class="section-label">备选</div><div class="timeline">' + routeCards(day, optionalLocations) + '</div>' : '';
+  content.innerHTML = '<div class="day-intro"><div class="day-title-row"><h2>' + safe(day.displayDate || day.label) + '</h2><p>' + context + safe(day.title) + '</p></div>' + (day.weather ? '<div class="weather-note">' + WEATHER_ICON + '<span>' + safe(day.weather) + '</span></div>' : '') + '</div><div class="section-label">当天行程</div><div class="timeline">' + routeCards(day, mainLocations) + '</div>' + optionalSection;
 }
 
 function clearMap() {
@@ -467,8 +551,11 @@ function openNotice(trigger) {
 function selectDay(dayId, moveFocus = false) {
   const day = TRIP.days.find((item) => item.id === dayId);
   if (!day) return;
+  const owningGroup = navigationGroups.find((group) => group.dayIds.includes(dayId));
+  if (owningGroup) currentGroupId = owningGroup.id;
   closePopover(false);
   currentDayId = day.id;
+  updateGroupTabs();
   renderTabs();
   renderDay(day);
   showDayOnMap(day);
@@ -478,6 +565,16 @@ function selectDay(dayId, moveFocus = false) {
 tabs.addEventListener('click', (event) => {
   const button = event.target.closest('.day-tab');
   if (button) selectDay(button.dataset.day, true);
+});
+if (groupTabs) groupTabs.addEventListener('click', (event) => {
+  const button = event.target.closest('.group-tab');
+  if (!button) return;
+  const group = navigationGroups.find((item) => item.id === button.dataset.group);
+  if (!group) return;
+  currentGroupId = group.id;
+  updateGroupTabs();
+  selectDay(group.dayIds[0], false);
+  groupTabs.querySelector('[data-group="' + CSS.escape(group.id) + '"]').focus();
 });
 content.addEventListener('click', (event) => {
   const notice = event.target.closest('.notice-trigger');
@@ -499,15 +596,22 @@ document.addEventListener('pointerdown', (event) => {
 document.addEventListener('keydown', (event) => { if (event.key === 'Escape') closePopover(true); });
 window.addEventListener('resize', () => { if (activeTrigger) positionPopover(); if (map) map.invalidateSize(); });
 
+const RASTER_BASEMAPS = {
+  osm: { url: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png', maxZoom: 19, attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>' },
+  topo: { url: 'https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', maxZoom: 17, attribution: 'Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>, SRTM | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (CC-BY-SA)' },
+};
+
+function addRasterBasemap(name = 'osm') {
+  const basemap = RASTER_BASEMAPS[name] || RASTER_BASEMAPS.osm;
+  L.tileLayer(basemap.url, { maxZoom: basemap.maxZoom, attribution: basemap.attribution }).addTo(map);
+}
+
 function initMap() {
   if (!window.L) return;
   document.getElementById('map').innerHTML = '';
   map = L.map('map', { center: [TRIP.base.lat, TRIP.base.lng], zoom: 13, zoomControl: false });
   L.control.zoom({ position: 'topright' }).addTo(map);
-  const basemap = TRIP.basemap === 'topo'
-    ? { url: 'https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', maxZoom: 17, attribution: 'Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>, SRTM | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (CC-BY-SA)' }
-    : { url: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png', maxZoom: 19, attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>' };
-  L.tileLayer(basemap.url, { maxZoom: basemap.maxZoom, attribution: basemap.attribution }).addTo(map);
+  addRasterBasemap(TRIP.basemap);
   const LocateControl = L.Control.extend({
     options: { position: 'bottomright' },
     onAdd() {
@@ -525,10 +629,11 @@ function initMap() {
 }
 
 initMap();
+renderGroupTabs();
 selectDay(currentDayId, false);
 </script>
 </body>
 </html>`;
 }
 
-module.exports = { renderTripMap };
+module.exports = { HOME_LINK_CSS, renderHomeLink, renderTripMap };

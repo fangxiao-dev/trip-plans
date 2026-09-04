@@ -75,20 +75,21 @@ button:focus-visible, a:focus-visible {
   background: linear-gradient(var(--paper) 76%, rgba(245, 239, 223, 0));
 }
 .home-link {
-  position: absolute; z-index: 2; top: 9px; left: 4px;
+  position: absolute; z-index: 2;
   display: grid; width: 42px; height: 42px; place-items: center;
-  color: var(--green); background: linear-gradient(145deg, #fffdf6, #e7dfc9);
-  border: 1px solid var(--line-strong); border-radius: 50%; text-decoration: none;
+  color: var(--green, #164d46); background: linear-gradient(145deg, #fffdf6, #e7dfc9);
+  border: 1px solid var(--line-strong, rgba(18,63,55,.3)); border-radius: 50%; text-decoration: none;
   box-shadow: inset 0 1px 0 rgba(255,255,255,.9), 0 5px 0 rgba(18,63,55,.16), 0 10px 22px rgba(18,42,36,.12);
-  transition: color var(--motion), transform var(--motion), box-shadow var(--motion);
+  transition: color var(--motion, 200ms ease), transform var(--motion, 200ms ease), box-shadow var(--motion, 200ms ease);
 }
 .home-link::after {
   content: ""; position: absolute; right: 2px; bottom: 3px; width: 7px; height: 7px;
-  border: 2px solid var(--paper-strong); border-radius: 50%; background: var(--orange);
+  border: 2px solid var(--paper-strong, #fffaf0); border-radius: 50%; background: var(--orange, #d75d3f);
 }
-.home-link:hover { color: var(--orange); transform: translateY(-2px) rotate(-4deg); box-shadow: inset 0 1px 0 rgba(255,255,255,.9), 0 7px 0 rgba(18,63,55,.14), 0 13px 24px rgba(18,42,36,.14); }
+.home-link:hover { color: var(--orange, #d75d3f); transform: translateY(-2px) rotate(-4deg); box-shadow: inset 0 1px 0 rgba(255,255,255,.9), 0 7px 0 rgba(18,63,55,.14), 0 13px 24px rgba(18,42,36,.14); }
 .home-link:active { transform: translateY(3px); box-shadow: inset 0 1px 0 rgba(255,255,255,.9), 0 2px 0 rgba(18,63,55,.16), 0 5px 12px rgba(18,42,36,.10); }
 .home-link svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
+.home-link { top: 9px; left: 4px; }
 .eyebrow { margin: 0 0 4px 54px; min-height: 42px; display: flex; align-items: center; color: var(--orange); font-size: 13px; font-weight: 800; letter-spacing: .12em; }
 h1, h2, h3 { font-family: "Noto Serif SC", "Songti SC", STSong, serif; }
 h1 { margin: 0; font-size: clamp(31px, 4vw, 46px); line-height: 1.15; letter-spacing: -.035em; }
@@ -98,13 +99,34 @@ h1 { margin: 0; font-size: clamp(31px, 4vw, 46px); line-height: 1.15; letter-spa
   display: flex; align-items: center; gap: 10px; margin-top: 12px;
   color: var(--ink-soft); font-size: 14px; font-weight: 650;
 }
+.base-row > span:not(.base-mark) { min-width: 0; }
 .base-mark {
   display: inline-grid; flex: 0 0 28px; width: 28px; height: 28px; place-items: center;
   border-radius: 50%; color: var(--green); background: var(--green-soft);
 }
 .base-mark svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.8; }
+.details-link {
+  display: inline-flex; min-height: 38px; align-items: center; justify-content: center; gap: 6px;
+  flex: 0 0 auto; margin-left: auto; padding: 6px 11px; border-radius: 11px;
+  color: #fffaf0; background: var(--orange); text-decoration: none; font-size: 13px; font-weight: 800;
+  box-shadow: 0 5px 14px rgba(215, 93, 63, .18); transition: filter var(--motion), transform var(--motion);
+}
+.details-link:hover { filter: brightness(.94); transform: translateY(-1px); }
+.details-link svg { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
+.group-tabs {
+  display: grid; grid-template-columns: repeat(var(--group-count, 4), minmax(0, 1fr)); gap: 5px;
+  margin-top: 14px; padding: 5px; border: 1px solid var(--line); border-radius: 15px;
+  background: rgba(255, 250, 240, .56);
+}
+.group-tab {
+  min-width: 0; min-height: 38px; padding: 6px 7px; border: 0; border-radius: 11px;
+  color: var(--ink-soft); background: transparent; cursor: pointer; font-size: 13px; font-weight: 800;
+  white-space: nowrap; transition: color var(--motion), background var(--motion);
+}
+.group-tab:hover { color: var(--green); background: var(--green-soft); }
+.group-tab[aria-selected="true"] { color: #fffaf0; background: var(--green); }
 .day-tabs {
-  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px;
+  display: grid; grid-template-columns: repeat(var(--day-count, 3), minmax(0, 1fr)); gap: 8px;
   margin-top: 18px; padding-bottom: 15px; border-bottom: 1px solid var(--line-strong);
 }
 .day-tab {
@@ -140,6 +162,7 @@ h1 { margin: 0; font-size: clamp(31px, 4vw, 46px); line-height: 1.15; letter-spa
   border-radius: 14px; transition: background var(--motion), box-shadow var(--motion);
 }
 .route-card:hover { background: rgba(255, 250, 240, .48); }
+.route-card:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; background: var(--paper-strong); }
 .route-item.is-active .route-card { background: var(--paper-strong); box-shadow: 0 10px 30px rgba(31, 61, 51, .08); }
 .route-time { color: var(--orange); font-size: 14px; font-weight: 850; letter-spacing: .015em; }
 .route-name-row { display: flex; align-items: baseline; justify-content: flex-start; gap: 10px; }
@@ -239,6 +262,9 @@ h1 { margin: 0; font-size: clamp(31px, 4vw, 46px); line-height: 1.15; letter-spa
   .trip-title-row { gap: 10px; }
   .trip-date { font-size: 14px; }
   .base-row { margin-top: 11px; }
+  .details-link { min-height: 36px; padding: 5px 9px; font-size: 12px; }
+  .group-tabs { margin-top: 12px; }
+  .group-tab { min-height: 36px; padding-inline: 4px; font-size: 12px; }
   .day-tabs { margin-top: 14px; padding-bottom: 0; border: 0; }
   .day-tab { min-height: 48px; font-size: 14px; }
   .day-intro { padding-top: 21px; }
@@ -279,7 +305,7 @@ h1 { margin: 0; font-size: clamp(31px, 4vw, 46px); line-height: 1.15; letter-spa
 </aside>
 <script>
 const TRIP = {"route":"/ing/changsha2608/","eyebrow":"CHANGSHA · FAMILY WEEKEND","title":"长沙3日游","description":"2026 年 8 月 14 日至 16 日长沙家庭周末行程地图","dateRange":"2026.08.14 ~ 08.16","theme":{"green":"#164d46","orange":"#d75d3f","blue":"#176ba0"},"base":{"name":"五一广场","label":"两晚住宿定位","lat":28.1953,"lng":112.9762},"days":[{"id":"0814","label":"08.14","displayDate":"8月14日","weekday":"周五","title":"先安顿，再用一小段老城打开长沙","color":"#d75d3f","weather":"当前预报有阵雨可能。夜逛只走一小段；雨大或长途驾驶后疲惫，直接在五一广场室内吃饭休息。","locations":[{"id":"fri-wuyi-hotel","name":"五一广场 · 住宿定位","lat":28.1953,"lng":112.9762,"type":"hotel","time":"14:00—16:30","desc":"自驾抵达后先办理入住、停车和休息。酒店只按五一广场定位，不假定具体车位和寄存规则。","notices":[{"kind":"transport","label":"停车提醒","text":"提前向实际酒店确认停车入口、收费和退房后能否暂存车辆。到店后当天尽量不再开车进入核心商圈。"},{"kind":"effort","label":"体力安排","text":"把长途驾驶后的 1—2 小时留给入住和休息。若到店偏晚，晚间街区全部可以跳过。"}]},{"id":"fri-taiping-street","name":"太平老街","lat":28.1957,"lng":112.9708,"type":"spot","time":"17:00—18:30","desc":"从五一广场慢慢走到太平街，只看最有老城气息的一段，不把整片商圈走完。","notices":[{"kind":"effort","label":"步行强度","text":"按短线执行，觉得拥挤或脚累就原路结束；不用为了坡子街、黄兴路继续加量。"},{"kind":"weather","label":"雨天处理","text":"石板路雨天可能湿滑。雨势明显时取消街区步行，改到五一广场附近商场活动。"}]},{"id":"fri-wuyi-dinner","name":"五一广场 · 落地晚餐","lat":28.1939,"lng":112.9749,"type":"food","time":"18:30 后","desc":"优先找有座位、环境稳定的湘菜正餐；小吃沿路分食，不为单店长时间排队。","choices":["舒适优先：麓湘小镇（国金中心店）","家常备选：2605 家菜馆（五一广场店）","排队名店只在刚好有位、全家能吃辣时考虑"],"notices":[{"kind":"effort","label":"排队提醒","text":"笨罗卜、壹盏灯等不作为硬性目标。现场超过可接受等待时间，就直接换同区域有座位的餐厅。"}]}]},{"id":"0815","label":"08.15","displayDate":"8月15日","weekday":"周六","title":"橘子洲必看，岳麓只取最有内容的一段","color":"#c96b28","weather":"当前预报上午仍可能有阵雨。橘子洲使用观光车减步行；下午大雨时保留岳麓书院，爱晚亭降为可跳过。","locations":[{"id":"sat-juzizhou","name":"橘子洲头","lat":28.1669,"lng":112.9581,"type":"spot","time":"09:00—11:30","desc":"从五一广场坐地铁 2 号线进岛，观光车前往洲头，重点看青年毛泽东雕像和湘江景观。","notices":[{"kind":"ticket","label":"入园与观光车","text":"通过“岳麓山 橘子洲旅游区”官方渠道核对实名预约；观光车购票和运行以当天景区安排为准。"},{"kind":"transport","label":"交通方式","text":"五一广场可乘地铁 2 号线到橘子洲。周末不把自驾进岛作为默认方案，避免预约、管制和停车风险。"},{"kind":"effort","label":"步行强度","text":"地铁站到洲头距离长，本行程默认乘观光车；只在体力和天气都合适时增加沿江步行。"},{"kind":"weather","label":"天气调整","text":"雷雨或强降雨时不要在江边久留；雨势较小时只保留洲头核心段，及时返回地铁站。"}]},{"id":"sat-yuelu-lunch","name":"麓山南路 · 家常湘菜","lat":28.1807,"lng":112.9449,"type":"food","time":"12:00—13:00","desc":"在湖南大学、麓山南路一带就近吃午饭，优先选择能坐稳、上菜正常的家常店。","choices":["味上湘菜馆（岳麓山店）：公开页面约 55 元/人","14 栋家菜馆（麓山南路店）：家常菜备选","湘味粉面馆：不想等位时的快速备选"],"notices":[{"kind":"effort","label":"用餐节奏","text":"不为了网红店绕路。若候选店排队明显，直接在同片区换有座位的店，下午书院比午餐打卡更重要。"}]},{"id":"sat-yuelu-academy","name":"岳麓书院","lat":28.1853,"lng":112.9378,"type":"spot","time":"13:30—15:20","desc":"下午的文化主角。按书院中轴和核心展陈慢慢看，不追加岳麓山登顶。","notices":[{"kind":"ticket","label":"预约购票","text":"预约通道搜索“岳麓书院”微信公众号。"},{"kind":"transport","label":"到达方式","text":"书院没有专门停车场。优先从湖南大学地铁站一带步行或打车抵达，不在景区周围反复找车位。"},{"kind":"effort","label":"游览强度","text":"书院是下午必保留项目。参观结束后先评估父母体力，再决定是否继续去爱晚亭。"}]},{"id":"sat-aiwan-pavilion","name":"爱晚亭","lat":28.1848,"lng":112.9349,"type":"spot","time":"15:20—16:00","desc":"从岳麓书院顺路看亭与山林即可；它是下午的收尾，不是必须完成的第二场爬山。","notices":[{"kind":"effort","label":"台阶与体力","text":"有坡道和台阶，雨后可能湿滑。老人觉得累时在书院结束即可，爱晚亭可以直接跳过。"},{"kind":"weather","label":"雨天取舍","text":"中雨以上或雷电时不进入山林段；书院参观结束后直接返回五一广场休息。"}]},{"id":"sat-wuyi-dinner","name":"五一广场 · 回程晚餐","lat":28.1953,"lng":112.9762,"type":"food","time":"18:00 后","desc":"先回酒店休息，再按大家胃口选餐；当天已经走够，不追加夜游任务。","choices":["商场内环境稳定的湘菜","湘春酒家·1989 或宴长沙作为现场备选","想清淡一点就选粉面或非辣菜比例更高的店"],"notices":[{"kind":"effort","label":"当天收尾","text":"晚饭只负责补给和聊天。若下午返回较晚，直接在酒店附近吃，不再去江边或步行街。"}]}]},{"id":"0816","label":"08.16","displayDate":"8月16日","weekday":"周日","title":"用马王堆收住这趟长沙，再从容退房","color":"#176b63","weather":"当前预报上午可能有雷雨、午后升温。博物院是室内主线；早上直接出发，不再叠加第二景点。","locations":[{"id":"sun-hunan-museum","name":"湖南博物院 · 马王堆","lat":28.2184,"lng":112.9945,"type":"spot","time":"09:00—10:45","desc":"周日上午固定执行 A 方案，重点看长沙马王堆汉墓陈列；控制在核心展厅，不追求看完所有内容。","reserve":"https://yuyues.hnmuseum.com/w/personal/order/chooseDate","notices":[{"kind":"ticket","label":"五人实名预约","text":"所有同行者都要按湖南博物院官方规则完成实名预约。出发前再次核对入馆时段、证件和最新通道提示。"},{"kind":"transport","label":"往返酒店","text":"早上从五一广场直接打车前往。10:45 左右离馆回酒店，给周末路况、取行李和退房留缓冲。"},{"kind":"effort","label":"参观重点","text":"优先马王堆相关展陈，其他展厅按剩余时间和老人状态取舍。不要因为“来都来了”拖过返程节点。"}]},{"id":"sun-checkout","name":"五一广场 · 取行李退房","lat":28.1953,"lng":112.9762,"type":"hotel","time":"10:45—12:00","desc":"回酒店取行李、办理退房，然后自驾离开长沙；周日上午不再增加第二个景点。","notices":[{"kind":"transport","label":"退房缓冲","text":"酒店停车、行李寄存和最晚退房时间以实际订单为准。建议前一晚收好大件行李，博物院回来后直接办理退房。"}]}]}]};
-const TYPE_LABELS = { hotel: '落脚点', spot: '景点', food: '吃饭', transport: '交通' };
+const TYPE_LABELS = { hotel: '落脚点', spot: '景点', food: '吃饭', drink: '饮品', transport: '交通' };
 const ICONS = {
   transport: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 17h14M7 17l-2-5 2-5h10l2 5-2 5M8 17v2m8-2v2M8 11h8"/></svg>',
   effort: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3h8M12 3v6m0 0-3 3m3-3 3 3M8 21l2-7h4l2 7"/></svg>',
@@ -300,18 +326,36 @@ document.getElementById('trip-date').textContent = TRIP.dateRange;
 document.getElementById('trip-base').textContent = TRIP.base.label + '：' + TRIP.base.name;
 
 const tabs = document.getElementById('day-tabs');
+const groupTabs = document.getElementById('group-tabs');
 const content = document.getElementById('day-content');
 const popover = document.getElementById('notice-popover');
 const popoverTitle = document.getElementById('popover-title');
 const popoverBody = document.getElementById('popover-body');
-let currentDayId = TRIP.days[0].id;
+const navigationGroups = TRIP.navigationGroups || [];
+let currentGroupId = navigationGroups[0]?.id || null;
+let currentDayId = currentGroupId ? navigationGroups[0].dayIds[0] : TRIP.days[0].id;
 let map;
 let layers = [];
 let markerByLocation = new Map();
 let activeTrigger = null;
 
 function renderTabs() {
-  tabs.innerHTML = TRIP.days.map((day) => '<button class="day-tab" type="button" role="tab" data-day="' + safe(day.id) + '" aria-selected="' + (day.id === currentDayId) + '">' + safe(day.label) + '<small>' + safe(day.weekday) + '</small></button>').join('');
+  const visibleDays = currentGroupId
+    ? navigationGroups.find((group) => group.id === currentGroupId).dayIds.map((dayId) => TRIP.days.find((day) => day.id === dayId))
+    : TRIP.days;
+  tabs.style.setProperty('--day-count', visibleDays.length);
+  tabs.innerHTML = visibleDays.map((day) => '<button class="day-tab" type="button" role="tab" data-day="' + safe(day.id) + '" aria-selected="' + (day.id === currentDayId) + '">' + safe(day.label) + '<small>' + safe(day.weekday) + '</small></button>').join('');
+}
+
+function renderGroupTabs() {
+  if (!groupTabs) return;
+  groupTabs.style.setProperty('--group-count', navigationGroups.length);
+  groupTabs.innerHTML = navigationGroups.map((group) => '<button class="group-tab" type="button" role="tab" data-group="' + safe(group.id) + '" aria-selected="' + (group.id === currentGroupId) + '">' + safe(group.label) + '</button>').join('');
+}
+
+function updateGroupTabs() {
+  if (!groupTabs) return;
+  groupTabs.querySelectorAll('.group-tab').forEach((button) => button.setAttribute('aria-selected', String(button.dataset.group === currentGroupId)));
 }
 
 function noticeButtons(location) {
@@ -325,9 +369,16 @@ function cardLinks(location) {
   return links;
 }
 
+function routeCards(day, locations) {
+  return locations.map((location) => '<article class="route-item" data-location-id="' + safe(location.id) + '" style="--day-color:' + safe(day.color) + '"><span class="route-dot" aria-hidden="true"></span><div class="route-card" tabindex="0"><div class="route-time">' + safe(location.time) + '</div><div class="route-name-row"><h3 class="route-name">' + safe(location.name) + '</h3><span class="kind-tag">' + safe(TYPE_LABELS[location.type] || '地点') + '</span></div><p class="route-desc">' + safe(location.desc) + '</p>' + (location.choices?.length ? '<ul class="choices">' + location.choices.map((choice) => '<li>' + safe(choice) + '</li>').join('') + '</ul>' : '') + '<div class="card-tools"><div class="card-links">' + cardLinks(location) + '</div><div class="notice-tools" aria-label="' + safe(location.name) + '提醒">' + noticeButtons(location) + '</div></div></div></article>').join('');
+}
+
 function renderDay(day) {
-  const cards = day.locations.map((location) => '<article class="route-item" data-location-id="' + safe(location.id) + '" style="--day-color:' + safe(day.color) + '"><span class="route-dot" aria-hidden="true"></span><div class="route-card"><div class="route-time">' + safe(location.time) + '</div><div class="route-name-row"><h3 class="route-name">' + safe(location.name) + '</h3><span class="kind-tag">' + safe(TYPE_LABELS[location.type] || '地点') + '</span></div><p class="route-desc">' + safe(location.desc) + '</p>' + (location.choices?.length ? '<ul class="choices">' + location.choices.map((choice) => '<li>' + safe(choice) + '</li>').join('') + '</ul>' : '') + '<div class="card-tools"><div class="card-links">' + cardLinks(location) + '</div><div class="notice-tools" aria-label="' + safe(location.name) + '提醒">' + noticeButtons(location) + '</div></div></div></article>').join('');
-  content.innerHTML = '<div class="day-intro"><div class="day-title-row"><h2>' + safe(day.displayDate || day.label) + '</h2><p>' + safe(day.title) + '</p></div>' + (day.weather ? '<div class="weather-note">' + WEATHER_ICON + '<span>' + safe(day.weather) + '</span></div>' : '') + '</div><div class="section-label">当天行程</div><div class="timeline">' + cards + '</div>';
+  const mainLocations = day.locations.filter((location) => !location.optional);
+  const optionalLocations = day.locations.filter((location) => location.optional);
+  const context = day.subtitle ? safe(day.subtitle) + ' · ' : '';
+  const optionalSection = optionalLocations.length ? '<div class="section-label">备选</div><div class="timeline">' + routeCards(day, optionalLocations) + '</div>' : '';
+  content.innerHTML = '<div class="day-intro"><div class="day-title-row"><h2>' + safe(day.displayDate || day.label) + '</h2><p>' + context + safe(day.title) + '</p></div>' + (day.weather ? '<div class="weather-note">' + WEATHER_ICON + '<span>' + safe(day.weather) + '</span></div>' : '') + '</div><div class="section-label">当天行程</div><div class="timeline">' + routeCards(day, mainLocations) + '</div>' + optionalSection;
 }
 
 function clearMap() {
@@ -415,8 +466,11 @@ function openNotice(trigger) {
 function selectDay(dayId, moveFocus = false) {
   const day = TRIP.days.find((item) => item.id === dayId);
   if (!day) return;
+  const owningGroup = navigationGroups.find((group) => group.dayIds.includes(dayId));
+  if (owningGroup) currentGroupId = owningGroup.id;
   closePopover(false);
   currentDayId = day.id;
+  updateGroupTabs();
   renderTabs();
   renderDay(day);
   showDayOnMap(day);
@@ -426,6 +480,16 @@ function selectDay(dayId, moveFocus = false) {
 tabs.addEventListener('click', (event) => {
   const button = event.target.closest('.day-tab');
   if (button) selectDay(button.dataset.day, true);
+});
+if (groupTabs) groupTabs.addEventListener('click', (event) => {
+  const button = event.target.closest('.group-tab');
+  if (!button) return;
+  const group = navigationGroups.find((item) => item.id === button.dataset.group);
+  if (!group) return;
+  currentGroupId = group.id;
+  updateGroupTabs();
+  selectDay(group.dayIds[0], false);
+  groupTabs.querySelector('[data-group="' + CSS.escape(group.id) + '"]').focus();
 });
 content.addEventListener('click', (event) => {
   const notice = event.target.closest('.notice-trigger');
@@ -447,15 +511,22 @@ document.addEventListener('pointerdown', (event) => {
 document.addEventListener('keydown', (event) => { if (event.key === 'Escape') closePopover(true); });
 window.addEventListener('resize', () => { if (activeTrigger) positionPopover(); if (map) map.invalidateSize(); });
 
+const RASTER_BASEMAPS = {
+  osm: { url: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png', maxZoom: 19, attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>' },
+  topo: { url: 'https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', maxZoom: 17, attribution: 'Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>, SRTM | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (CC-BY-SA)' },
+};
+
+function addRasterBasemap(name = 'osm') {
+  const basemap = RASTER_BASEMAPS[name] || RASTER_BASEMAPS.osm;
+  L.tileLayer(basemap.url, { maxZoom: basemap.maxZoom, attribution: basemap.attribution }).addTo(map);
+}
+
 function initMap() {
   if (!window.L) return;
   document.getElementById('map').innerHTML = '';
   map = L.map('map', { center: [TRIP.base.lat, TRIP.base.lng], zoom: 13, zoomControl: false });
   L.control.zoom({ position: 'topright' }).addTo(map);
-  const basemap = TRIP.basemap === 'topo'
-    ? { url: 'https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', maxZoom: 17, attribution: 'Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>, SRTM | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (CC-BY-SA)' }
-    : { url: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png', maxZoom: 19, attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>' };
-  L.tileLayer(basemap.url, { maxZoom: basemap.maxZoom, attribution: basemap.attribution }).addTo(map);
+  addRasterBasemap(TRIP.basemap);
   const LocateControl = L.Control.extend({
     options: { position: 'bottomright' },
     onAdd() {
@@ -473,6 +544,7 @@ function initMap() {
 }
 
 initMap();
+renderGroupTabs();
 selectDay(currentDayId, false);
 </script>
 </body>
