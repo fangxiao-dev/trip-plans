@@ -181,3 +181,9 @@ SureStay Plus by Best Western Ramkhamhaeng Airport Rail Link Bangkok保留为上
 用户确认9月27日以ICONSIAM替换伦披尼公园，Siam / Chit Lom降为备选，傍晚加入Rajadamnern Stadium Kiatpetch泰拳赛。场馆官方日历显示当天17:00开门、共9场，地图预约按钮使用官网列出的9月27日Ticketmelon直达票页；赛程、座位和入场规则仍需在下单及出发前复核。
 
 芭提雅抵达日的Pattaya Beach改为Wong Amat Beach，用户明确保留9月29日原有的Wong Amat收尾，因此连续两天均可去同一片海滩。9月30日入住Larissa后增加Sai Kaew Beach。10月2日改为报团游，当前不虚构团名、路线、集合点或时间；原10月2日摩托环岛完整移至10月3日，原10月3日跳岛/浮潜天气触发行程删除。
+
+## 2026-09-22：芭提雅抵达日晚间增加歌舞秀
+
+用户在9月28日Wong Amat Beach之后加入Tiffany's Show作为晚间主选，暂不锁定场次、座位或票价；地图卡片使用Tiffany's官方购票页。Alcazar Show进入同日晚间备选，明确只在不看Tiffany's时替换，不安排两场连看；其预约按钮使用带日期、场次和座位选择的Alcazar官方网站。
+
+两个剧院均采用可抵达的剧院公共POI定位并保留地图导航。Tiffany's官方购票入口为`https://www.tiffany-show.co.th/booking`，Alcazar官方预约入口为`https://www.alcazarthailand.com/`；下单前仍需核对当日场次、座位库存、取票和退改规则。

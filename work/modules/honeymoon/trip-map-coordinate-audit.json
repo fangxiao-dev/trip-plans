@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-22T10:56:10.351Z",
+  "generated_at": "2026-09-22T14:36:58.809Z",
   "policy": "海湾类地点使用可抵达入口或相邻度假村 POI；区域定位不伪装为精确位置。",
   "locations": [
     {
@@ -192,6 +192,28 @@
     {
       "date": "2026年9月28日 · 曼谷 → 芭提雅",
       "location_id": "d5-l4",
+      "name": "Tiffany's Show Pattaya",
+      "latitude": 12.94901,
+      "longitude": 100.88759,
+      "precision": "exact",
+      "source": "Tiffany's Show 官网 / OpenStreetMap 公共 POI",
+      "note": "以剧院入口公共地点定位。",
+      "navigation_query": "Tiffany's Show Pattaya, Thailand"
+    },
+    {
+      "date": "2026年9月28日 · 曼谷 → 芭提雅",
+      "location_id": "d5-l5",
+      "name": "Alcazar Show Pattaya",
+      "latitude": 12.94301,
+      "longitude": 100.889,
+      "precision": "exact",
+      "source": "Alcazar Show 官网 / OpenStreetMap 公共 POI",
+      "note": "以剧院入口公共地点定位。",
+      "navigation_query": "Alcazar Show Pattaya, Thailand"
+    },
+    {
+      "date": "2026年9月28日 · 曼谷 → 芭提雅",
+      "location_id": "d5-l6",
       "name": "Terminal 21 Pattaya",
       "latitude": 12.9498756,
       "longitude": 100.8897673,

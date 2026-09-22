@@ -93,6 +93,22 @@ test('蜜月地图按已确认方案展示并保持交互可用', async () => {
   await assert.doesNotReject(() => page.getByRole('heading', { name: 'Wong Amat Beach（COSI入口）', exact: true }).waitFor());
   assert.equal(await page.getByRole('heading', { name: 'Pattaya Beach', exact: true }).count(), 0);
 
+  const pattayaMainSection = page.locator('.section-label', { hasText: '当天行程' }).locator('xpath=following-sibling::*[1]');
+  const pattayaOptionalSection = page.locator('.section-label', { hasText: '备选' }).locator('xpath=following-sibling::*[1]');
+  const mainNames = await pattayaMainSection.locator('.route-name').allInnerTexts();
+  const optionalNames = await pattayaOptionalSection.locator('.route-name').allInnerTexts();
+  assert.ok(mainNames.indexOf("Tiffany's Show Pattaya") > mainNames.indexOf('Wong Amat Beach（COSI入口）'));
+  assert.deepEqual(optionalNames.slice(0, 2), ['Alcazar Show Pattaya', 'Terminal 21 Pattaya']);
+
+  for (const [name, reserveUrl] of [
+    ["Tiffany's Show Pattaya", 'https://www.tiffany-show.co.th/booking'],
+    ['Alcazar Show Pattaya', 'https://www.alcazarthailand.com/']
+  ]) {
+    const showCard = page.locator('.route-item', { hasText: name });
+    assert.equal(await showCard.getByRole('link', { name: '导航' }).count(), 1);
+    assert.equal(await showCard.getByRole('link', { name: '预约' }).getAttribute('href'), reserveUrl);
+  }
+
   await clickGroupAndDay(page, '芭提雅', '09.29');
   await assert.doesNotReject(() => page.getByRole('heading', { name: 'Wong Amat Beach（COSI入口）', exact: true }).waitFor());
 
@@ -114,6 +130,7 @@ test('蜜月地图按已确认方案展示并保持交互可用', async () => {
   await page.getByRole('link', { name: '详情' }).click();
   await page.waitForURL('**/ing/honeymoon-with-liv/details/');
   await assert.doesNotReject(() => page.getByText('ICONSIAM + Rajadamnern', { exact: true }).waitFor());
+  await assert.doesNotReject(() => page.getByText("Tiffany's 晚间主选", { exact: true }).waitFor());
   await assert.doesNotReject(() => page.getByText('10月2日报团游', { exact: true }).first().waitFor());
   await page.getByRole('link', { name: '看地图版' }).click();
   await page.waitForURL('**/ing/honeymoon-with-liv/');

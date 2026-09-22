@@ -49,12 +49,12 @@ const groupDefs = [
     tabNames: ['Best Beach Villa', 'EDGE Central', 'Holiday Inn Express', 'The Leela'],
     subtitle: '两晚过渡 · 靠海，方便吃饭和走走',
     guideTitle: '把芭提雅当成靠海的过渡段',
-    guideLead: 'Best Beach Villa 位于市中心北侧，抵达日去 Wong Amat Beach 看海，晚饭可在 Terminal 21 周边解决。完整日只留北线真理寺，之后仍可回 Wong Amat 松弛收尾；老虎园若真想去就作为整日替换。',
-    signals: ['Wong Amat 看日落', 'Terminal 21 约 12 分钟', '真理寺走北线', '不把 Walking Street 设为主计划'],
-    fieldNotes: ['9月30日带行李转岛，优先核实酒店上门接送或固定集合点。', '公共交通可能需要在罗勇换乘并步行到码头，不按“5小时整”卡死末班船。', '若当日体力一般，海滩、商场与泳池已经足够，不再补格兰岛。'],
+    guideLead: "Best Beach Villa 位于市中心北侧，抵达日去 Wong Amat Beach 看海，晚间回北芭提雅看 Tiffany's Show；Alcazar 只作替代，不在同一晚连看两场。完整日仍以北线真理寺为主。",
+    signals: ['Wong Amat 看日落', "Tiffany's 晚间主选", 'Alcazar 替代项', '真理寺走北线'],
+    fieldNotes: ["Tiffany's 与 Alcazar 都需在官方页面选择场次和座位；下单前核对库存、取票和退改规则。", '9月30日带行李转岛，优先核实酒店上门接送或固定集合点。', '公共交通可能需要在罗勇换乘并步行到码头，不按“5小时整”卡死末班船。', '若当日体力一般，可跳过晚间演出或海滩，不再补格兰岛。'],
     routeTitle: '海边走走，晚上再出门',
-    route: [['抵达后，Wong Amat 日落与附近晚餐', 'Best Beach Villa → Wong Amat Beach → Central Marina / Terminal 21；不折返 Walking Street。'], ['真理寺主景点日', '真理寺更顺路；回酒店或 Terminal 21 午餐，日落前仍可去 Wong Amat 散步。老虎园只作为替换项，不与南北两端硬串。'], ['离开前，留出转岛余量', '慢早餐、收好行李，提前确认酒店到班佩的接送/集合点，不把船班卡死。']],
-    reminder: 'Best Beach Villa 靠海和市中心北侧；真理寺、老虎园取舍、转班佩交通和具体班次均待出发前确认。'
+    route: [["抵达后，Wong Amat + Tiffany's", "Best Beach Villa → Wong Amat Beach → Tiffany's Show；具体晚间场次下单时选择，Alcazar 只作替代。"], ['真理寺主景点日', '真理寺更顺路；回酒店或 Terminal 21 午餐，日落前仍可去 Wong Amat 散步。老虎园只作为替换项，不与南北两端硬串。'], ['离开前，留出转岛余量', '慢早餐、收好行李，提前确认酒店到班佩的接送/集合点，不把船班卡死。']],
+    reminder: "Best Beach Villa 靠海和市中心北侧；Tiffany's / Alcazar 场次与座位、真理寺取舍及转班佩交通均待出发前确认。"
   },
   {
     id: 'samet', staySegmentId: 'stay_koh_samet', city: '沙美岛', date: '09.30 — 10.04', nights: '4晚', status: '海景慢住', accent: 'lagoon', primary: 'koh_samet_larissa_private_beach',

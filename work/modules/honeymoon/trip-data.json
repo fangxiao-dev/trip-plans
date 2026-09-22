@@ -125,7 +125,7 @@
       "priority": "city_center_convenience_and_nightlife",
       "status": "selected_working_candidate_user_confirmed",
       "selected_candidate_id": "pattaya_best_beach_villa",
-      "note": "用户已选Best Beach Villa作为芭提雅两晚工作首选；后续只需出发前复核库存、房型与取消条款。酒店在Central Pattaya北侧、步行到海滩和Terminal 21；抵达日安排酒店周边，完整日优先真理寺，老虎园仅在明确想去时替换，不与南北两端硬串。"
+      "note": "用户已选Best Beach Villa作为芭提雅两晚工作首选；后续只需出发前复核库存、房型与取消条款。9月28日抵达后先去Wong Amat Beach，晚间主选Tiffany's Show，Alcazar只作替代且不连看两场；9月29日优先真理寺，老虎园仅在明确想去时替换。"
     },
     {
       "id": "stay_koh_samet",
@@ -2534,6 +2534,10 @@
     {
       "observed_at": "2026-09-22",
       "note": "用户按截图调整每日路线：9月27日以ICONSIAM替换伦披尼公园，Siam/Chit Lom降为备选，傍晚加入Rajadamnern Stadium Kiatpetch泰拳赛并使用场馆官网列出的9月27日直达票页；9月28日Pattaya Beach改为Wong Amat Beach，9月29日原有Wong Amat仍保留；9月30日入住Larissa后增加Sai Kaew Beach；10月2日改为报团游但暂不记录团名、路线、集合点和时间；原10月2日摩托环岛完整移至10月3日，原10月3日跳岛/浮潜天气触发行程删除。"
+    },
+    {
+      "observed_at": "2026-09-22",
+      "note": "用户在9月28日Wong Amat Beach之后加入Tiffany's Show作为晚间主选，具体场次、座位和票价待官方购票页选择；Alcazar Show加入备选，明确只替换Tiffany's而不在同一晚连看。两处剧院均使用精确公共POI导航，预约按钮分别指向tiffany-show.co.th/booking与alcazarthailand.com官方入口。"
     }
   ]
 }

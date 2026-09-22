@@ -42,6 +42,8 @@ const DAYS = [
     place('曼谷 → 芭提雅大巴集合点', 13.7307, 100.5418, 'transport', '待确认', '截图口径约 2 小时；实际出发点、班次和行李规则待确认。', '地图点只作市区出发参考，不代表已确认车站。'),
     hotel(hotels.pattaya, 12.9440660, 100.8867208, '入住后', 'Central Pattaya 北侧 Soi 5，靠近海滩；不去 Walking Street。', '房型、抵达时间和入住条款以预订页为准。'),
     place('Wong Amat Beach（COSI入口）', 12.9587579, 100.8876018, 'spot', '日落前', '抵达日去 Wong Amat 看海散步；晚饭在 Central Marina / Terminal 21 灵活选。'),
+    { ...place("Tiffany's Show Pattaya", 12.94901, 100.88759, 'spot', '晚间待选', 'Wong Amat 之后回到北芭提雅看秀；具体场次、座位和票价在官方购票页选择。', '演出场次、座位库存、取票方式和退改规则以下单页面为准。'), reserve: 'https://www.tiffany-show.co.th/booking' },
+    { ...place('Alcazar Show Pattaya', 12.94301, 100.88900, 'spot', '—', "若更想看 Alcazar，则用它替换 Tiffany's；同一晚不安排两场。", '具体场次、座位、票价、取票方式和退改规则以下单页面为准。'), reserve: 'https://www.alcazarthailand.com/' },
     place('Terminal 21 Pattaya', 12.9498756, 100.8897673, 'spot', '—', '雨天或想吹空调时的顺路备选。')
   ] },
   { id: 6, label: '09.29', date: '2026年9月29日 · 芭提雅', title: '真理寺为主，老虎园仅替换', color: '#d99137', locations: [
@@ -105,6 +107,8 @@ const coordinateMetadata = {
   '沙吞安静联排别墅，靠近Saint Louis轻轨站': { precision: 'area', source: 'Airbnb 公开区域信息', note: '订单确认后才会显示精确门牌。' },
   'ICONSIAM': { precision: 'exact', source: 'ICONSIAM 公共 POI', note: '以商场主建筑公共地点定位。' },
   'Rajadamnern Stadium': { precision: 'exact', source: 'Rajadamnern Stadium 官网地址 / 公共 POI', note: '以场馆入口公共地点定位。' },
+  "Tiffany's Show Pattaya": { precision: 'exact', source: "Tiffany's Show 官网 / OpenStreetMap 公共 POI", note: '以剧院入口公共地点定位。' },
+  'Alcazar Show Pattaya': { precision: 'exact', source: 'Alcazar Show 官网 / OpenStreetMap 公共 POI', note: '以剧院入口公共地点定位。' },
   '曼谷 → 芭提雅大巴集合点': { precision: 'area', source: '当前行程截图', note: '上车点尚未确认，地图只表达曼谷市区出发区域。' },
   'Ao Wong Duean': { precision: 'landfall', source: 'Vongdeuan Resort POI', note: '以可抵达的度假村/海湾入口代替海湾中心。' },
   'Ao Thian': { precision: 'landfall', source: 'Sangthian Beach Resort POI', note: '以可抵达的度假村/海湾入口代替海湾中心。' },
