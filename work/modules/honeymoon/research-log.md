@@ -175,3 +175,9 @@ SureStay Plus by Best Western Ramkhamhaeng Airport Rail Link Bangkok保留为上
 用户要求将首选房源与备选房源的图片直接放入对应卡片。本轮从5个已展示的曼谷Airbnb房源提取公开图片快照，共下载10张图片至`outputs/assets/airbnb/`，并在结构化数据中为首选沙吞安静联排、20308374、1268923602732185529、Saint Louis两卧室和39885927补充`image_assets`路径。
 
 结果页现在在首选卡与每个备选标签面板中显示本地图片：鼠标悬停或键盘聚焦时，首张图片轻微放大并渐变切换至第二张，图片角标同步变色；页面保留`prefers-reduced-motion`支持，离线打开时不依赖远程图片请求。
+
+## 2026-09-22：按截图调整每日路线
+
+用户确认9月27日以ICONSIAM替换伦披尼公园，Siam / Chit Lom降为备选，傍晚加入Rajadamnern Stadium Kiatpetch泰拳赛。场馆官方日历显示当天17:00开门、共9场，地图预约按钮使用官网列出的9月27日Ticketmelon直达票页；赛程、座位和入场规则仍需在下单及出发前复核。
+
+芭提雅抵达日的Pattaya Beach改为Wong Amat Beach，用户明确保留9月29日原有的Wong Amat收尾，因此连续两天均可去同一片海滩。9月30日入住Larissa后增加Sai Kaew Beach。10月2日改为报团游，当前不虚构团名、路线、集合点或时间；原10月2日摩托环岛完整移至10月3日，原10月3日跳岛/浮潜天气触发行程删除。

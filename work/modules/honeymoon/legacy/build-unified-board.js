@@ -36,11 +36,11 @@ const groupDefs = [
     tabNames: ['沙吞安静联排别墅', '是隆公寓', '沙吞一卧室公寓', 'Saint Louis 两卧室', '是隆舒适一卧'],
     subtitle: '9月24日抵达 · 3个完整白天',
     guideTitle: '把曼谷拆成三条轻量日线',
-    guideLead: 'Saint Louis 是每天回得来的生活基地：老城走河船、北边留给周末市场，Siam 与 Lumphini 负责雨天和松弛收尾。三天不为打卡横穿城市，也不为景点搬住宿。',
-    signals: ['河船接老城', '周六乍都乍 + Ari', '雨天切换 Siam', '按摩与蜜月晚餐收尾'],
-    fieldNotes: ['寺庙日准备遮肩、过膝衣物；大皇宫是当天唯一必须保留的主景点。', '乍都乍走累就直接去 Ari 或回住处，不再横穿到河边。', 'Airbnb 精确门牌以订单为准，出发前按真实起点复核夜间步行与轻轨入口。'],
+    guideLead: 'Saint Louis 是每天回得来的生活基地：老城走河船、北边留给周末市场，最后一天去 ICONSIAM，傍晚到 Rajadamnern 看泰拳；Siam / Chit Lom 只作备选。三天不为打卡横穿城市，也不为景点搬住宿。',
+    signals: ['河船接老城', '周六乍都乍 + Ari', 'ICONSIAM 河畔半日', 'Rajadamnern 泰拳赛'],
+    fieldNotes: ['寺庙日准备遮肩、过膝衣物；大皇宫是当天唯一必须保留的主景点。', '乍都乍走累就直接去 Ari 或回住处，不再横穿到河边。', 'Rajadamnern 9月27日官方日历显示17:00开门、9场比赛；下单及出发前复核赛程、座位和入场规则。', 'Airbnb 精确门牌以订单为准，出发前按真实起点复核夜间步行与轻轨入口。'],
     routeTitle: '把代表性留住，不把行程塞满',
-    route: [['抵达后，吃一顿就近的晚饭', '安顿、洗澡、早点睡，把第一晚留给适应节奏。'], ['老城与河边', 'Saint Louis → Saphan Taksin → 河船；大皇宫、卧佛寺为主，郑王庙视体力加入。'], ['乍都乍 + Ari', 'Chatuchak 逛到觉得够就离开，再去 Ari 喝咖啡或吃晚饭；雨天改 Siam 室内商圈。'], ['Lumphini / Siam 松弛日', '公园、Siam 或 Chit Lom 三选二；傍晚回 Sathorn 按摩和晚餐。']],
+    route: [['抵达后，吃一顿就近的晚饭', '安顿、洗澡、早点睡，把第一晚留给适应节奏。'], ['老城与河边', 'Saint Louis → Saphan Taksin → 河船；大皇宫、卧佛寺为主，郑王庙视体力加入。'], ['乍都乍 + Ari', 'Chatuchak 逛到觉得够就离开，再去 Ari 喝咖啡或吃晚饭；雨天改 Siam 室内商圈。'], ['ICONSIAM + Rajadamnern', '白天在 ICONSIAM 吃饭、看河景；Siam / Chit Lom 仅作备选，17:00 前往 Rajadamnern 看泰拳。']],
     reminder: 'Saint Louis BTS 是城市移动入口；老城河船、周末市场动线和具体交通时刻均待出发前确认。'
   },
   {
@@ -49,11 +49,11 @@ const groupDefs = [
     tabNames: ['Best Beach Villa', 'EDGE Central', 'Holiday Inn Express', 'The Leela'],
     subtitle: '两晚过渡 · 靠海，方便吃饭和走走',
     guideTitle: '把芭提雅当成靠海的过渡段',
-    guideLead: 'Best Beach Villa 靠近 Pattaya Beach 与 Terminal 21，抵达日和晚饭都能在酒店周边解决。完整日只留北线真理寺，老虎园若真想去就作为整日替换，不把南北两端硬串。',
-    signals: ['海滩步行约 5 分钟', 'Terminal 21 约 12 分钟', '真理寺走北线', '不把 Walking Street 设为主计划'],
+    guideLead: 'Best Beach Villa 位于市中心北侧，抵达日去 Wong Amat Beach 看海，晚饭可在 Terminal 21 周边解决。完整日只留北线真理寺，之后仍可回 Wong Amat 松弛收尾；老虎园若真想去就作为整日替换。',
+    signals: ['Wong Amat 看日落', 'Terminal 21 约 12 分钟', '真理寺走北线', '不把 Walking Street 设为主计划'],
     fieldNotes: ['9月30日带行李转岛，优先核实酒店上门接送或固定集合点。', '公共交通可能需要在罗勇换乘并步行到码头，不按“5小时整”卡死末班船。', '若当日体力一般，海滩、商场与泳池已经足够，不再补格兰岛。'],
     routeTitle: '海边走走，晚上再出门',
-    route: [['抵达后，海滩日落与附近晚餐', 'Best Beach Villa → Pattaya Beach → Central Marina / Terminal 21；不折返 Walking Street。'], ['真理寺主景点日', '真理寺更顺路；回酒店或 Terminal 21 午餐，下午海滩/泳池休息。老虎园只作为替换项，不与北南两端硬串。'], ['离开前，留出转岛余量', '慢早餐、收好行李，提前确认酒店到班佩的接送/集合点，不把船班卡死。']],
+    route: [['抵达后，Wong Amat 日落与附近晚餐', 'Best Beach Villa → Wong Amat Beach → Central Marina / Terminal 21；不折返 Walking Street。'], ['真理寺主景点日', '真理寺更顺路；回酒店或 Terminal 21 午餐，日落前仍可去 Wong Amat 散步。老虎园只作为替换项，不与南北两端硬串。'], ['离开前，留出转岛余量', '慢早餐、收好行李，提前确认酒店到班佩的接送/集合点，不把船班卡死。']],
     reminder: 'Best Beach Villa 靠海和市中心北侧；真理寺、老虎园取舍、转班佩交通和具体班次均待出发前确认。'
   },
   {
@@ -62,12 +62,12 @@ const groupDefs = [
     tabNames: ['Larissa Samed Resort', 'Tubtim Resort', 'Viking Holiday Resort', 'Samed Garden Resort'],
     subtitle: '海边与酒店是主菜 · 天气和体力可互换',
     guideTitle: '四晚围绕海况，而不是任务表',
-    guideLead: 'Larissa 的安静私属小海滩负责看海，Sai Kaew Beach 与主街负责游泳、按摩、补给和晚餐；只有环岛日需要摩托。10月初海况可能很好，也可能午后大雨，所以出海永远是天气触发项。',
-    signals: ['私属礁石小海滩', '步行到 Sai Kaew', '只租一天摩托', '晴天出海 · 雨天原地休息'],
-    fieldNotes: ['私属海滩偏礁石，带水鞋；现金、驱蚊液与饮水比打卡清单更实用。', '双条车可能只到 Sai Kaew Beach Resort 门口，提前把酒店英文名发给司机并确认行李下车点。', '摩托约 300—400 泰铢/天仅作体验参考：验车、戴头盔、不押护照，18:00前回酒店。', '早餐、餐厅、船票、上岛费与跳岛价格都要按出发前和当天信息复核。'],
+    guideLead: 'Larissa 的安静私属小海滩负责看海，抵达日就去 Sai Kaew Beach 与主街散步、补给和吃晚饭。10月2日留给报团游，内容选定后再补；10月3日再租一天摩托环岛。',
+    signals: ['抵达日去 Sai Kaew', '酒店周边慢休闲', '10月2日报团游', '10月3日摩托环岛'],
+    fieldNotes: ['私属海滩偏礁石，带水鞋；现金、驱蚊液与饮水比打卡清单更实用。', '双条车可能只到 Sai Kaew Beach Resort 门口，提前把酒店英文名发给司机并确认行李下车点。', '10月2日团名、路线、集合点和时间尚未确定，选定产品后再补充。', '摩托约 300—400 泰铢/天仅作体验参考：验车、戴头盔、不押护照，18:00前回酒店。'],
     routeTitle: '不安排任务，把海岛过成停留',
-    route: [['入住日，只做第一眼的海', 'Larissa 入住后先去私属小海滩或 Sai Kaew Beach，看日落并在主街吃饭。'], ['酒店周边慢休闲', '私属小海滩浅浮潜/看海 → Sai Kaew Beach → 按摩、咖啡和晚餐；不需要租车。'], ['只租一天摩托环岛', 'Ao Wong Duean → Ao Thian → Ao Wai → Laem Toei → Ao Prao 日落；18:00 前回酒店。'], ['天气触发日', '晴天再从 Na Dan 主码头参加跳岛/浮潜；雨天就留在 Larissa 和 Sai Kaew 周边。']],
-    reminder: 'Larissa 位置已适配；船票、码头接送、摩托、跳岛和天气敏感活动均标为出发前确认。'
+    route: [['入住日，去 Sai Kaew 看第一眼的海', 'Larissa 入住放好行李后去 Sai Kaew Beach，看海并在主街吃晚饭；抵达晚就缩短。'], ['酒店周边慢休闲', '私属小海滩浅浮潜/看海 → Sai Kaew Beach → 按摩、咖啡和晚餐；不需要租车。'], ['10月2日报团游', '具体团名、路线、集合点与时间待选定产品后补充。'], ['10月3日摩托环岛', 'Ao Wong Duean → Ao Thian → Ao Wai → Ao Prao 日落；18:00 前回酒店。']],
+    reminder: 'Larissa 位置已适配；船票、码头接送、10月2日团游内容和10月3日摩托安排均待出发前确认。'
   },
   {
     id: 'bangkok2', staySegmentId: 'stay_bangkok_2', city: '返程前的曼谷', date: '10.04 — 10.05', nights: '1晚', status: '机场快线缓冲', accent: 'ink', primary: 'bkk2_true_siam_rangnam',

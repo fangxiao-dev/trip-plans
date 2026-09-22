@@ -32,15 +32,16 @@ const DAYS = [
     place('乍都乍周末市场 Chatuchak', 13.7999, 100.5506, 'spot', '10:00', '市场日；逛到觉得够就离开。', '下雨则直接改 Siam 室内商圈。'),
     { ...place('Ari', 13.7796, 100.5447, 'drink', '16:30', '咖啡或晚饭的生活感收尾区域；店铺临场选。'), dianpingKeyword: 'Ari Bangkok cafe', xhsKeyword: '曼谷 Ari 咖啡' }
   ] },
-  { id: 4, label: '09.27', date: '2026年9月27日 · Lumphini / Siam', title: '松弛日，三选二就好', color: '#e8664d', locations: [
-    place('伦披尼公园 Lumphini Park', 13.7316, 100.5417, 'spot', '10:00', '轻松散步；炎热或下雨时直接缩短。'),
-    place('Siam / Chit Lom', 13.7462, 100.5348, 'spot', '15:00', '室内商圈与补给；不需要走完所有商场。'),
-    hotel(hotels.bkk1, 13.7205, 100.5272, '傍晚', '回 Sathorn 按摩或就近晚餐，提前收行李。', '次日大巴集合点和车次待出发前确认。')
+  { id: 4, label: '09.27', date: '2026年9月27日 · ICONSIAM 与泰拳赛', title: '白天河畔，傍晚看泰拳', color: '#e8664d', locations: [
+    place('ICONSIAM', 13.7263, 100.5101, 'spot', '10:00', '河畔商场、午餐与补给；按体力控制停留时间。'),
+    place('Siam / Chit Lom', 13.7462, 100.5348, 'spot', '—', '想继续逛室内商圈时再去，不作为当天必到项目。'),
+    { ...place('Rajadamnern Stadium', 13.7602, 100.5089, 'spot', '17:00', '观看 Kiatpetch 泰拳赛；官方日历显示当天 17:00 开门、共 9 场。', '赛程、座位库存、入场规则和开赛时间可能调整，下单及出发前再次核对。'), reserve: 'https://www.ticketmelon.com/raj/kiatpetch-27sep26' },
+    hotel(hotels.bkk1, 13.7205, 100.5272, '散场后', '回 Sathorn 休息并整理次日行李。', '次日大巴集合点和车次待出发前确认。')
   ] },
   { id: 5, label: '09.28', date: '2026年9月28日 · 曼谷 → 芭提雅', title: '抵达日只走海边与周边', color: '#d99137', locations: [
     place('曼谷 → 芭提雅大巴集合点', 13.7307, 100.5418, 'transport', '待确认', '截图口径约 2 小时；实际出发点、班次和行李规则待确认。', '地图点只作市区出发参考，不代表已确认车站。'),
     hotel(hotels.pattaya, 12.9440660, 100.8867208, '入住后', 'Central Pattaya 北侧 Soi 5，靠近海滩；不去 Walking Street。', '房型、抵达时间和入住条款以预订页为准。'),
-    place('Pattaya Beach', 12.9426, 100.8871, 'spot', '日落前', '酒店周边散步看海；晚饭在 Central Marina / Terminal 21 灵活选。'),
+    place('Wong Amat Beach（COSI入口）', 12.9587579, 100.8876018, 'spot', '日落前', '抵达日去 Wong Amat 看海散步；晚饭在 Central Marina / Terminal 21 灵活选。'),
     place('Terminal 21 Pattaya', 12.9498756, 100.8897673, 'spot', '—', '雨天或想吹空调时的顺路备选。')
   ] },
   { id: 6, label: '09.29', date: '2026年9月29日 · 芭提雅', title: '真理寺为主，老虎园仅替换', color: '#d99137', locations: [
@@ -53,21 +54,19 @@ const DAYS = [
     hotel(hotels.pattaya, 12.9440660, 100.8867208, '早晨', '退房后前往班佩；上门接送或集合点待确认。', '为路况、码头与行李预留余量。'),
     place('班佩码头 Ban Phe Pier', 12.6270870, 101.4385231, 'transport', '待确认', '陆路转船节点；是否直达、船票是否含在接送内待确认。', '截图口径约 5 小时、约 200 泰铢，只作参考。'),
     place('Na Dan Pier', 12.5748563, 101.4635254, 'transport', '待确认', '上岛主码头；联系 Larissa 确认接送或双条车下车点。'),
-    hotel(hotels.samet, 12.5694651, 101.4686256, '傍晚', 'Sai Kaew 东侧的安静私属小海滩；入住后看海和主街晚饭。', '酒店入口、码头接送与行李动线待出发前复核。')
+    hotel(hotels.samet, 12.5694651, 101.4686256, '傍晚', 'Sai Kaew 东侧的安静私属小海滩；入住后先放行李。', '酒店入口、码头接送与行李动线待出发前复核。'),
+    place('Sai Kaew Beach（度假村入口）', 12.5689077, 101.4669303, 'spot', '入住后', '到主海滩走走、看海并在主街吃晚饭；抵达晚就缩短。')
   ] },
   { id: 8, label: '10.01', date: '2026年10月1日 · 沙美岛', title: '酒店与 Sai Kaew 的慢休闲', color: '#55a59e', locations: [
     hotel(hotels.samet, 12.5694651, 101.4686256, '上午', '私属小海滩看海、浅浮潜或放空；不需要租车。', '酒店餐饮、海况与浮潜条件待当天判断。'),
     place('Sai Kaew Beach（度假村入口）', 12.5689077, 101.4669303, 'spot', '下午', '步行范围内的主海滩、主街和补给；按天气与体力调整。')
   ] },
-  { id: 9, label: '10.02', date: '2026年10月2日 · 沙美岛环岛', title: '只租一天摩托，南线到日落', color: '#55a59e', locations: [
+  { id: 9, label: '10.02', date: '2026年10月2日 · 沙美岛', title: '报团游，细节待定', color: '#55a59e', locations: [] },
+  { id: 10, label: '10.03', date: '2026年10月3日 · 沙美岛环岛', title: '只租一天摩托，南线到日落', color: '#55a59e', locations: [
     place('Ao Wong Duean', 12.5529500, 101.4497100, 'spot', '10:00', '从 Larissa 向南的第一段海湾停留。'),
     place('Ao Thian', 12.5496940, 101.4492830, 'spot', '12:00', '午间海湾，不赶路。'),
     place('Ao Wai', 12.5395000, 101.4460000, 'spot', '14:30', '从道路入口步行到海湾；不把针脚放在水面。'),
     place('Ao Prao', 12.5714000, 101.4491700, 'spot', '日落前', '西岸日落；建议 18:00 前返程，夜间不骑车。', '摩托租赁、油量、头盔和雨天路况待当天确认。')
-  ] },
-  { id: 10, label: '10.03', date: '2026年10月3日 · 沙美岛天气触发日', title: '晴天出海，雨天原地松弛', color: '#55a59e', locations: [
-    place('Na Dan Pier', 12.5748563, 101.4635254, 'transport', '晴天待确认', '仅在海况合适时集合参加跳岛/浮潜。', '船票、集合时间、跳岛线路与天气风险均待出发前确认；下雨则不出海。'),
-    hotel(hotels.samet, 12.5694651, 101.4686256, '雨天备选', '留在 Larissa 和 Sai Kaew 周边，按摩、咖啡、看海即可。', '这是等价替代，不是计划失败。')
   ] },
   { id: 11, label: '10.04', date: '2026年10月4日 · 沙美岛 → 曼谷', title: '直接入住 Rangnam，不回 Sathorn', color: '#164d46', locations: [
     place('Na Dan Pier', 12.5748563, 101.4635254, 'transport', '待确认', '离岛回班佩，船票和酒店送码头时间待确认。'),
@@ -90,8 +89,8 @@ const dailyHotel = {
   6: { candidate: hotels.pattaya, lat: 12.9440660, lng: 100.8867208, desc: 'Central Pattaya 北侧 Soi 5；当天从这里出发、回这里休息。', detail: '房型、抵达时间和入住条款以预订页为准。' },
   7: { candidate: hotels.samet, lat: 12.5694651, lng: 101.4686256, desc: 'Larissa Samed Resort；抵达沙美岛后的四晚基地。', detail: '酒店入口、码头接送与行李动线待出发前复核。' },
   8: { candidate: hotels.samet, lat: 12.5694651, lng: 101.4686256, desc: 'Larissa Samed Resort；Sai Kaew 附近的四晚基地。', detail: '酒店餐饮、海况与浮潜条件待当天判断。' },
-  9: { candidate: hotels.samet, lat: 12.5694651, lng: 101.4686256, desc: 'Larissa Samed Resort；环岛日从这里出发并回这里休息。', detail: '摩托租赁、油量、头盔和雨天路况待当天确认。' },
-  10: { candidate: hotels.samet, lat: 12.5694651, lng: 101.4686256, desc: 'Larissa Samed Resort；天气触发日的固定基地。', detail: '晴天出海、雨天原地松弛，均以当天海况为准。' },
+  9: { candidate: hotels.samet, lat: 12.5694651, lng: 101.4686256, desc: 'Larissa Samed Resort；当天参加报团游，具体内容稍后补充。', detail: '团名、路线、集合点和时间尚未确定，选定产品后再更新。' },
+  10: { candidate: hotels.samet, lat: 12.5694651, lng: 101.4686256, desc: 'Larissa Samed Resort；环岛日从这里出发并回这里休息。', detail: '摩托租赁、油量、头盔和雨天路况待当天确认。' },
   11: { candidate: hotels.bkk2, lat: 13.7586877, lng: 100.5397268, desc: 'True Siam Rangnam Hotel；返程前一晚的机场动线基地。', detail: '精确房型与拖行李路线以订单和当天地图导航为准。' },
   12: { candidate: hotels.bkk2, lat: 13.7586877, lng: 100.5397268, desc: 'True Siam Rangnam Hotel；返程当天从这里出发。', detail: '按航班与行李量倒推出发时间。' }
 };
@@ -104,6 +103,8 @@ DAYS.slice(1).forEach((day) => {
 
 const coordinateMetadata = {
   '沙吞安静联排别墅，靠近Saint Louis轻轨站': { precision: 'area', source: 'Airbnb 公开区域信息', note: '订单确认后才会显示精确门牌。' },
+  'ICONSIAM': { precision: 'exact', source: 'ICONSIAM 公共 POI', note: '以商场主建筑公共地点定位。' },
+  'Rajadamnern Stadium': { precision: 'exact', source: 'Rajadamnern Stadium 官网地址 / 公共 POI', note: '以场馆入口公共地点定位。' },
   '曼谷 → 芭提雅大巴集合点': { precision: 'area', source: '当前行程截图', note: '上车点尚未确认，地图只表达曼谷市区出发区域。' },
   'Ao Wong Duean': { precision: 'landfall', source: 'Vongdeuan Resort POI', note: '以可抵达的度假村/海湾入口代替海湾中心。' },
   'Ao Thian': { precision: 'landfall', source: 'Sangthian Beach Resort POI', note: '以可抵达的度假村/海湾入口代替海湾中心。' },

@@ -4,6 +4,7 @@ outputs/assets/booking/.chrome-profile/
 
 # Installed dependencies; restore with npm/yarn from the checked-in manifests
 .codex-travel/**/node_modules/
+node_modules/
 
 # Local visual QA screenshots
 outputs/*-check.png

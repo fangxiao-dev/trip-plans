@@ -113,7 +113,7 @@
       "priority": "location_and_rail_access",
       "status": "selected_working_candidate_user_confirmed",
       "selected_candidate_id": "bkk1_airbnb_sathon_quiet_townhouse",
-      "note": "用户已选沙吞安静联排别墅作为曼谷前4晚工作首选；后续只需出发前复核库存、房型与取消条款。路线适配为Saint Louis→Saphan Taksin/河船老城、Chatuchak+Ari、Lumphini/Siam三条轻量日线，不再为景点搬住宿。"
+      "note": "用户已选沙吞安静联排别墅作为曼谷前4晚工作首选；后续只需出发前复核库存、房型与取消条款。路线适配为Saint Louis→Saphan Taksin/河船老城、Chatuchak+Ari、ICONSIAM+Rajadamnern三条轻量日线；Siam/Chit Lom仅作9月27日备选，不再为景点搬住宿。"
     },
     {
       "id": "stay_pattaya",
@@ -234,7 +234,7 @@
       "id": "decision_bangkok_route",
       "topic": "曼谷前4晚路线",
       "decision": "B1_plus_light",
-      "meaning": "只保留顺路且代表性最强的寺庙：大皇宫与卧佛寺为核心，郑王庙仅在顺路且体力合适时过河看外观与拍照；其余两天为Chatuchak+Ari、Lumphini/Siam+按摩与蜜月晚餐，不做寺庙打卡式旅游。",
+      "meaning": "只保留顺路且代表性最强的寺庙：大皇宫与卧佛寺为核心，郑王庙仅在顺路且体力合适时过河看外观与拍照；其余两天为Chatuchak+Ari、ICONSIAM+Rajadamnern，Siam/Chit Lom仅作备选，不做寺庙打卡式旅游。",
       "status": "confirmed",
       "source": "user_annotation_2026-07-19"
     },
@@ -242,10 +242,10 @@
       "id": "decision_koh_samet_route",
       "topic": "沙美岛4晚路线",
       "decision": "K2_chill_photo_flexible",
-      "meaning": "以酒店、自然海景和拍照为主；保留一个完整酒店日、一个轻量自然半日，第三个整天视天气与身体状态选择半日观景船或继续酒店/Spa。浮潜不是目标，可完全不安排。",
+      "meaning": "以酒店、自然海景和拍照为主；9月30日入住后去Sai Kaew Beach，10月1日留给酒店周边慢休闲，10月2日参加内容待定的报团游，10月3日租一天摩托环岛。浮潜不是目标，不单独安排跳岛/浮潜日。",
       "comfort_constraint": "low_stamina_and_possible_menstruation",
       "status": "confirmed",
-      "source": "user_annotation_2026-07-19"
+      "source": "user_annotation_2026-09-22"
     },
     {
       "id": "preference_final_island_actual_beach_priority",
@@ -2370,10 +2370,10 @@
           "label": "海边平衡：一天轻自然＋两天酒店松弛",
           "recommended_area": "Tubtim或Ao Phai一带",
           "route_seed": [
-            "9月30日抵达：入住、沙滩日落，晚上只在附近吃饭",
+            "9月30日抵达：入住Larissa后去Sai Kaew Beach看海并在主街吃饭",
             "10月1日：完整酒店日；不把浮潜设为必选项",
-            "10月2日：半日海岸拍照或短程观景，按天气和体力交换",
-            "10月3日：酒店、沙滩、Spa与餐厅的松弛日"
+            "10月2日：报团游，团名、路线、集合点与时间待选定产品后补充",
+            "10月3日：摩托环岛，经Ao Wong Duean、Ao Thian、Ao Wai到Ao Prao日落"
           ],
           "anchor_candidate_ids": [
             "koh_samet_tubtim_beachfront",
@@ -2530,6 +2530,10 @@
     {
       "observed_at": "2026-07-20",
       "note": "用户进一步要求可退款或较晚取消、过渡段尽量短距离连接市区与海滩，并明确移除Altera与Best Western；Bayview只保留参考。Booking中国站第三轮核验得到：Best Beach Villa¥524（9月28日14:00前可取消、到店付款，距海滩约200米）；EDGE Central pattaya near walking street¥685（9月21日前可取消、9月19日前零付款，海滩约400米，但私人房东与THB3000可退押金）；Holiday Inn Express Pattaya Central by IHG¥713（含早、9月27日16:00前可取消、9月25日前零付款，海滩约650米）；The Leela Resort & Spa Pattaya可退款价¥884（9月26日前可取消、9月24日前零付款，距海滩约800米，略超日均400元上沿）。View Talay6 by Blue Ocean Suite虽¥564且评分8.8/1391、位置9.5，但当前可见房型不可退款，停用。"
+    },
+    {
+      "observed_at": "2026-09-22",
+      "note": "用户按截图调整每日路线：9月27日以ICONSIAM替换伦披尼公园，Siam/Chit Lom降为备选，傍晚加入Rajadamnern Stadium Kiatpetch泰拳赛并使用场馆官网列出的9月27日直达票页；9月28日Pattaya Beach改为Wong Amat Beach，9月29日原有Wong Amat仍保留；9月30日入住Larissa后增加Sai Kaew Beach；10月2日改为报团游但暂不记录团名、路线、集合点和时间；原10月2日摩托环岛完整移至10月3日，原10月3日跳岛/浮潜天气触发行程删除。"
     }
   ]
 }

@@ -1,0 +1,11 @@
+{
+  "name": "personal-travel-site",
+  "private": true,
+  "scripts": {
+    "build": "node work/build-site.js",
+    "test:ui": "node --test tests/honeymoon-ui.test.js"
+  },
+  "devDependencies": {
+    "playwright": "^1.63.0"
+  }
+}
