@@ -94,7 +94,60 @@ body {
 		<link id="-gd-engine-icon" rel="icon" type="image/png" href="index.icon.png" />
 <link rel="apple-touch-icon" href="index.apple-touch-icon.png"/>
 <meta name="description" content="A simple photo-led living room preview.">
-	</head>
+	<style id="liv-loading-style">
+#status {
+	visibility: visible;
+	z-index: 2;
+	gap: 1.25rem;
+	color: #4b382b;
+	background: radial-gradient(ellipse at 50% 46%, #fffaf0 0%, #f4ead9 72%, #eee0ca 100%);
+	font-family: "Segoe UI", "Noto Sans", sans-serif;
+	opacity: 1;
+	transition: opacity 420ms ease;
+}
+#status.is-ready { opacity: 0; pointer-events: none; }
+.liv-loader { display: flex; flex-direction: column; align-items: center; gap: .5rem; }
+#liv-running {
+	position: relative;
+	overflow: hidden;
+	width: min(192px, 38vw);
+	aspect-ratio: 192 / 208;
+	image-rendering: pixelated;
+}
+#liv-running::before {
+	position: absolute;
+	inset: 0 auto 0 0;
+	width: 800%;
+	background: url("liv-running.webp") left top / 100% 100% no-repeat;
+	content: "";
+	animation: liv-run 800ms steps(8, end) infinite;
+}
+@keyframes liv-run { to { transform: translateX(-100%); } }
+.liv-kicker { margin: 0 0 .2rem; color: #977859; font-size: .72rem; letter-spacing: .2em; }
+#status-label { margin: 0; font-size: 1rem; letter-spacing: .08em; }
+#status-progress {
+	position: static;
+	left: auto;
+	right: auto;
+	bottom: auto;
+	display: block;
+	width: min(240px, 62vw);
+	height: 5px;
+	margin: .6rem 0 0;
+	border: 0;
+	border-radius: 99px;
+	background: #e6d8c2;
+	color: #b78055;
+}
+#status-progress::-webkit-progress-bar { border-radius: 99px; background: #e6d8c2; }
+#status-progress::-webkit-progress-value { border-radius: 99px; background: #b78055; }
+#status-progress::-moz-progress-bar { border-radius: 99px; background: #b78055; }
+#status-notice { max-width: min(34rem, 86vw); }
+@media (prefers-reduced-motion: reduce) {
+	#liv-running { animation: none; }
+	#status { transition: none; }
+}
+</style></head>
 	<body>
 		<canvas id="canvas">
 			Your browser does not support the canvas tag.
@@ -104,15 +157,19 @@ body {
 			Your browser does not support JavaScript.
 		</noscript>
 
-		<div id="status">
-			<img id="status-splash" class="show-image--true fullsize--true use-filter--true" src="index.png" alt="">
-			<progress id="status-progress"></progress>
-			<div id="status-notice"></div>
-		</div>
+		<div id="status" role="status" aria-live="polite">
+	<div class="liv-loader">
+		<div id="liv-running" role="img" aria-label="Liv 跑步动画"></div>
+		<p class="liv-kicker">OUR HOME</p>
+		<p id="status-label">小屋正在打开</p>
+		<progress id="status-progress" aria-label="加载进度"></progress>
+	</div>
+	<div id="status-notice"></div>
+</div>
 
-		<script>(function(){const B='https://assets.shaw-is.com/hfc2c1b8a4b/',f=window.fetch;window.fetch=function(u,o){try{const s=typeof u==='string'?u:(u&&u.url);const r=new URL(s,location.href);if(r.origin===location.origin&&/\.(pck|wasm)$/.test(r.pathname))u=B+r.pathname.split('/').pop()}catch(e){}return f.call(this,u,o)}})();</script><script src="index.js"></script>
+		<script>(function(){const B='https://assets.shaw-is.com/h19ccee7533/',f=window.fetch;window.fetch=function(u,o){try{const s=typeof u==='string'?u:(u&&u.url);const r=new URL(s,location.href);if(r.origin===location.origin&&/\.(pck|wasm)$/.test(r.pathname))u=B+r.pathname.split('/').pop()}catch(e){}return f.call(this,u,o)}})();</script><script src="index.js"></script>
 		<script>
-const GODOT_CONFIG = {"args":[],"canvasResizePolicy":2,"emscriptenPoolSize":8,"ensureCrossOriginIsolationHeaders":true,"executable":"index","experimentalVK":false,"fileSizes":{"index.pck":184207364,"index.wasm":39514754,"scene-8e1aecc06677.pck":184207364},"focusCanvas":true,"gdextensionLibs":[],"godotPoolSize":4,"mainPack":"scene-8e1aecc06677.pck"};
+const GODOT_CONFIG = {"args":[],"canvasResizePolicy":2,"emscriptenPoolSize":8,"ensureCrossOriginIsolationHeaders":true,"executable":"index","experimentalVK":false,"fileSizes":{"index.pck":245477016,"index.wasm":39514754,"scene-8df441ccb2e6.pck":245477016},"focusCanvas":true,"gdextensionLibs":[],"godotPoolSize":4,"mainPack":"scene-8df441ccb2e6.pck"};
 const GODOT_THREADS_ENABLED = false;
 const engine = new Engine(GODOT_CONFIG);
 
@@ -120,6 +177,7 @@ const engine = new Engine(GODOT_CONFIG);
 	const statusOverlay = document.getElementById('status');
 	const statusProgress = document.getElementById('status-progress');
 	const statusNotice = document.getElementById('status-notice');
+	const statusLabel = document.getElementById('status-label');
 
 	let initializing = true;
 	let statusMode = '';
@@ -129,8 +187,9 @@ const engine = new Engine(GODOT_CONFIG);
 			return;
 		}
 		if (mode === 'hidden') {
-			statusOverlay.remove();
+			statusOverlay.classList.add('is-ready');
 			initializing = false;
+			window.setTimeout(() => statusOverlay.remove(), 420);
 			return;
 		}
 		statusOverlay.style.visibility = 'visible';
@@ -205,6 +264,7 @@ const engine = new Engine(GODOT_CONFIG);
 				if (current > 0 && total > 0) {
 					statusProgress.value = current;
 					statusProgress.max = total;
+					statusLabel.textContent = "正在打开小屋 · " + Math.round(current / total * 100) + "%";
 				} else {
 					statusProgress.removeAttribute('value');
 					statusProgress.removeAttribute('max');
